@@ -63,7 +63,9 @@ namespace WatchMe.Catalogos
 
             if (string.IsNullOrWhiteSpace(p.Urlposter))
                 Errores.Add("Debe ingresar el póster de la película");
-)
+
+
+            return Errores.Count == 0;
 
         }
 
