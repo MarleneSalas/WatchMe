@@ -31,17 +31,17 @@
 
                 <WrapPanel HorizontalAlignment="Center" Margin="0,15,0,0" >
                     <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
-                        <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <Button Command="{Binding RegistrarUsuarioCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                             <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                         </Button>
                     </Border>
                     <Border Background="#292f33"  CornerRadius="15">
-                        <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <Button Command="{Binding RegresarCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                             <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                         </Button>
                     </Border>
                 </WrapPanel>
-                <TextBlock Foreground="Red"  Text="Aquí aparecerán todos los errores."  HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                <TextBlock Foreground="Red" Text="{Binding Error}" HorizontalAlignment="Center" Margin="0,20,0,0"/>
             </StackPanel>
         </Grid>
     </Border>

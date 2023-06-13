@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:WatchMe.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <Border Background="White" CornerRadius="5">
         <Grid Margin="20">
             <Grid.ColumnDefinitions>
@@ -27,16 +28,16 @@
                         <PasswordBox BorderThickness="0" Background="Transparent" FontSize="18" Name="pwb" LostFocus="pwb_LostFocus"></PasswordBox>
                     </StackPanel>
                 </Border>
-                <Button Style="{StaticResource NavigationButtons}" Width="100"  Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Button Command="{Binding IniciarSesionCommand}" Style="{StaticResource NavigationButtons}" Width="100"  Margin="0,20,0,0" HorizontalAlignment="Center">
                     <TextBlock Text="Aceptar" HorizontalAlignment="Center" />
                 </Button>
-                <TextBlock Foreground="Red"  Text="Aquí aparecerán todos los errores." HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                <TextBlock Foreground="Red" Text="{Binding Error}" HorizontalAlignment="Center" Margin="0,20,0,0"/>
             </StackPanel>
             <Border Margin="5,0,0,0" Grid.Column="1" CornerRadius="5" Background="#eeeeee">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock TextAlignment="Center" FontSize="25" Margin="0,0,0,20">¡Sé parte de la comunidad <LineBreak/> cinematográfica!</TextBlock>
                     <TextBlock TextAlignment="Center">Califica tus películas favoritas</TextBlock>
-                    <TextBlock>¿Aún no estás registrado? <Hyperlink>Da clic aquí.</Hyperlink></TextBlock>
+                    <TextBlock>¿Aún no estás registrado? <Hyperlink Command="{Binding VerRegistrarUsuarioCommand}">Da clic aquí.</Hyperlink></TextBlock>
                 </StackPanel>
             </Border>
         </Grid>

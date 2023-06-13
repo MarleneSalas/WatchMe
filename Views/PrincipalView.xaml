@@ -4,12 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WatchMe.Views"
+        xmlns:vm="clr-namespace:WatchMe.ViewModels"
         mc:Ignorable="d" 
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Height="700" Width="1200"
         Opacity="10">
 
+    <Window.DataContext>
+        <vm:PrincipalViewModel></vm:PrincipalViewModel>
+    </Window.DataContext>
+    
     <Window.Resources>
         <local:IniciarSesionView x:Key="IniciarSesion"></local:IniciarSesionView>
         <local:IndexAdministradorView x:Key="IndexAdministrador"></local:IndexAdministradorView>
@@ -36,7 +41,7 @@
         </Button>
 
         <ContentControl Grid.Row="1" Grid.RowSpan="2"  Margin="30,0,30,30" 
-                        Content="{StaticResource IndexUsuarioRegular}" >
+                        Content="{Binding Vista}" >
 
         </ContentControl>
     </Grid>
