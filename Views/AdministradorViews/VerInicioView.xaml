@@ -462,7 +462,7 @@
                 <DropShadowEffect Color="Black" Opacity=".15"  ></DropShadowEffect>
             </Border.Effect>
             <DockPanel  >
-                <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,5,0,0" Width="150"  Style="{StaticResource NavegationButtons}" Click="Button_Click">
+                <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,5,0,0" Width="150"  Style="{StaticResource NavigationButtons}" Click="Button_Click">
                     <TextBlock HorizontalAlignment="Center" FontSize="15">Limpiar búsqueda</TextBlock>
                 </Button>
                 <!--Lista de resultados de la busqueda-->
@@ -486,7 +486,7 @@
         <Border x:Name="NoHayResultados" Visibility="Collapsed" Grid.RowSpan="2" Grid.Column="1" CornerRadius="5" Background="White" Height="65" Width="400" Margin="0,50,20,0" VerticalAlignment="Top" HorizontalAlignment="Right">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" >
                 <TextBlock FontSize="15" Foreground="Gray">No existen coincidencias</TextBlock>
-                <Button Margin="0,5,0,0" Width="150"  Style="{StaticResource NavegationButtons}" Click="Button_Click_1">
+                <Button Margin="0,5,0,0" Width="150"  Style="{StaticResource NavigationButtons}" Click="Button_Click_1">
                     <TextBlock HorizontalAlignment="Center" FontSize="15">Limpiar búsqueda</TextBlock>
                 </Button>
             </StackPanel>

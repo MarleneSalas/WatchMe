@@ -38,19 +38,19 @@
                 <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40" Margin="20,20,0,0">WATCH<Run Foreground="#e50914">ME</Run></TextBlock>
                 <StackPanel Margin="20,0,0,0" Grid.Row="1">
                     <TextBlock FontSize="15" Margin="0,0,0,5" Foreground="Gray">Principal</TextBlock>
-                    <Button Style="{StaticResource NavegationButtons}" x:Name="btnInicio">
+                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnInicio">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Inicio.png"></Image>
                             Inicio</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavegationButtons}"  x:Name="btnPeliculas">
+                    <Button Style="{StaticResource NavigationButtons}"  x:Name="btnPeliculas">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
                                     Películas</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavegationButtons}" x:Name="btnReseñas" >
+                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnReseñas" >
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Note.png"></Image>
                             Reseñas</TextBlock>
                     </Button>
-                    <Button Width="150" Style="{StaticResource NavegationButtons}" x:Name="btnVerMasTarde" >
+                    <Button Width="150" Style="{StaticResource NavigationButtons}" x:Name="btnVerMasTarde" >
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Reloj.png"></Image>
                             Ver más tarde</TextBlock>
                     </Button>
