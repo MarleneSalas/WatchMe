@@ -23,9 +23,11 @@
             </WrapPanel>
             <StackPanel  Margin="0,20,10,0">
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar la reseña de
-                    <Run Foreground="#e50914">Marlene Salas</Run> 
+                    <!--Nombre del usuario-->
+                    <Run Text="" Foreground="#e50914"></Run> 
                     en la película: " 
-                    <Run Foreground="#e50914" >El viaje de chihiro</Run>"?</TextBlock>
+                    <!--Nombre de la pelicula-->
+                    <Run Text="" Foreground="#e50914" ></Run>"?</TextBlock>
                 <TextBlock HorizontalAlignment="Center" Foreground="#e50914">La eliminación será permantente.</TextBlock>
             </StackPanel>
         </DockPanel>

@@ -6,7 +6,28 @@
              xmlns:local="clr-namespace:WatchMe.Views.UsuarioViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <Border Height="280" Width="450" CornerRadius="5" Background="White" Padding="20">
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" FontFamily="/Fonts/# Bebas Neue"  FontSize="30" >Eliminar reseña</TextBlock>
+            <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,15,0,0" >
+                <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
+                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
+                    </Button>
+                </Border>
+                <Border Background="#292f33"  CornerRadius="15">
+                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
+                    </Button>
+                </Border>
+            </WrapPanel>
+            <StackPanel  Margin="0,20,10,0">
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar la reseña 
+                    en la película: " 
+                    <!--Nombre de la pelicula-->
+                    <Run Text="" Foreground="#e50914" ></Run>"?</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Foreground="#e50914">La eliminación será permantente.</TextBlock>
+            </StackPanel>
+        </DockPanel>
+    </Border>
 </UserControl>

@@ -15,6 +15,7 @@
 
         <views:VerEditarUsuarioRView x:Key="VerEditarUsuarioR"></views:VerEditarUsuarioRView>
         <views:VerEliminarReseñasUView x:Key="VerEliminarReseñaU"></views:VerEliminarReseñasUView>
+        <views:VerEditarReseñaUView x:Key="VerEditarReseña"></views:VerEditarReseñaUView>
 
         <views:VerHacerReseñaView x:Key="VerHacerReseña"></views:VerHacerReseñaView>
 
