@@ -16,25 +16,13 @@ using System.Windows.Shapes;
 namespace WatchMe.Views.AdministradorViews
 {
     /// <summary>
-    /// Lógica de interacción para VerInicioView.xaml
+    /// Lógica de interacción para VerUsuarioView.xaml
     /// </summary>
-    public partial class VerInicioView : UserControl
+    public partial class VerUsuarioView : UserControl
     {
-        public VerInicioView()
+        public VerUsuarioView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            HayResultados.Visibility = Visibility.Collapsed;
-            txtBuscar.Clear();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            NoHayResultados.Visibility=Visibility.Collapsed;
-            txtBuscar.Clear();
         }
     }
 }

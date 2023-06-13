@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WatchMe.Views.AdministradorViews
+namespace WatchMe.Views.UsuarioViews
 {
     /// <summary>
-    /// Lógica de interacción para VerEditarSerieView.xaml
+    /// Lógica de interacción para VerPeliculasUView.xaml
     /// </summary>
-    public partial class VerEditarSerieView : UserControl
+    public partial class VerPeliculasUView : UserControl
     {
-        public VerEditarSerieView()
+        public VerPeliculasUView()
         {
             InitializeComponent();
         }

@@ -124,5 +124,105 @@
             <Setter Property="Foreground" Value="#e50914" ></Setter>
             <Setter Property="Cursor" Value="Hand"></Setter>
         </Style>
+        <Style TargetType="ListBox">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+        </Style>
+        <!--<Style TargetType="ScrollBar">
+            <Setter Property="Opacity" Value=".50"></Setter>
+            <Setter Property="Margin"
+                            Value="18,5,18,8" />
+            <Setter Property="Height"
+                            Value="Auto" />
+            <Setter Property="Stylus.IsPressAndHoldEnabled"
+                            Value="false" />
+            <Setter Property="Stylus.IsFlicksEnabled"
+                            Value="false" />
+            <Setter Property="Foreground"
+                            Value="#7000" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid SnapsToDevicePixels="true">
+                            <Track x:Name="PART_Track"
+                                           Grid.Column="1"
+                                           IsEnabled="{TemplateBinding IsMouseOver}">
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Style>
+                                            <Style TargetType="{x:Type Thumb}">
+                                                <Setter Property="OverridesDefaultStyle"
+                                                                Value="true" />
+                                                <Setter Property="IsTabStop"
+                                                                Value="false" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Thumb}">
+                                                            <Rectangle Width="{TemplateBinding Width}"
+                                                                               Height="{TemplateBinding Height}"
+                                                                               Fill="{TemplateBinding Foreground}"
+                                                                               RadiusX="5"
+                                                                               RadiusY="5"
+                                                                               SnapsToDevicePixels="True" />
+                                                            <ControlTemplate.Triggers>
+                                                                <Trigger Property="IsMouseOver"
+                                                                                 Value="true">
+                                                                    <Setter Property="Foreground"
+                                                                                    Value="#9000" />
+                                                                    <Setter Property="Cursor" Value="Hand"></Setter>
+                                                                </Trigger>
+                                                                <Trigger Property="IsDragging"
+                                                                                 Value="true">
+                                                                    <Setter Property="Foreground"
+                                                                                    Value="#9000" />
+                                                                </Trigger>
+                                                            </ControlTemplate.Triggers>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Thumb.Style>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="1" Margin="0,0,20,0">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ListBoxItem" x:Key="ListStackPanel">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border Background="Transparent" BorderBrush="Transparent" BorderThickness="1" Margin="0,0,0,10">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="Black"/>
+                                <Setter Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

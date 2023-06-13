@@ -13,22 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WatchMe.Views
+namespace WatchMe.Views.UsuarioViews
 {
     /// <summary>
-    /// Lógica de interacción para IniciarSesionView.xaml
+    /// Lógica de interacción para VerReseñasUView.xaml
     /// </summary>
-    public partial class IniciarSesionView : UserControl
+    public partial class VerReseñasUView : UserControl
     {
-        public IniciarSesionView()
+        public VerReseñasUView()
         {
             InitializeComponent();
-        }
-
-        private void pwb_LostFocus(object sender, RoutedEventArgs e)
-        {
-            txtPassword1.Text = "";
-            txtPassword1.Text = pwb.Password;
         }
     }
 }

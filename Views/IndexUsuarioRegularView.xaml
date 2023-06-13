@@ -1,32 +1,26 @@
-﻿<UserControl x:Class="WatchMe.Views.IndexAdministradorView"
+﻿<UserControl x:Class="WatchMe.Views.IndexUsuarioRegularView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WatchMe.Views"
-             xmlns:views="clr-namespace:WatchMe.Views.AdministradorViews"
+             xmlns:views ="clr-namespace:WatchMe.Views.UsuarioViews"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <views:VerInicioView x:Key="VerInicio"></views:VerInicioView>
-        <views:VerUsuariosView x:Key="VerUsuarios"></views:VerUsuariosView>
-        <views:VerPeliculasView x:Key="VerPeliculas"></views:VerPeliculasView>
-        <views:VerReseñasView x:Key="VerReseñas"></views:VerReseñasView>
+        <views:VerInicioUView x:Key="VerInicioU"></views:VerInicioUView>
+        <views:VerPeliculasUView x:Key="VerPeliculasU"></views:VerPeliculasUView>
+        <views:VerReseñasUView x:Key="VerReseñasU"></views:VerReseñasUView>
+        <views:VerMasTardeView x:Key="VerMasTarde"></views:VerMasTardeView>
 
-        <views:VerAgregarUsuarioView x:Key="VerAgregarUsuario"></views:VerAgregarUsuarioView>
-        <views:VerAgregarPeliculaView x:Key="VerAgregarPelicula"></views:VerAgregarPeliculaView>
+        <views:VerEditarUsuarioRView x:Key="VerEditarUsuarioR"></views:VerEditarUsuarioRView>
+        <views:VerEliminarReseñasUView x:Key="VerEliminarReseñaU"></views:VerEliminarReseñasUView>
 
-        <views:VerEditarUsuarioView x:Key="VerEditarUsuario"></views:VerEditarUsuarioView>
-        <views:VerEditarPeliculaView x:Key="VerEditarPelicula"></views:VerEditarPeliculaView>
+        <views:VerHacerReseñaView x:Key="VerHacerReseña"></views:VerHacerReseñaView>
 
-        <views:VerEliminarUsuarioView x:Key="VerEliminarUsuario"></views:VerEliminarUsuarioView>
-        <views:VerEliminarPeliculaView x:Key="VerEliminarPelicula"></views:VerEliminarPeliculaView>
-        <views:VerEliminarReseñasView x:Key="VerEliminarReseña"></views:VerEliminarReseñasView>
-
-        <views:VerPeliculaView x:Key="VerPelicula"></views:VerPeliculaView>
-        <views:VerUsuarioView x:Key="VerUsuario"></views:VerUsuarioView>
+        <views:VerUsuarioRView x:Key="VerUsuarioR"></views:VerUsuarioRView>
+        <views:VerPeliculaUView x:Key="VerPeliculaU"></views:VerPeliculaUView>
     </UserControl.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".18*"></ColumnDefinition>
@@ -47,10 +41,6 @@
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Inicio.png"></Image>
                             Inicio</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavegationButtons}"  x:Name="btnUsuarios" >
-                        <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/User.png"></Image>
-                            Usuarios</TextBlock>
-                    </Button>
                     <Button Style="{StaticResource NavegationButtons}"  x:Name="btnPeliculas">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
                                     Películas</TextBlock>
@@ -59,19 +49,12 @@
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Note.png"></Image>
                             Reseñas</TextBlock>
                     </Button>
-                </StackPanel>
-                <Border Grid.Row="2" BorderBrush="#292f33" BorderThickness="0,.7,0,0" Width="175"></Border>
-                <StackPanel Margin="20,10,0,0" Grid.Row="2">
-                    <TextBlock FontSize="15" Margin="0,0,0,10" Foreground="Gray" >Crear nuevo</TextBlock>
-                    <Button Style="{StaticResource NavegationButtons}" x:Name="btnCrearUsuario">
-                        <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/User.png"></Image>
-                            Usuario</TextBlock>
-                    </Button>
-                    <Button Style="{StaticResource NavegationButtons}" x:Name="btnCrearPelicula">
-                        <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
-                                    Película</TextBlock>
+                    <Button Width="150" Style="{StaticResource NavegationButtons}" x:Name="btnVerMasTarde" >
+                        <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Reloj.png"></Image>
+                            Ver más tarde</TextBlock>
                     </Button>
                 </StackPanel>
+              
                 <Border Grid.Row="3" BorderBrush="#292f33" BorderThickness="0,.7,0,0" Width="175"></Border>
                 <StackPanel Margin="20,10,0,0"  Grid.Row="3">
                     <TextBlock FontSize="15" Margin="0,0,0,10" Foreground="Gray">Sesión</TextBlock>
@@ -94,8 +77,8 @@
                 </StackPanel>
             </Grid>
         </Border>
-        
-        <ContentControl Grid.Column="1" Content="{StaticResource VerInicio}">
+
+        <ContentControl Grid.Column="1" Content="{StaticResource VerInicioU}">
         </ContentControl>
     </Grid>
 </UserControl>

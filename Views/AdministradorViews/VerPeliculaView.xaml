@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="WatchMe.Views.AdministradorViews.VerPeliculaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WatchMe.Views.AdministradorViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border CornerRadius="0,5,5,0" Background="White" Padding="20,0,0,20">
+
+        <StackPanel>
+            <!--Boton para regresar al inicio-->
+            <Button  Padding="0" HorizontalAlignment="Right">
+                <Image Height="25" Source="/Images/Cruz.png"></Image>
+            </Button>
+            <Border CornerRadius="5" Height="220" Margin="0,0,20,20">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                        <GradientStop Color="#292f33" Offset="0.0"></GradientStop>
+                        <GradientStop Color="#292f33" Offset="0.40"></GradientStop>
+                        <GradientStop Color="#221f1f" Offset="1.0"></GradientStop>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Margin="10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".20*"></ColumnDefinition>
+                        <ColumnDefinition Width=".80*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0" Height="200" Width="160" CornerRadius="5" HorizontalAlignment="Left">
+                        <Border.Background>
+                            <!--Imagen de la portada-->
+                            <ImageBrush ImageSource="/Images/Prueba.jpeg" />
+                        </Border.Background>
+                    </Border>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <!--Nombre de la pelicula-->
+                        <TextBlock Text="" 
+                            Foreground="White" Margin="0,0,0,10" FontWeight="Bold" FontSize="25">
+                        </TextBlock>
+                        <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Fecha de lanzamiento: 
+                             <!--Fecha de lanzamiento-->
+                            <Run Text=""></Run>
+                        </TextBlock>
+                        <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">
+                            <!--Duracion-->
+                            <Run Text=""></Run> min
+                        </TextBlock>
+                        <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image> 
+                         <!--Puntuacion-->   
+                        <Run Text=""></Run>
+                        </TextBlock>
+                        <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Plataformas: 
+                            <!--Plataformas-->
+                            <Run Text=""></Run></TextBlock>
+                        <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Género: 
+                            <!--Genero de la pelicula-->
+                            <Run Text=""></Run>
+                        </TextBlock>
+                    </StackPanel>
+                    <WrapPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <!--Boton para el comando VerEditarPelicula-->
+                        <Button Command="" 
+                            Background="White"  Width="40" Height="40" Margin="0,0,10,0" Style="{StaticResource ButtonsEditarEliminar}">
+                            <Image Source="/Images/Editar.png"/>
+                        </Button>
+                        <!--Boton para el comando VerEliminarPelicula-->
+                        <Button Command="" 
+                           Background="White" Width="40" Height="40" Style="{StaticResource ButtonsEditarEliminar}">
+                            <Image Source="/Images/Remove.png"/>
+                        </Button>
+                    </WrapPanel>
+                    
+                </Grid>
+            </Border>
+            <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue" Foreground="#e50914" Margin="0,0,20,10">Reseñas</TextBlock>
+            <!--Lista de las reseñas-->
+            <ListBox
+                Margin="0,0,20,0"
+                ItemContainerStyle="{StaticResource ListStackPanel}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Height="275"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <!--Plantilla-->
+                        <Border Padding="7,10,10,5" CornerRadius="5" Background="#667580">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".05*"></ColumnDefinition>
+                                    <ColumnDefinition Width=".95*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height=".05*"></RowDefinition>
+                                    <RowDefinition Height=".05*"></RowDefinition>
+                                    <RowDefinition Height=".90*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Column="0" Grid.Row="0" Height="30" Source="/Images/IconoUU.png"></Image>
+                                <TextBlock FontSize="15" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
+                                <!--Aquí el nombre del usuario-->
+                                  <Run Text="" FontWeight="Bold" ></Run> comentó:</TextBlock>
+                                <TextBlock FontSize="15" Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+                            Valoración: <Image Source="/Images/Estrella.png" Width="15"></Image>
+                        <!--Aquí ira la valoracion-->
+                            <Run Text=""></Run>
+                                </TextBlock>
+                                <!--Aquí ira la reseña-->
+                                <TextBlock Text=""
+                            Grid.Column="1" Grid.Row="2"   Foreground="White" FontSize="17" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,0,20,20"></TextBlock>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Border>
+</UserControl>

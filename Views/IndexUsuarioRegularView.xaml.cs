@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace WatchMe.Views
 {
     /// <summary>
-    /// Lógica de interacción para IniciarSesionView.xaml
+    /// Lógica de interacción para IndexUsuarioRegularView.xaml
     /// </summary>
-    public partial class IniciarSesionView : UserControl
+    public partial class IndexUsuarioRegularView : UserControl
     {
-        public IniciarSesionView()
+        public IndexUsuarioRegularView()
         {
             InitializeComponent();
-        }
-
-        private void pwb_LostFocus(object sender, RoutedEventArgs e)
-        {
-            txtPassword1.Text = "";
-            txtPassword1.Text = pwb.Password;
         }
     }
 }

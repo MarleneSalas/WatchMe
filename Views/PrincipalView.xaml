@@ -14,6 +14,7 @@
         <local:IniciarSesionView x:Key="IniciarSesion"></local:IniciarSesionView>
         <local:IndexAdministradorView x:Key="IndexAdministrador"></local:IndexAdministradorView>
         <local:RegistrarLoginView x:Key="RegistrarLogin"></local:RegistrarLoginView>
+        <local:IndexUsuarioRegularView x:Key="IndexUsuarioRegular"></local:IndexUsuarioRegularView>
     </Window.Resources>
 
     <Grid>
@@ -35,7 +36,7 @@
         </Button>
 
         <ContentControl Grid.Row="1" Grid.RowSpan="2"  Margin="30,0,30,30" 
-                        Content="{StaticResource IndexAdministrador}" >
+                        Content="{StaticResource IndexUsuarioRegular}" >
 
         </ContentControl>
     </Grid>

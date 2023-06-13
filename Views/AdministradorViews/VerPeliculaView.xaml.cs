@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WatchMe.Views.AdministradorViews
 {
     /// <summary>
-    /// Lógica de interacción para VerSeriesView.xaml
+    /// Lógica de interacción para VerPeliculaView.xaml
     /// </summary>
-    public partial class VerSeriesView : UserControl
+    public partial class VerPeliculaView : UserControl
     {
-        public VerSeriesView()
+        public VerPeliculaView()
         {
             InitializeComponent();
         }

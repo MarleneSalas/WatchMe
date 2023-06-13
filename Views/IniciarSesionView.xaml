@@ -12,28 +12,30 @@
             <ColumnDefinition Width=".50*"></ColumnDefinition>
             <ColumnDefinition Width=".50*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Margin="0,0,30,0" >
-            <TextBlock FontFamily="/Fonts/# Bebas Neue" FontSize="40">WATCH<Run Foreground="#e50914">ME</Run></TextBlock>
-            <TextBlock Text="Bienvenido" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,100,0,10"/>
-            <TextBlock Text="Ingresa tus credenciales"  HorizontalAlignment="Center"/>
-            <TextBlock Text="Correo electronico:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,20,0,0"/>
+            <StackPanel Grid.Column="0" Margin="0,0,30,0" >
+                <TextBlock FontFamily="/Fonts/# Bebas Neue" FontSize="40">WATCH<Run Foreground="#e50914">ME</Run></TextBlock>
+                <TextBlock Text="Bienvenido" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,100,0,10"/>
+                <TextBlock Text="Ingresa tus credenciales"  HorizontalAlignment="Center"/>
+                <TextBlock Text="Correo electronico:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,20,0,0"/>
                 <Border Background="#eeeeee"  Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                <TextBox  />
-            </Border>
-            <TextBlock Text="Contraseña:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,20,0,0"/>
+                    <TextBox  />
+                </Border>
+                <TextBlock Text="Contraseña:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,20,0,0"/>
                 <Border Background="#eeeeee"  Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                <TextBox  />
-            </Border>
-            <Button Style="{StaticResource NavegationButtons}" Width="100"  Margin="0,20,0,0" HorizontalAlignment="Center">
-                <TextBlock  Text="Aceptar" HorizontalAlignment="Center" />
-            </Button>
-            <TextBlock Foreground="Red"  Text="Aquí aparecerán todos los errores." HorizontalAlignment="Center" Margin="0,20,0,0"/>
-        </StackPanel>
-
+                    <StackPanel>
+                        <TextBox Name="txtPassword1" Visibility="Collapsed" />
+                        <PasswordBox BorderThickness="0" Background="Transparent" FontSize="18" Name="pwb" LostFocus="pwb_LostFocus"></PasswordBox>
+                    </StackPanel>
+                </Border>
+                <Button Style="{StaticResource NavegationButtons}" Width="100"  Margin="0,20,0,0" HorizontalAlignment="Center">
+                    <TextBlock  Text="Aceptar" HorizontalAlignment="Center" />
+                </Button>
+                <TextBlock Foreground="Red"  Text="Aquí aparecerán todos los errores." HorizontalAlignment="Center" Margin="0,20,0,0"/>
+            </StackPanel>
             <Border Margin="5,0,0,0" Grid.Column="1" CornerRadius="5" Background="#eeeeee">
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock TextAlignment="Center" FontSize="25" Margin="0,0,0,20">¡Sé parte de la comunidad <LineBreak/> cinematográfica!</TextBlock>
-                    <TextBlock>Califica las mejores series y péliculas</TextBlock>
+                    <TextBlock TextAlignment="Center">Califica tus películas favoritas</TextBlock>
                     <TextBlock>¿Aún no estás registrado? <Hyperlink>Da clic aquí.</Hyperlink></TextBlock>
                 </StackPanel>
             </Border>

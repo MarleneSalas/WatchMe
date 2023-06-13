@@ -18,13 +18,22 @@
     <None Remove="Images\Inicio.png" />
     <None Remove="Images\Movie.png" />
     <None Remove="Images\Note.png" />
+    <None Remove="Images\Perfil.png" />
     <None Remove="Images\Prueba.jpeg" />
+    <None Remove="Images\Reloj.png" />
     <None Remove="Images\Remove.png" />
     <None Remove="Images\Salir.png" />
+    <None Remove="Images\Search.png" />
     <None Remove="Images\Serie.png" />
     <None Remove="Images\Spiderman.jpeg" />
     <None Remove="Images\User.png" />
     <None Remove="Images\UsuarioN.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Reloj.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +70,9 @@
     <Resource Include="Images\Note.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\Perfil.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Prueba.jpeg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -68,6 +80,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Salir.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Search.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Serie.png">
