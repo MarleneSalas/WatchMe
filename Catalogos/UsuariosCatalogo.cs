@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,12 @@ namespace WatchMe.Catalogos
     public class UsuariosCatalogo
     {
         WatchMeContext contenedor = new();
+
+        public void Recargar(Usuarios u)
+        {
+            contenedor.Entry(u).Reload();
+        }
+
         public IEnumerable<Usuarios> GetAllUsuarios() 
         {
             return contenedor.Usuarios.OrderBy(x => x.NombreUsuario);
@@ -21,7 +28,25 @@ namespace WatchMe.Catalogos
             return contenedor.Usuarios.FirstOrDefault(x => x.CorreoElectronico == correo);
         }
 
+        public Usuarios? GetUsuarioID(int idusuario)
+        {
+            Usuarios? s = contenedor.Usuarios.FirstOrDefault(x => x.IdUsuario == idusuario);
+            if (s != null)
+            {
+                return s;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
+        public int spIniciarSesion(string email, string password)
+        {
+            string sql = $"select fnInicioSesion('{email}', '{password}')";
+            var y = ((IEnumerable<int>)contenedor.Database.SqlQueryRaw<int>(sql, email, password).AsAsyncEnumerable<int>()).First();
+            return y;
+        }
 
         public void Agregar(Usuarios u)
         {
@@ -39,7 +64,6 @@ namespace WatchMe.Catalogos
             contenedor.Update(u);
             contenedor.SaveChanges();
         }
-
 
         public bool Validar(Usuarios u, out List<string> Errores)
         {
@@ -86,7 +110,6 @@ namespace WatchMe.Catalogos
                 Errores.Add("Debe escribir una contraseña.");
 
             return Errores.Count == 0;
-
         }
     }
 }

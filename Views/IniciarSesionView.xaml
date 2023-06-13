@@ -19,12 +19,12 @@
                 <TextBlock Text="Ingresa tus credenciales"  HorizontalAlignment="Center"/>
                 <TextBlock Text="Correo electrónico:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,20,0,0"/>
                 <Border Background="#eeeeee"  Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                    <TextBox  />
+                    <TextBox Text="{Binding Usuario.CorreoElectronico}" />
                 </Border>
                 <TextBlock Text="Contraseña:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,20,0,0"/>
                 <Border Background="#eeeeee"  Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
                     <StackPanel>
-                        <TextBox Name="txtPassword1" Visibility="Collapsed" />
+                        <TextBox Text="{Binding Usuario.Contraseña, UpdateSourceTrigger=PropertyChanged}" Name="txtPassword1" Visibility="Collapsed" />
                         <PasswordBox BorderThickness="0" Background="Transparent" FontSize="18" Name="pwb" LostFocus="pwb_LostFocus"></PasswordBox>
                     </StackPanel>
                 </Border>

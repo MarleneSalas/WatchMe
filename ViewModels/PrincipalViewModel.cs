@@ -15,7 +15,7 @@ namespace WatchMe.ViewModels
 {
     public class PrincipalViewModel : INotifyPropertyChanged
     {
-        //UsuariosCatalogo uscatalogo = new UsuariosCatalogo();
+        UsuariosCatalogo uscatalogo = new UsuariosCatalogo();
 
         public Usuarios? Usuario { get;set; }
 
@@ -39,7 +39,7 @@ namespace WatchMe.ViewModels
 
         public PrincipalViewModel()
         {
-            //IniciarSesionCommand = new RelayCommand(IniciarSesion);
+            IniciarSesionCommand = new RelayCommand(IniciarSesion);
             CerrarSesionCommand = new RelayCommand(CerrarSesion);
             RegresarCommand = new RelayCommand(Regresar);
             VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
@@ -51,6 +51,29 @@ namespace WatchMe.ViewModels
             };
             Vista = view;
             Actualizar();
+        }
+
+        private void IniciarSesion()
+        {
+            if (Usuario != null)
+            {
+                var inicio = uscatalogo.spIniciarSesion(Usuario.CorreoElectronico, Usuario.Contraseña);
+                if (inicio == 1)
+                {
+                    var usconectado = uscatalogo.GetUsuarioXCorreo(Usuario.CorreoElectronico);
+                    Usuario = usconectado;
+                    Vista = new IndexUsuarioRegularView();
+                }
+                else if (inicio == 2)
+                {
+                    Error = "El usuario no se encontró.";
+                }
+                else
+                {
+                    Error = "La contraseña es incorrecta.";
+                }
+                Actualizar();
+            }
         }
 
         private void CerrarSesion()
