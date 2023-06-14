@@ -121,7 +121,9 @@ namespace WatchMe.ViewModels
                 if(catalogoReseñas.Validar(reseña, out List<string> Errores))
                 {
                     catalogoReseñas.Agregar(reseña);
+                    ActualizarBD();
                     Actualizar();
+                    
                 }
                 else
                 {
