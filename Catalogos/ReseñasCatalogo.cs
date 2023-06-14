@@ -16,9 +16,9 @@ namespace WatchMe.Catalogos
             return contenedor.Reseñas;
         }
 
-        public Reseñas GetReseñaXID(Reseñas r)
+        public Reseñas GetReseñaXID(int r)
         {
-            return contenedor.Reseñas.Find(r.IdProduccion);
+            return contenedor.Reseñas.FirstOrDefault(x=> x.IdReseña == r);
         }
 
         public void Agregar(Reseñas r)
