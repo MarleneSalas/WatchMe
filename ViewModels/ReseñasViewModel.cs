@@ -66,10 +66,14 @@ namespace WatchMe.ViewModels
             {
                 DataContext = this
             };
+            verPelicula = new()
+            {
+                DataContext = new()
+            };
 
         }
 
-        private void CargarReseñas()
+        private void ActualizarBD()
         {
             listareseñas.Clear();
             var proye = catalogoReseñas.GetAllReseñas();
@@ -168,6 +172,8 @@ namespace WatchMe.ViewModels
             if(reseña is not null)
             {
                 catalogoReseñas.Eliminar(reseña);
+                ActualizarBD();
+                Regresar();
 
             }
         }
