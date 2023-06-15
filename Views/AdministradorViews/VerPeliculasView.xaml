@@ -40,7 +40,7 @@
                                         <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Fecha de Lanzamiento: <LineBreak/> 
                                                     <!--La fecha de lanzamineto de la pelicula va en el sig run-->
-                                                    <Run Text="{Binding FechaLanzamiento}" FontSize="15"></Run></TextBlock>
+                                                    <Run Text="{Binding FechaLanzamiento, StringFormat={}{0:dd/MM/yyyy}}" FontSize="15"></Run></TextBlock>
                                         <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Duración:<LineBreak/>
                                                     <!--La Duracion de la pelicula va en el sig run-->
@@ -73,7 +73,7 @@
                                     </Border.Triggers>
                                     <Border.Background>
                                         <!--La portada/imagen de la pelicula va en el sig image brush(Cambiar)-->
-                                        <ImageBrush ImageSource="/Images/Prueba.jpeg" />
+                                        <ImageBrush ImageSource="{Binding Urlposter}" />
                                     </Border.Background>
                                 </Border>
                             </Grid>
