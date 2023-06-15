@@ -34,7 +34,7 @@
                             <ImageBrush ImageSource="{Binding GetPeliculaMejorValorada.Urlposter}" />
                         </Border.Background>
                     </Border>
-                    <StackPanel Margin="5">
+                    <StackPanel Margin="6">
                         <!--Nombre de la pelicula-->
                         <TextBlock Text="{Binding GetPeliculaMejorValorada.Nombre}" 
                             Foreground="White" Margin="0,0,0,10" FontWeight="Bold" FontSize="25">

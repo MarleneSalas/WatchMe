@@ -8,10 +8,15 @@
              xmlns:vm="clr-namespace:WatchMe.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    
     <UserControl.DataContext>
         <vm:PeliculasViewModel></vm:PeliculasViewModel>
     </UserControl.DataContext>
     <UserControl.Resources>
+        <vm:PrincipalViewModel x:Key="PrincipalViewModel"></vm:PrincipalViewModel>
+        <vm:PeliculasViewModel x:Key="PeliculasViewModel"></vm:PeliculasViewModel>
+        
         <views:VerInicioUView x:Key="VerInicioU"></views:VerInicioUView>
         <views:VerPeliculasUView x:Key="VerPeliculasU"></views:VerPeliculasUView>
         <views:VerReseñasUView x:Key="VerReseñasU"></views:VerReseñasUView>
@@ -25,6 +30,8 @@
 
         <views:VerUsuarioRView x:Key="VerUsuarioR"></views:VerUsuarioRView>
         <views:VerPeliculaUView x:Key="VerPeliculaU"></views:VerPeliculaUView>
+        
+        
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -75,7 +82,7 @@
                     </Button>
 
                     <!--Cerrar sesion-->
-                    <Button  VerticalAlignment="Bottom" Margin="0,10,0,0" >
+                    <Button  VerticalAlignment="Bottom" Margin="0,10,0,0" Command="{Binding CerrarSesionCommand}">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15" >  <Image Source="/Images/Salir.png" VerticalAlignment="Center" Height="15" Margin="0,0,5,0"></Image>
                                Cerrar sesión</TextBlock>
                     </Button>
