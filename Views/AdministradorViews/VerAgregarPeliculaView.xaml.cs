@@ -24,5 +24,10 @@ namespace WatchMe.Views.AdministradorViews
         {
             InitializeComponent();
         }
+
+        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
