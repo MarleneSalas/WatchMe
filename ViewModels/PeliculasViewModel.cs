@@ -116,6 +116,7 @@ namespace WatchMe.ViewModels
             //EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
             //VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
             //EditarPeliculaCommand = new RelayCommand(EditarPelicula);
+            ActualizarBD();
             Vista = "Peliculas";
             VerInicioCommand = new RelayCommand(VerInicio);
             VerUsuariosCommand = new RelayCommand(VerUsuarios);

@@ -23,11 +23,13 @@ namespace WatchMe.Views.AdministradorViews
         public VerAgregarPeliculaView()
         {
             InitializeComponent();
+
+           
         }
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-
+            combogenero.SelectedItem = combogenero.Items[1];
         }
     }
 }
