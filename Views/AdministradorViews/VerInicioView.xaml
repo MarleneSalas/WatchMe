@@ -31,32 +31,32 @@
                     <Border Grid.Column="0" Height="180" Width="130" CornerRadius="5" HorizontalAlignment="Left">
                         <Border.Background>
                             <!--Cambiar imagen-->
-                            <ImageBrush ImageSource="/Images/Prueba.jpeg" />
+                            <ImageBrush ImageSource="{Binding GetPeliculaMejorValorada.Urlposter}" />
                         </Border.Background>
                     </Border>
                     <StackPanel Margin="5">
                         <!--Nombre de la pelicula-->
-                        <TextBlock Text="{Binding Nombre}" 
+                        <TextBlock Text="{Binding GetPeliculaMejorValorada.Nombre}" 
                             Foreground="White" Margin="0,0,0,10" FontWeight="Bold" FontSize="25">
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Fecha de lanzamiento: 
                              <!--Fecha de lanzamiento-->
-                            <Run Text="{Binding FechaLanzamiento, StringFormat={}{0:dd/MM/yyyy}}"></Run>
+                            <Run Text="{Binding GetPeliculaMejorValorada.FechaLanzamiento, StringFormat={}{0:dd/MM/yyyy}}"></Run>
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">
                             <!--Duracion-->
-                            <Run Text="{Binding DuracionMinutos}"></Run> min
+                            <Run Text="{Binding GetPeliculaMejorValorada.DuracionMinutos}"></Run> min
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image> 
                          <!--Puntuacion-->   
-                        <Run Text="{Binding Puntuacion}"></Run>
+                        <Run Text="{Binding GetPeliculaMejorValorada.Puntuacion}"></Run>
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Plataformas: 
                             <!--Plataformas-->
-                            <Run Text="{Binding Plataformas}"></Run></TextBlock>
+                            <Run Text="{Binding GetPeliculaMejorValorada.Plataformas}"></Run></TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Género: 
                             <!--Genero de la pelicula-->
-                            <Run Text="{Binding Genero}"></Run>
+                            <Run Text="{Binding GetPeliculaMejorValorada.Genero}"></Run>
                         </TextBlock>
                     </StackPanel>
                 </WrapPanel>
@@ -67,7 +67,14 @@
             <WrapPanel>
                 <TextBox x:Name="txtBuscar" Width="200">
                 </TextBox>
-                <ComboBox  Margin="10,0,0,0" Width="200" Background="Transparent" BorderThickness="2,0,0,0"></ComboBox>
+                <ComboBox  Margin="10,0,0,0" Width="200" Background="Transparent" BorderThickness="2,0,0,0" Loaded="ComboBox_Loaded" x:Name="ComboGenero">
+                    <ComboBoxItem Content="Animación"/>
+                    <ComboBoxItem Content="Musical"/>
+                    <ComboBoxItem Content="Drama"/>
+                    <ComboBoxItem Content="Terror"/>
+                    <ComboBoxItem Content="Ciencia Ficción"/>
+                    <ComboBoxItem Content="Acción"/>
+                </ComboBox>
                 <Button Margin="10,0,0,0" Width="20">
                     <Image VerticalAlignment="Center" Source="/Images/Search.png" Opacity=".70"></Image>
                 </Button>

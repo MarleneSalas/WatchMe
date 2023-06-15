@@ -24,5 +24,10 @@ namespace WatchMe.Views.UsuarioViews
         {
             InitializeComponent();
         }
+
+        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            ComboGenero.SelectedItem = ComboGenero.Items[1];
+        }
     }
 }

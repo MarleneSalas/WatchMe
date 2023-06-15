@@ -36,5 +36,10 @@ namespace WatchMe.Views.AdministradorViews
             NoHayResultados.Visibility=Visibility.Collapsed;
             txtBuscar.Clear();
         }
+
+        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            ComboGenero.SelectedItem = ComboGenero.Items[1];
+        }
     }
 }

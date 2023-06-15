@@ -73,7 +73,7 @@ namespace WatchMe.ViewModels
 
         public Peliculas GetPeliculaMejorValorada
         {
-            get { return ListaPeliculas.OrderBy(x => x.Puntuacion).First(); }
+            get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).First(); }
         }
 
         public IEnumerable<Peliculas> GetPeliculasGeneroAnimacion
@@ -96,7 +96,7 @@ namespace WatchMe.ViewModels
         }
         public IEnumerable<Peliculas> GetPeliculasMejorValoradas
         {
-            get { return ListaPeliculas.OrderBy(x => x.Puntuacion).Take(10); }
+            get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).Take(10); }
         }
 
 
