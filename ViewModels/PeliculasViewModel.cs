@@ -30,6 +30,12 @@ namespace WatchMe.ViewModels
 
         public string Vista { get; set; }
 
+        public IEnumerable<Peliculas> PeliculasAnimacion 
+
+
+
+
+
         //No sé si va en otro VM, pero lo haré mientras aquí
         public Usuarios? Usuario { get; set; }
 
@@ -68,6 +74,11 @@ namespace WatchMe.ViewModels
         public ICommand RegresarCommand { get; set; }
 
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
+        public ObservableCollection<Peliculas> ListaPeliculasAnimacion { get; set; } = new();
+        public ObservableCollection<Peliculas> ListaPeliculasDrama { get; set; } = new();
+        public ObservableCollection<Peliculas> ListaPeliculasMusical { get; set; } = new();
+        public ObservableCollection<Peliculas> ListaPeliculasMejorValoradas { get; set; } = new();
+
 
         //No sé si va en otro VM, pero lo haré mientras aquí
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
