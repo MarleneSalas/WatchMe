@@ -37,9 +37,6 @@ namespace WatchMe.ViewModels
 
         public ICommand RegresarCommand { get; set; }
 
-
-
-
         public PrincipalViewModel()
         {
             IniciarSesionCommand = new RelayCommand(IniciarSesion);
