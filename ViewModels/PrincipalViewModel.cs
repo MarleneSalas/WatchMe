@@ -128,10 +128,22 @@ namespace WatchMe.ViewModels
         {
             if (Usuario != null)
             {
-                uscatalogo.Agregar(Usuario);
-                Usuario = new();
-                Vista = view;
-                Actualizar();
+                if(uscatalogo.Validar(Usuario, out List<string> Errores))
+                {
+                    uscatalogo.Agregar(Usuario);
+                    Vista = view;
+                    Usuario = new();
+                    Actualizar();
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+                Error = "";
             }
         }
 
