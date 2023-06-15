@@ -212,7 +212,7 @@ namespace WatchMe.ViewModels
         }
 
         private void ActualizarBD()
-        {
+         {
             ListaPeliculas.Clear();
             foreach (var item in catalogop.GetAllPeliculas())
             {

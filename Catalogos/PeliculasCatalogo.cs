@@ -64,6 +64,11 @@ namespace WatchMe.Catalogos
             if (string.IsNullOrWhiteSpace(p.Urlposter))
                 Errores.Add("Debe ingresar el póster de la película");
 
+            if (!Uri.TryCreate(p.Urlposter, UriKind.Absolute, out var uri))
+            {
+                Errores.Add("Escriba una URL válida para la imagen");
+            }
+
 
             return Errores.Count == 0;
 

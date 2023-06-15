@@ -223,7 +223,7 @@
                                         </Border>
                                     </Grid>
                                     <!--Nombre de la pelicula en el siguiente text block-->
-                                    <TextBlock Text="{Binding pelicula.Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
+                                    <TextBlock Text="{Binding Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
                                 </StackPanel>
 
                             </DataTemplate>
