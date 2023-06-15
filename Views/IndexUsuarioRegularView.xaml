@@ -8,7 +8,9 @@
              xmlns:vm="clr-namespace:WatchMe.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+    <UserControl.DataContext>
+        <vm:PeliculasViewModel></vm:PeliculasViewModel>
+    </UserControl.DataContext>
     <UserControl.Resources>
         <views:VerInicioUView x:Key="VerInicioU"></views:VerInicioUView>
         <views:VerPeliculasUView x:Key="VerPeliculasU"></views:VerPeliculasUView>
