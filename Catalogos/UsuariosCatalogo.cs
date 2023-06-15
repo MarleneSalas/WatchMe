@@ -70,7 +70,7 @@ namespace WatchMe.Catalogos
 
         public void Agregar(Usuarios u)
         {
-            contenedor.Add(u);
+            contenedor.Database.ExecuteSqlRaw($"CALL spRegistroUs('{u.NombreUsuario}', '{u.CorreoElectronico}', '{u.Contraseña}', 'Usuario');");
             contenedor.SaveChanges();
         }
 

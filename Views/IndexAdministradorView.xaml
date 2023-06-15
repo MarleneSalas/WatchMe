@@ -47,11 +47,11 @@
                 <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40" Margin="20,20,0,0">WATCH<Run Foreground="#e50914">ME</Run></TextBlock>
                 <StackPanel Margin="20,0,0,0" Grid.Row="1">
                     <TextBlock FontSize="15" Margin="0,0,0,5" Foreground="Gray">Principal</TextBlock>
-                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnInicio">
+                    <Button Command="{Binding VerInicioCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnInicio">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Inicio.png"></Image>
                             Inicio</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavigationButtons}"  x:Name="btnUsuarios" >
+                    <Button Command="{Binding VerUsuariosCommand}" Style="{StaticResource NavigationButtons}"  x:Name="btnUsuarios" >
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/User.png"></Image>
                             Usuarios</TextBlock>
                     </Button>
@@ -59,7 +59,7 @@
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
                                     Películas</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnReseñas" >
+                    <Button Command="{Binding VerReseñasCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnReseñas" >
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Note.png"></Image>
                             Reseñas</TextBlock>
                     </Button>
@@ -99,7 +99,54 @@
             </Grid>
         </Border>
         
-        <ContentControl Grid.Column="1" Content="{StaticResource VerInicio}">
+        <ContentControl Grid.Column="1">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Content" Value="{StaticResource VerInicio}"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerInicio">
+                            <Setter Property="Content" Value="{StaticResource VerInicio}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerUsuarios">
+                            <Setter Property="Content" Value="{StaticResource VerUsuarios}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerPeliculas">
+                            <Setter Property="Content" Value="{StaticResource VerPeliculas}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerReseñas">
+                            <Setter Property="Content" Value="{StaticResource VerReseñas}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="VerAgregarUsuario">
+                            <Setter Property="Content" Value="{StaticResource VerAgregarUsuario}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEditarUsuario">
+                            <Setter Property="Content" Value="{StaticResource VerEditarUsuario}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEliminarUsuario">
+                            <Setter Property="Content" Value="{StaticResource VerEliminarUsuario}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="VerAgregarPelicula">
+                            <Setter Property="Content" Value="{StaticResource VerAgregarPelicula}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEditarPelicula">
+                            <Setter Property="Content" Value="{StaticResource VerEditarPelicula}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEliminarPelicula">
+                            <Setter Property="Content" Value="{StaticResource VerEliminarPelicula}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="VerPelicula">
+                            <Setter Property="Content" Value="{StaticResource VerPelicula}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="VerUsuario">
+                            <Setter Property="Content" Value="{StaticResource VerUsuario}"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
         </ContentControl>
     </Grid>
 </UserControl>

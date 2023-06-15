@@ -21,23 +21,19 @@ namespace WatchMe.ViewModels
     public class PeliculasViewModel : INotifyPropertyChanged
     {
         PeliculasCatalogo catalogop = new();
+        UsuariosCatalogo catalogou = new();
         public string Error { get; set; } = "";
 
         public Peliculas pelicula { get; set; } = new();
         
         public Peliculas? clonpelicula { get; set; }
 
-        public UserControl Vista { get; set; }
+        public string Vista { get; set; }
 
-        /*ViewModelUsuarios??
-        VerEditarUsuarioRView verEditarUsuarioRView;
-        VerUsuarioRView verUsuarioRView;
-        VerAgregarUsuarioView verAgregarUsuarioView;
-        VerEditarUsuarioView verEditarUsView;
-        VerEliminarUsuarioView verEliminarUsuarioView;
-        VerUsuariosView verUsuariosView;
-        VerUsuarioView verUsuarioView;
+        //No sé si va en otro VM, pero lo haré mientras aquí
+        public Usuarios? Usuario { get; set; }
 
+        /*
         public ICommand VerRegistrarUsuarioCommand { get; set; }
         public ICommand RegistrarUsuarioCommand { get; set; }
 
@@ -54,11 +50,27 @@ namespace WatchMe.ViewModels
         public ICommand VerEditarPeliculaCommand { get; set; }
         public ICommand EditarPeliculaCommand { get; set; }
 
+
+
+        public ICommand VerInicioCommand { get; set; }
+        public ICommand VerUsuariosCommand { get; set; }
         public ICommand VerPeliculasCommand { get; set; }
+        public ICommand VerReseñasCommand { get; set; }
+
+        public ICommand VerRegistrarUsuarioCommand { get; set; }
+        public ICommand RegistrarUsuarioCommand { get; set; }
+
+        //Editar
+
+        public ICommand VerEliminarUsuarioCommand { get; set; }
+        public ICommand EliminarUsuarioCommand { get; set; }
 
         public ICommand RegresarCommand { get; set; }
 
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
+
+        //No sé si va en otro VM, pero lo haré mientras aquí
+        public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
 
         public PeliculasViewModel()
         {
@@ -68,35 +80,103 @@ namespace WatchMe.ViewModels
             //EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
             //VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
             //EditarPeliculaCommand = new RelayCommand(EditarPelicula);
-            //RegresarCommand = new RelayCommand(Regresar);
+            Vista = "Peliculas";
+            VerInicioCommand = new RelayCommand(VerInicio);
+            VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
+            VerReseñasCommand = new RelayCommand(VerReseñas);
+
+            //No sé si va en otro VM, pero lo haré mientras aquí
+            VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
+            RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
+
+            //Editar
+
+            VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
+            EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
+
+            RegresarCommand = new RelayCommand(Regresar);
+
             Actualizar();
         }
 
-        [Authorize(Roles = "Usuario")]
-        private void VerPeliculasUsuarioComun()
+        private void VerEliminarUsuario(int obj)
         {
-            Vista = new VerPeliculasUView();
-            Actualizar(nameof(Vista));
+            Usuario = catalogou.GetUsuarioID(obj);
+            Vista = "VerEliminarUsuario";
+            Actualizar();
         }
 
-        [Authorize(Roles = "Administrador")]
-        private void VerPeliculasUsuarioAdministrador()
+        private void EliminarUsuario()
         {
-            Vista = new VerPeliculasView();
-            Actualizar(nameof(Vista));
+            if (Usuario != null)
+            {
+                catalogou.Eliminar(Usuario);
+                ActualizarBD();
+                Regresar();
+            }
+        }
+
+        private void Regresar()
+        {
+            Vista = "VerInicio";
+            Actualizar();
+        }
+
+        private void VerRegistrarUsuario()
+        {
+            Usuario = new();
+            Vista = "VerRegistrar";
+            Actualizar();
+        }
+
+        private void RegistrarUsuario()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void VerInicio()
+        {
+            if (Thread.CurrentPrincipal != null)
+            {
+                if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                {
+                    Vista = "VerInicio";
+                }
+                if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                {
+                    Vista = "VerInicioU";
+                }
+            }
+            Actualizar();
+        }
+
+        private void VerUsuarios()
+        {
+            Vista = "VerUsuarios";
+            Actualizar();
         }
 
         private void VerPeliculas()
         {
-            if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+            if (Thread.CurrentPrincipal != null)
             {
-                VerPeliculasUsuarioAdministrador();
+                if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                {
+                    Vista = "VerPeliculas";
+                }
+                if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                {
+                    Vista = "VerPeliculasU";
+                }
             }
-            if (Thread.CurrentPrincipal.IsInRole("Usuario"))
-            {
-                VerPeliculasUsuarioComun();
-            }
+            Actualizar();
+        }
+
+        private void VerReseñas()
+        {
+            Vista = "VerReseñas";
+            Actualizar();
         }
 
         private void ActualizarBD()
