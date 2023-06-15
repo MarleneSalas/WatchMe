@@ -20,6 +20,13 @@ namespace WatchMe.ViewModels
         
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        public IEnumerable<Reseñas> ReseñasXUsuario
+        {
+            get { return listareseñas.Where(x => x.IdUsuario == reseña.IdUsuario); }
+        }
+
+        
+
 
         public Reseñas reseña { get; set; } = new();
         public Reseñas clon { get; set; }
@@ -47,6 +54,7 @@ namespace WatchMe.ViewModels
 
         public ReseñasViewModel()
         {
+            ActualizarBD();
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
             VerEliminarReseñaCommand = new RelayCommand<int>(VerEliminarReseña);
             EliminarReseñaCommand = new RelayCommand(EliminarReseña);
