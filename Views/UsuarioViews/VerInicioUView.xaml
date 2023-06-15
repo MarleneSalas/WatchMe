@@ -36,27 +36,27 @@
                     </Border>
                     <StackPanel Margin="5">
                         <!--Nombre de la pelicula-->
-                        <TextBlock Text="" 
+                        <TextBlock Text="{Binding pelicula.Nombre}" 
                             Foreground="White" Margin="0,0,0,10" FontWeight="Bold" FontSize="25">
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Fecha de lanzamiento: 
                              <!--Fecha de lanzamiento-->
-                            <Run Text=""></Run>
+                            <Run Text="{Binding pelicula.FechaLanzamiento}"></Run>
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">
                             <!--Duracion-->
-                            <Run Text=""></Run> min
+                            <Run Text="{Binding pelicula.DuracionMinutos}"></Run> min
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image> 
                          <!--Puntuacion-->   
-                        <Run Text=""></Run>
+                        <Run Text="{Binding pelicula.Puntuacion}"></Run>
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Plataformas: 
                             <!--Plataformas-->
-                            <Run Text=""></Run></TextBlock>
+                            <Run Text="{Binding pelicula.Plataformas}"></Run></TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Género: 
                             <!--Genero de la pelicula-->
-                            <Run Text=""></Run>
+                            <Run Text="{Binding pelicula.Genero}"></Run>
                         </TextBlock>
                     </StackPanel>
                 </WrapPanel>

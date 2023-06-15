@@ -70,11 +70,6 @@ namespace WatchMe.ViewModels
         public ICommand RegresarCommand { get; set; }
 
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
-        public ObservableCollection<Peliculas> ListaPeliculasAnimacion { get; set; } = new();
-        public ObservableCollection<Peliculas> ListaPeliculasDrama { get; set; } = new();
-        public ObservableCollection<Peliculas> ListaPeliculasMusical { get; set; } = new();
-        public ObservableCollection<Peliculas> ListaPeliculasTerror { get; set; } = new();
-
 
         public Peliculas GetPeliculaMejorValorada
         {

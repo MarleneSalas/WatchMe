@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WatchMe.Views.AdministradorViews"
+             xmlns:local="clr-namespace:WatchMe.Views.AdministradorViews" xmlns:viewmodels="clr-namespace:WatchMe.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:PeliculasViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -36,27 +36,27 @@
                     </Border>
                     <StackPanel Margin="5">
                         <!--Nombre de la pelicula-->
-                        <TextBlock Text="" 
+                        <TextBlock Text="{Binding pelicula.Nombre}" 
                             Foreground="White" Margin="0,0,0,10" FontWeight="Bold" FontSize="25">
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Fecha de lanzamiento: 
                              <!--Fecha de lanzamiento-->
-                            <Run Text=""></Run>
+                            <Run Text="{Binding pelicula.FechaLanzamiento}"></Run>
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">
                             <!--Duracion-->
-                            <Run Text=""></Run> min
+                            <Run Text="{Binding pelicula.DuracionMinutos}"></Run> min
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image> 
                          <!--Puntuacion-->   
-                        <Run Text=""></Run>
+                        <Run Text="{Binding pelicula.Puntuacion}"></Run>
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Plataformas: 
                             <!--Plataformas-->
-                            <Run Text=""></Run></TextBlock>
+                            <Run Text="{Binding pelicula.Plataformas}"></Run></TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Género: 
                             <!--Genero de la pelicula-->
-                            <Run Text=""></Run>
+                            <Run Text="{Binding pelicula.Genero}"></Run>
                         </TextBlock>
                     </StackPanel>
                 </WrapPanel>
@@ -87,7 +87,7 @@
                     <TextBlock FontSize="30" Foreground="Black" FontFamily="/Fonts/# Bebas Neue"
                                 Margin="0,0,0,5" >TOP 10 MEJORES VALORADAS</TextBlock>
                     <!--Lista deL TOP 10-->
-                        <ListBox >
+                        <ListBox ItemsSource="{Binding GetPeliculaMejorValorada}">
                             <ListBox.ItemsPanel >
                                 <ItemsPanelTemplate >
                                     <WrapPanel />
@@ -111,14 +111,14 @@
                                                     <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Fecha de Lanzamiento: <LineBreak/> 
                                                     <!--La fecha de lanzamineto de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.FechaLanzamiento}" FontSize="15"></Run></TextBlock>
                                                     <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Duración:<LineBreak/>
                                                     <!--La Duracion de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Duracion}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
                                                     <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
                                                     <!--La califición de la pelicula va en el sig run-->
-                                                    <Run Text=""></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Puntuacion}"></Run></TextBlock>
                                                 </StackPanel>
                                             </Border>
                                             <Border CornerRadius="5">
@@ -144,12 +144,12 @@
                                                 </Border.Triggers>
                                                 <Border.Background>
                                                     <!--La portada/imagen de la pelicula va en el sig image brush(Cambiar)-->
-                                                    <ImageBrush ImageSource="/Images/Prueba.jpeg" />
+                                                    <ImageBrush ImageSource="{Binding pelicula.Urlposter}" />
                                                 </Border.Background>
                                             </Border>
                                         </Grid>
                                         <!--Nombre de la pelicula en el siguiente text block-->
-                                        <TextBlock Text="" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
+                                        <TextBlock Text="{Binding pelicula.Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
                                     </StackPanel>
 
                                 </DataTemplate>
@@ -161,7 +161,7 @@
                     <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue"
                                 Margin="0,0,0,5" Foreground="Black">¡Anímate con las mejores obras animadas!</TextBlock>
                     <!--Lista de peliculas del genero de animacion-->
-                    <ListBox>
+                    <ListBox ItemsSource="{Binding GetPeliculasGeneroAnimacion}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate >
                                 <WrapPanel />
@@ -185,14 +185,14 @@
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Fecha de Lanzamiento: <LineBreak/> 
                                                     <!--La fecha de lanzamineto de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.FechaLanzamiento}" FontSize="15"></Run></TextBlock>
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Duración:<LineBreak/>
                                                     <!--La Duracion de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Duracion}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
                                                     <!--La califición de la pelicula va en el sig run-->
-                                                    <Run Text=""></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Puntuacion}"></Run></TextBlock>
                                             </StackPanel>
                                         </Border>
                                         <Border CornerRadius="5">
@@ -218,12 +218,12 @@
                                             </Border.Triggers>
                                             <Border.Background>
                                                 <!--La portada/imagen de la pelicula va en el sig image brush(Cambiar)-->
-                                                <ImageBrush ImageSource="/Images/Prueba.jpeg"/>
+                                                <ImageBrush ImageSource="{Binding pelicula.Urlposter}"/>
                                             </Border.Background>
                                         </Border>
                                     </Grid>
                                     <!--Nombre de la pelicula en el siguiente text block-->
-                                    <TextBlock Text="" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
+                                    <TextBlock Text="{Binding pelicula.Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
                                 </StackPanel>
 
                             </DataTemplate>
@@ -235,7 +235,7 @@
                     <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue"
                                 Margin="0,0,0,5" Foreground="Black">Vive un explosión de emociones con estas obras</TextBlock>
                     <!--Lista de peliculas del genero de drama-->
-                    <ListBox>
+                    <ListBox ItemsSource="{Binding GetPeliculasGeneroDrama}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate >
                                 <WrapPanel />
@@ -259,88 +259,14 @@
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Fecha de Lanzamiento: <LineBreak/> 
                                                     <!--La fecha de lanzamineto de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.FechaLanzamiento}" FontSize="15"></Run></TextBlock>
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Duración:<LineBreak/>
                                                     <!--La Duracion de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Duracion}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
                                                     <!--La califición de la pelicula va en el sig run-->
-                                                    <Run Text=""></Run></TextBlock>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border CornerRadius="5">
-                                            <Border.Triggers>
-                                                <EventTrigger RoutedEvent="MouseEnter">
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                             To="0"
-                                             Duration="0:0:0.2"/>
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </EventTrigger>
-                                                <EventTrigger RoutedEvent="MouseLeave">
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                             To="1"
-                                             Duration="0:0:0.2" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </EventTrigger>
-                                            </Border.Triggers>
-                                            <Border.Background>
-                                                <!--La portada/imagen de la pelicula va en el sig image brush(Cambiar)--> 
-                                                <ImageBrush ImageSource="/Images/Prueba.jpeg"/>
-                                            </Border.Background>
-                                        </Border>
-                                    </Grid>
-                                    <!--Nombre de la pelicula en el siguiente text block-->
-                                    <TextBlock Text="" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
-                                </StackPanel>
-
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </StackPanel>
-
-                <StackPanel Margin="0,0,0,20" >
-                    <TextBlock  FontSize="25" FontFamily="/Fonts/# Bebas Neue"
-                                Margin="0,0,0,5" Foreground="Black">Muévete al ritmo de estos grandes éxitos...</TextBlock>
-                    <!--Lista de peliculas del genero de musical-->
-                    <ListBox>
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate >
-                                <WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-
-                                <!--plantilla de pelicula-->
-                                <StackPanel>
-                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="180" Width="130">
-                                        <Border  CornerRadius="5" Padding="5,10" >
-                                            <Border.Background>
-                                                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
-                                                    <GradientStop Color="#221f1f" Offset="0.0"></GradientStop>
-                                                    <GradientStop Color="#292f33" Offset="0.60"></GradientStop>
-                                                    <GradientStop Color="#292f33" Offset="1.0"></GradientStop>
-                                                </LinearGradientBrush>
-                                            </Border.Background>
-                                            <StackPanel Height="190">
-                                                <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
-                                                    Fecha de Lanzamiento: <LineBreak/> 
-                                                    <!--La fecha de lanzamineto de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run></TextBlock>
-                                                <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
-                                                    Duración:<LineBreak/>
-                                                    <!--La Duracion de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
-                                                <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
-                                                    <!--La califición de la pelicula va en el sig run-->
-                                                    <Run Text=""></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Puntuacion}"></Run></TextBlock>
                                             </StackPanel>
                                         </Border>
                                         <Border CornerRadius="5">
@@ -366,12 +292,86 @@
                                             </Border.Triggers>
                                             <Border.Background>
                                                 <!--La portada/imagen de la pelicula va en el sig image brush(Cambiar)-->
-                                                <ImageBrush ImageSource="/Images/Prueba.jpeg"/>
+                                                <ImageBrush ImageSource="{Binding pelicula.Urlposter}"/>
                                             </Border.Background>
                                         </Border>
                                     </Grid>
                                     <!--Nombre de la pelicula en el siguiente text block-->
-                                    <TextBlock Text="" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
+                                    <TextBlock Text="{Binding pelicula.Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,20" >
+                    <TextBlock  FontSize="25" FontFamily="/Fonts/# Bebas Neue"
+                                Margin="0,0,0,5" Foreground="Black">Muévete al ritmo de estos grandes éxitos...</TextBlock>
+                    <!--Lista de peliculas del genero de musical-->
+                    <ListBox ItemsSource="{Binding GetPeliculasGeneroMusical}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate >
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <!--plantilla de pelicula-->
+                                <StackPanel>
+                                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="180" Width="130">
+                                        <Border  CornerRadius="5" Padding="5,10" >
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                    <GradientStop Color="#221f1f" Offset="0.0"></GradientStop>
+                                                    <GradientStop Color="#292f33" Offset="0.60"></GradientStop>
+                                                    <GradientStop Color="#292f33" Offset="1.0"></GradientStop>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <StackPanel Height="190">
+                                                <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
+                                                    Fecha de Lanzamiento: <LineBreak/> 
+                                                    <!--La fecha de lanzamineto de la pelicula va en el sig run-->
+                                                    <Run Text="{Binding pelicula.FechaLanzamiento}" FontSize="15"></Run></TextBlock>
+                                                <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
+                                                    Duración:<LineBreak/>
+                                                    <!--La Duracion de la pelicula va en el sig run-->
+                                                    <Run Text="{Binding pelicula.Duracion}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
+                                                <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
+                                                    <!--La califición de la pelicula va en el sig run-->
+                                                    <Run Text="{Binding pelicula.Puntuacion}"></Run></TextBlock>
+                                            </StackPanel>
+                                        </Border>
+                                        <Border CornerRadius="5">
+                                            <Border.Triggers>
+                                                <EventTrigger RoutedEvent="MouseEnter">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             To="0"
+                                             Duration="0:0:0.2"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                                <EventTrigger RoutedEvent="MouseLeave">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             To="1"
+                                             Duration="0:0:0.2" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                            </Border.Triggers>
+                                            <Border.Background>
+                                                <!--La portada/imagen de la pelicula va en el sig image brush(Cambiar)-->
+                                                <ImageBrush ImageSource="{Binding pelicula.Urlposter}"/>
+                                            </Border.Background>
+                                        </Border>
+                                    </Grid>
+                                    <!--Nombre de la pelicula en el siguiente text block-->
+                                    <TextBlock Text="{Binding pelicula.Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
                                 </StackPanel>
 
                             </DataTemplate>
@@ -384,7 +384,7 @@
                     <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue"
                                 Margin="0,0,0,5" Foreground="Black">Estas películas te harán temblar de miedo</TextBlock>
                     <!--Lista de peliculas del genero de terror-->
-                    <ListBox>
+                    <ListBox ItemsSource="{Binding GetPeliculasGeneroTerror}">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate >
                                 <WrapPanel />
@@ -408,14 +408,14 @@
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Fecha de Lanzamiento: <LineBreak/> 
                                                     <!--La fecha de lanzamineto de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.FechaLanzamiento}" FontSize="15"></Run></TextBlock>
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Duración:<LineBreak/>
                                                     <!--La Duracion de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Duracion}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
                                                     <!--La califición de la pelicula va en el sig run-->
-                                                    <Run Text=""></Run></TextBlock>
+                                                    <Run Text="{Binding pelicula.Puntuacion}"></Run></TextBlock>
                                             </StackPanel>
                                         </Border>
                                         <Border CornerRadius="5">
@@ -441,12 +441,12 @@
                                             </Border.Triggers>
                                             <Border.Background>
                                                 <!--La portada/imagen de la pelicula va en el sig image brush(Cambiar)-->
-                                                <ImageBrush ImageSource="/Images/Prueba.jpeg"/>
+                                                <ImageBrush ImageSource="{Binding pelicula.Urlposter}"/>
                                             </Border.Background>
                                         </Border>
                                     </Grid>
                                     <!--Nombre de la pelicula en el siguiente text block-->
-                                    <TextBlock Text="" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
+                                    <TextBlock Text="{Binding pelicula.Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
                                 </StackPanel>
 
                             </DataTemplate>

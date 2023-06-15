@@ -15,7 +15,7 @@
             <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40" >Películas</TextBlock>
 
             <!--Lista de todas las peliculas-->
-            <ListBox 
+            <ListBox ItemsSource="{Binding ListaPeliculas}"
                 ItemContainerStyle="{StaticResource ListStackPanel}"
                 Grid.Row="1">
                 <ListBox.ItemsPanel>
@@ -40,14 +40,14 @@
                                         <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Fecha de Lanzamiento: <LineBreak/> 
                                                     <!--La fecha de lanzamineto de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run></TextBlock>
+                                                    <Run Text="{Binding FechaLanzamiento}" FontSize="15"></Run></TextBlock>
                                         <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Duración:<LineBreak/>
                                                     <!--La Duracion de la pelicula va en el sig run-->
-                                                    <Run Text="" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
+                                                    <Run Text="{Binding DuracionMinutos}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
                                         <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
                                                     <!--La califición de la pelicula va en el sig run-->
-                                                    <Run Text=""></Run></TextBlock>
+                                                    <Run Text="{Binding Puntuacion}"></Run></TextBlock>
                                     </StackPanel>
                                 </Border>
                                 <Border CornerRadius="5">
@@ -78,7 +78,7 @@
                                 </Border>
                             </Grid>
                             <!--Nombre de la pelicula en el siguiente text block-->
-                            <TextBlock Text="" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
+                            <TextBlock Text="{Binding Nombre}" Width="150" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Margin="0,10,0,0"></TextBlock>
                         </StackPanel>
 
                     </DataTemplate>
