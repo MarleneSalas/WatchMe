@@ -30,10 +30,6 @@ namespace WatchMe.ViewModels
 
         public string Vista { get; set; }
 
-        public IEnumerable<Peliculas> PeliculasAnimacion 
-
-
-
 
 
         //No sé si va en otro VM, pero lo haré mientras aquí
@@ -77,7 +73,36 @@ namespace WatchMe.ViewModels
         public ObservableCollection<Peliculas> ListaPeliculasAnimacion { get; set; } = new();
         public ObservableCollection<Peliculas> ListaPeliculasDrama { get; set; } = new();
         public ObservableCollection<Peliculas> ListaPeliculasMusical { get; set; } = new();
-        public ObservableCollection<Peliculas> ListaPeliculasMejorValoradas { get; set; } = new();
+        public ObservableCollection<Peliculas> ListaPeliculasTerror { get; set; } = new();
+
+
+        public Peliculas GetPeliculaMejorValorada
+        {
+            get { return ListaPeliculas.OrderBy(x => x.Puntuacion).First(); }
+        }
+
+        public IEnumerable<Peliculas> GetPeliculasGeneroAnimacion
+        {
+            get { return ListaPeliculas.Where(x => x.Genero == "Animación"); }
+        }
+
+        public IEnumerable<Peliculas> GetPeliculasGeneroDrama
+        {
+            get { return ListaPeliculas.Where(x => x.Genero == "Drama"); }
+        }
+        public IEnumerable<Peliculas> GetPeliculasGeneroMusical
+        {
+            get { return ListaPeliculas.Where(x => x.Genero == "Musical"); }
+        }
+
+        public IEnumerable<Peliculas> GetPeliculasGeneroTerror
+        {
+            get { return ListaPeliculas.Where(x => x.Genero == "Terror"); }
+        }
+        public IEnumerable<Peliculas> GetPeliculasMejorValoradas
+        {
+            get { return ListaPeliculas.OrderBy(x => x.Puntuacion).Take(10); }
+        }
 
 
         //No sé si va en otro VM, pero lo haré mientras aquí
