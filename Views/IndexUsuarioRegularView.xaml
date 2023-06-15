@@ -38,19 +38,19 @@
                 <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40" Margin="20,20,0,0">WATCH<Run Foreground="#e50914">ME</Run></TextBlock>
                 <StackPanel Margin="20,0,0,0" Grid.Row="1">
                     <TextBlock FontSize="15" Margin="0,0,0,5" Foreground="Gray">Principal</TextBlock>
-                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnInicio">
+                    <Button Command="{Binding VerInicioCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnInicio">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Inicio.png"></Image>
                             Inicio</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavigationButtons}"  x:Name="btnPeliculas">
+                    <Button Command="{Binding VerPeliculasCommand}" Style="{StaticResource NavigationButtons}"  x:Name="btnPeliculas">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
                                     Películas</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnReseñas" >
+                    <Button Command="{Binding VerReseñasCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnReseñas" >
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Note.png"></Image>
                             Reseñas</TextBlock>
                     </Button>
-                    <Button Width="150" Style="{StaticResource NavigationButtons}" x:Name="btnVerMasTarde" >
+                    <Button Command="{Binding VerMasTardeCommand}" Width="150" Style="{StaticResource NavigationButtons}" x:Name="btnVerMasTarde" >
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/Reloj.png"></Image>
                             Ver más tarde</TextBlock>
                     </Button>
@@ -79,7 +79,26 @@
             </Grid>
         </Border>
 
-        <ContentControl Grid.Column="1" Content="{StaticResource VerInicioU}">
+        <ContentControl Grid.Column="1">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Content" Value="{StaticResource VerInicioU}"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerInicio">
+                            <Setter Property="Content" Value="{StaticResource VerInicioU}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerPeliculas">
+                            <Setter Property="Content" Value="{StaticResource VerPeliculasU}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerReseñas">
+                            <Setter Property="Content" Value="{StaticResource VerReseñasU}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerMasTarde">
+                            <Setter Property="Content" Value="{StaticResource VerMasTarde}"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
         </ContentControl>
     </Grid>
 </UserControl>
