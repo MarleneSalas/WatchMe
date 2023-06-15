@@ -10,6 +10,8 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using System.ComponentModel;
 using WatchMe.Views;
+using Microsoft.AspNetCore.Authorization;
+using System.Threading;
 
 namespace WatchMe.ViewModels
 {
@@ -17,7 +19,7 @@ namespace WatchMe.ViewModels
     {
         UsuariosCatalogo uscatalogo = new UsuariosCatalogo();
 
-        public Usuarios? Usuario { get;set; }
+        public Usuarios? Usuario { get; set; }
 
         public UserControl Vista { get; set; }
 
@@ -62,7 +64,17 @@ namespace WatchMe.ViewModels
                 {
                     var usconectado = uscatalogo.GetUsuarioXCorreo(Usuario.CorreoElectronico);
                     Usuario = usconectado;
-                    Vista = new IndexUsuarioRegularView();
+                    if (Thread.CurrentPrincipal != null)
+                    {
+                        if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                        {
+                            AccionesUsuarioAdministrador();
+                        }
+                        if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                        {
+                            AccionesUsuarioComun();
+                        }
+                    }
                 }
                 else if (inicio == 2)
                 {
@@ -76,15 +88,29 @@ namespace WatchMe.ViewModels
             }
         }
 
+        [Authorize(Roles = "Administrador")]
+        private void AccionesUsuarioAdministrador()
+        {
+            Vista = new IndexAdministradorView();
+        }
+
+        [Authorize(Roles = "Usuario")]
+        private void AccionesUsuarioComun()
+        {
+            Vista = new IndexUsuarioRegularView();
+        }
+
         private void CerrarSesion()
         {
             Usuario = new();
             Vista = view;
+            Error = "";
             Actualizar();
         }
 
         private void Regresar()
         {
+            Error = "";
             Usuario = new();
             Vista = view;
             Actualizar();
@@ -100,10 +126,13 @@ namespace WatchMe.ViewModels
 
         private void RegistrarUsuario()
         {
-            //uscatalogo.Create(Usuario);
-            Usuario = new();
-            Vista = view;
-            Actualizar();
+            if (Usuario != null)
+            {
+                uscatalogo.Agregar(Usuario);
+                Usuario = new();
+                Vista = view;
+                Actualizar();
+            }
         }
 
         void Actualizar(string? propiedad = null)

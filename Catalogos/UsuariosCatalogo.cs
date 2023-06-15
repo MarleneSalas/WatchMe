@@ -47,20 +47,26 @@ namespace WatchMe.Catalogos
         {
             string sql = $"select fnInicioSesion('{email}', '{password}')";
             var y = ((IEnumerable<int>)contenedor.Database.SqlQueryRaw<int>(sql, email, password).AsAsyncEnumerable<int>()).First();
+            if (y == 1)
+            {
+                var us = contenedor.Usuarios.FirstOrDefault(x => x.CorreoElectronico == email);
+                if (us != null)
+                    EstablecerTipoUsuario(us);
+            }
             return y;
         }
 
 
-        //private void EstablecerTipoUsuario(Usuarios u)
-        //{
-        //    GenericIdentity user = new GenericIdentity(u.NombreUsuario);
-        //    if (u != null)
-        //    {
-        //        string[] roles = new string[] { u.IdRolNavigation.Nombre };
-        //        GenericPrincipal usprincipal = new GenericPrincipal(user, roles);
-        //        Thread.CurrentPrincipal = usprincipal;
-        //    }
-        //}
+        private void EstablecerTipoUsuario(Usuarios u)
+        {
+            GenericIdentity user = new GenericIdentity(u.NombreUsuario);
+            if (u != null)
+            {
+                string[] roles = new string[] { u.Rol };
+                GenericPrincipal usprincipal = new GenericPrincipal(user, roles);
+                Thread.CurrentPrincipal = usprincipal;
+            }
+        }
 
         public void Agregar(Usuarios u)
         {

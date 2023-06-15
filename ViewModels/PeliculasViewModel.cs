@@ -1,10 +1,12 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,7 +29,7 @@ namespace WatchMe.ViewModels
 
         public UserControl Vista { get; set; }
 
-        //ViewModelUsuarios??
+        /*ViewModelUsuarios??
         VerEditarUsuarioRView verEditarUsuarioRView;
         VerUsuarioRView verUsuarioRView;
         VerAgregarUsuarioView verAgregarUsuarioView;
@@ -41,24 +43,7 @@ namespace WatchMe.ViewModels
 
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand EditarUsuarioCommand { get; set; }
-
-        //Usuario
-        VerInicioUView verInicioUView;
-        VerPeliculasUView verPeliculasUView;
-        VerReseñasUView verReseñasUView;
-        VerMasTardeView verMasTardeView;
-
-        //Admin
-        VerAgregarPeliculaView verAgregarPeliculaView;
-        VerEditarPeliculaView verEditarUsuarioView;
-        VerEliminarPeliculaView verEliminarPeliculaView;
-        VerEliminarReseñasView verEliminarResenasView;
-        VerInicioView verInicioView;
-        VerPeliculasView verPeliculasView;
-        VerPeliculaView verPeliculaView;
-        VerReseñasView verReseñasView;
-
-
+        */
 
         public ICommand VerRegistrarPeliculaCommand { get; set; }
         public ICommand RegistrarPeliculaCommand { get; set; }
@@ -69,20 +54,49 @@ namespace WatchMe.ViewModels
         public ICommand VerEditarPeliculaCommand { get; set; }
         public ICommand EditarPeliculaCommand { get; set; }
 
+        public ICommand VerPeliculasCommand { get; set; }
+
         public ICommand RegresarCommand { get; set; }
 
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
 
         public PeliculasViewModel()
         {
-            VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
-            RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
-            VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
-            EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
-            VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
-            EditarPeliculaCommand = new RelayCommand(EditarPelicula);
-            RegresarCommand = new RelayCommand(Regresar);
+            //VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
+            //RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
+            //VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
+            //EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
+            //VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
+            //EditarPeliculaCommand = new RelayCommand(EditarPelicula);
+            //RegresarCommand = new RelayCommand(Regresar);
+            VerPeliculasCommand = new RelayCommand(VerPeliculas);
             Actualizar();
+        }
+
+        [Authorize(Roles = "Usuario")]
+        private void VerPeliculasUsuarioComun()
+        {
+            Vista = new VerPeliculasUView();
+            Actualizar(nameof(Vista));
+        }
+
+        [Authorize(Roles = "Administrador")]
+        private void VerPeliculasUsuarioAdministrador()
+        {
+            Vista = new VerPeliculasView();
+            Actualizar(nameof(Vista));
+        }
+
+        private void VerPeliculas()
+        {
+            if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+            {
+                VerPeliculasUsuarioAdministrador();
+            }
+            if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+            {
+                VerPeliculasUsuarioComun();
+            }
         }
 
         private void ActualizarBD()

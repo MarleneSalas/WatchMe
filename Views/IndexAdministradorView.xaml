@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WatchMe.Views"
              xmlns:views="clr-namespace:WatchMe.Views.AdministradorViews"
+             xmlns:vm="clr-namespace:WatchMe.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:PeliculasViewModel></vm:PeliculasViewModel>
+    </UserControl.DataContext>
     <UserControl.Resources>
         <views:VerInicioView x:Key="VerInicio"></views:VerInicioView>
         <views:VerUsuariosView x:Key="VerUsuarios"></views:VerUsuariosView>
@@ -51,7 +55,7 @@
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/User.png"></Image>
                             Usuarios</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavigationButtons}"  x:Name="btnPeliculas">
+                    <Button Command="{Binding VerPeliculasCommand}" Style="{StaticResource NavigationButtons}"  x:Name="btnPeliculas">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
                                     Películas</TextBlock>
                     </Button>
