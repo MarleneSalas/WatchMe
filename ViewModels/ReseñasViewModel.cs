@@ -16,71 +16,9 @@ namespace WatchMe.ViewModels
 {
     public class ReseñasViewModel:INotifyPropertyChanged
     {
-        private ReseñasCatalogo catalogoReseñas = new();
-        
-        public event PropertyChangedEventHandler? PropertyChanged;
-
         public IEnumerable<Reseñas> ReseñasXUsuario
         {
             get { return listareseñas.Where(x => x.IdUsuario == reseña.IdUsuario); }
-        }
-
-
-
-        
-
-
-        public Reseñas reseña { get; set; } = new();
-        public Reseñas clon { get; set; }
-        public UserControl Vista { get; set; }
-
-        public string Error { get; set; } = "";
-
-        VerEditarReseñaUView editarreseña;
-        VerEliminarReseñasUView eliminarreseña;
-        VerHacerReseñaView hacerreseña;
-        VerPeliculaUView verPelicula;
-
-        public ICommand RegistrarReseñaCommand { get; set; }
-
-        public ICommand VerEliminarReseñaCommand { get; set; }
-        public ICommand EliminarReseñaCommand { get; set; }
-
-        public ICommand VerEditarReseñaCommand { get; set; }
-        public ICommand EditarReseñaCommand { get; set; }
-
-        public ICommand ConfirmarReseñaCommand { get; set; }
-        public ICommand RegresarCommand { get; set; } 
-
-        private ObservableCollection<Reseñas> listareseñas { get; set; } = new();
-
-        public ReseñasViewModel()
-        {
-            ActualizarBD();
-            RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
-            VerEliminarReseñaCommand = new RelayCommand<int>(VerEliminarReseña);
-            EliminarReseñaCommand = new RelayCommand(EliminarReseña);
-            VerEditarReseñaCommand = new RelayCommand<int>(VerEditarReseña);
-            EditarReseñaCommand = new RelayCommand(EditarReseña);
-            ConfirmarReseñaCommand = new RelayCommand(ConfirmarReseña);
-            RegresarCommand = new RelayCommand(Regresar);
-            hacerreseña = new()
-            {
-                DataContext = this
-            };
-            eliminarreseña = new()
-            {
-                DataContext = this
-            };
-            editarreseña = new()
-            {
-                DataContext = this
-            };
-            verPelicula = new()
-            {
-                DataContext = new()
-            };
-
         }
 
         private void ActualizarBD()

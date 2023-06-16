@@ -12,7 +12,7 @@
                 <RowDefinition Height=".10*"></RowDefinition>
                 <RowDefinition Height=".90*"></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40" >Películas wasaaa</TextBlock>
+            <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40" >Películas</TextBlock>
 
             <!--Lista de todas las peliculas-->
             <ListBox ItemsSource="{Binding ListaPeliculas}"

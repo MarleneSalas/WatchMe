@@ -22,6 +22,25 @@ namespace WatchMe.ViewModels
     {
         PeliculasCatalogo catalogop = new();
         UsuariosCatalogo catalogou = new();
+        private ReseñasCatalogo catalogoReseñas = new();
+
+        VerEditarReseñaUView editarreseña;
+        VerEliminarReseñasUView eliminarreseña;
+        VerHacerReseñaView hacerreseña;
+        VerPeliculaUView verPelicula;
+
+
+        public IEnumerable<Reseñas> ReseñasXUsuario
+        {
+            get { return listareseñas.Where(x => x.IdUsuario == reseña.IdUsuario); }
+        }
+
+
+
+
+        public Reseñas reseña { get; set; } = new();
+        public Reseñas clon { get; set; }
+
         public string Error { get; set; } = "";
 
         public Peliculas pelicula { get; set; } = new();
@@ -68,6 +87,18 @@ namespace WatchMe.ViewModels
 
         public ICommand RegresarCommand { get; set; }
 
+
+        public ICommand RegistrarReseñaCommand { get; set; }
+
+        public ICommand VerEliminarReseñaCommand { get; set; }
+        public ICommand EliminarReseñaCommand { get; set; }
+
+        public ICommand VerEditarReseñaCommand { get; set; }
+        public ICommand EditarReseñaCommand { get; set; }
+
+        public ICommand ConfirmarReseñaCommand { get; set; }
+        public ICommand RegresarReseñasCommand { get; set; }
+
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
 
         public Peliculas GetPeliculaMejorValorada
@@ -101,6 +132,7 @@ namespace WatchMe.ViewModels
 
         //No sé si va en otro VM, pero lo haré mientras aquí
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
+        private ObservableCollection<Reseñas> listareseñas { get; set; } = new();
 
         public PeliculasViewModel()
         {
@@ -126,7 +158,16 @@ namespace WatchMe.ViewModels
             VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
 
+
+            RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
+            VerEliminarReseñaCommand = new RelayCommand<int>(VerEliminarReseña);
+            EliminarReseñaCommand = new RelayCommand(EliminarReseña);
+            VerEditarReseñaCommand = new RelayCommand<int>(VerEditarReseña);
+            EditarReseñaCommand = new RelayCommand(EditarReseña);
+            ConfirmarReseñaCommand = new RelayCommand(ConfirmarReseña);
+
             RegresarCommand = new RelayCommand(Regresar);
+            RegresarReseñasCommand = new RelayCommand(RegresarReseñas);
 
             Actualizar();
         }
@@ -245,6 +286,122 @@ namespace WatchMe.ViewModels
             {
                 ListaPeliculas.Add(item);
             }
+            Actualizar();
+        }
+
+
+        private void ActualizarReseñas()
+        {
+            listareseñas.Clear();
+            var proye = catalogoReseñas.GetAllReseñas();
+            foreach (var item in proye)
+            {
+                listareseñas.Add(item);
+            }
+            Actualizar();
+        }
+
+        private void VerEliminarReseña(int id)
+        {
+            var temp = catalogoReseñas.GetReseñasXPelicula(id);
+            if (temp is not null)
+            {
+                reseña = temp;
+                Vista = "VerEliminarReseñaU";
+                Actualizar();
+            }
+        }
+
+        private void VerEditarReseña(int id)
+        {
+            reseña = catalogoReseñas.GetReseñasXPelicula(id);
+            if (reseña != null)
+            {
+                Vista = "VerEditarReseña";
+                clon = new()
+                {
+                    IdReseña = reseña.IdReseña,
+                    IdProduccion = reseña.IdProduccion,
+                    IdUsuario = reseña.IdUsuario,
+                    Reseña = reseña.Reseña,
+                    Valoracion = reseña.Valoracion
+                };
+                reseña = clon;
+                Actualizar();
+            }
+        }
+
+        private void ConfirmarReseña()
+        {
+            if (reseña != null)
+            {
+                if (catalogoReseñas.Validar(reseña, out List<string> Errores))
+                {
+                    catalogoReseñas.Agregar(reseña);
+                    ActualizarReseñas();
+                    Actualizar();
+
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+                Error = "";
+            }
+        }
+
+        private void EditarReseña()
+        {
+            var reseñaexistente = catalogoReseñas.GetReseñasXPelicula(reseña.IdReseña);
+            if (reseñaexistente != null)
+            {
+                if (catalogoReseñas.Validar(reseña, out List<string> Errores))
+                {
+                    reseñaexistente.IdReseña = reseña.IdReseña;
+                    reseñaexistente.IdProduccion = reseña.IdProduccion;
+                    reseñaexistente.Reseña = reseña.Reseña;
+                    reseñaexistente.Valoracion = reseña.Valoracion;
+                    catalogoReseñas.Editar(reseñaexistente);
+                    RegresarReseñas();
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+                Error = "";
+            }
+        }
+
+        private void RegresarReseñas()
+        {
+            Vista = "VerPeliculasU";
+            Actualizar();
+        }
+
+        private void EliminarReseña()
+        {
+            if (reseña is not null)
+            {
+                catalogoReseñas.Eliminar(reseña);
+                ActualizarReseñas();
+                RegresarReseñas();
+
+            }
+        }
+
+        private void RegistrarReseña()
+        {
+            Error = "";
+            reseña = new();
+            Vista = "VerHacerReseña";
             Actualizar();
         }
 
