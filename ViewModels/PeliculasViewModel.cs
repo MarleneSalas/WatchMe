@@ -22,71 +22,17 @@ namespace WatchMe.ViewModels
 {
     public class PeliculasViewModel : INotifyPropertyChanged
     {
+        //Catalogos
         PeliculasCatalogo catalogop = new();
         UsuariosCatalogo catalogou = new();
         private ReseñasCatalogo catalogoReseñas = new();
 
-        public IEnumerable<Reseñas> ReseñasXUsuario
-        {
-            get { return listareseñas.Where(x => x.IdUsuario == Usuario.IdUsuario); }
-        }
-
-        public Reseñas reseña { get; set; } = new();
-        public Reseñas clon { get; set; }
-
-        public string Error { get; set; } = "";
-
-        public Peliculas pelicula { get; set; } = new();
-        
-        public Peliculas? clonpelicula { get; set; }
-
-        public string Vista { get; set; }
-
-        public Usuarios? Usuario { get; set; }
-
-        public ICommand VerEditarUsuarioCommand { get; set; }
-        public ICommand EditarUsuarioCommand { get; set; }
-
-        public ICommand VerInicioCommand { get; set; }
-        public ICommand VerUsuariosCommand { get; set; }
-        public ICommand VerPeliculasCommand { get; set; }
-        public ICommand VerReseñasCommand { get; set; }
-
-        public ICommand VerPeliculaCommand { get; set; }
-
-
-        public ICommand VerEliminarUsuarioCommand { get; set; }
-        public ICommand EliminarUsuarioCommand { get; set; }
-
-
-        public ICommand VerRegistrarPeliculaCommand { get; set; }
-        public ICommand RegistrarPeliculaCommand { get; set; }
-
-        public ICommand VerEliminarPeliculaCommand { get; set; }
-        public ICommand EliminarPeliculaCommand { get; set; }
-
-        public ICommand VerEditarPeliculaCommand { get; set; }
-        public ICommand EditarPeliculaCommand { get; set; }
-
-        public ICommand RegresarCommand { get; set; }
-
-
-        public ICommand RegistrarReseñaCommand { get; set; }
-
-        public ICommand VerEliminarReseñaCommand { get; set; }
-        public ICommand EliminarReseñaCommand { get; set; }
-
-        public ICommand VerEditarReseñaCommand { get; set; }
-        public ICommand EditarReseñaCommand { get; set; }
-        public ICommand VerPerfilUsuarioCommand { get; set; }
-
-        public ICommand ConfirmarReseñaCommand { get; set; }
-        public ICommand RegresarReseñasCommand { get; set; }
-        public ICommand RegresarAReseñasXUsuarioCommand { get; set; }
-        public ICommand CancelarEdicionPeliculaCommand { get; set; }
-
+        //Listas
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
+        public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
+        public ObservableCollection<Reseñas> listareseñas { get; set; } = new();
 
+        //Consultas
         public Peliculas GetPeliculaMejorValorada
         {
             get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).First(); }
@@ -115,12 +61,14 @@ namespace WatchMe.ViewModels
             get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).Take(10); }
         }
 
-        public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
-        public ObservableCollection<Reseñas> listareseñas { get; set; } = new();
+        public IEnumerable<Reseñas> ReseñasXUsuario
+        {
+            get { return listareseñas.Where(x => x.IdUsuario == Usuario.IdUsuario); }
+        }
 
         public IEnumerable<Usuarios> GetUsuariosAdmin
         {
-            get { return ListaUsuarios.Where(x => x.Rol == "Administrador"); } 
+            get { return ListaUsuarios.Where(x => x.Rol == "Administrador"); }
         }
 
         public IEnumerable<Usuarios> GetUsuariosComunes
@@ -131,36 +79,94 @@ namespace WatchMe.ViewModels
         public IEnumerable<Reseñas> GetReseñasXPelicula
         {
             get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula); }
-           
+
         }
+        
+        //Objetos
+        public Reseñas reseña { get; set; } = new();
+        public Reseñas clon { get; set; }
+
+        public string Error { get; set; } = "";
+
+        public Peliculas pelicula { get; set; } = new();
+        
+        public Peliculas? clonpelicula { get; set; }
+
+        public string Vista { get; set; }
+
+        public Usuarios? Usuario { get; set; }
+
+        //Películas
+        public ICommand VerRegistrarPeliculaCommand { get; set; }
+        public ICommand RegistrarPeliculaCommand { get; set; }
+        public ICommand VerEliminarPeliculaCommand { get; set; }
+        public ICommand EliminarPeliculaCommand { get; set; }
+        public ICommand VerEditarPeliculaCommand { get; set; }
+        public ICommand EditarPeliculaCommand { get; set; }
+        public ICommand VerPeliculaCommand { get; set; }
+        public ICommand CancelarEdicionPeliculaCommand { get; set; }
+
+        //IndexNavigation
+        public ICommand VerInicioCommand { get; set; }
+        public ICommand VerUsuariosCommand { get; set; }
+        public ICommand VerPeliculasCommand { get; set; }
+        public ICommand VerReseñasCommand { get; set; }
+
+        //Usuarios
+        public ICommand VerEliminarUsuarioCommand { get; set; }
+        public ICommand EliminarUsuarioCommand { get; set; }
+
+        public ICommand VerEditarUsuarioCommand { get; set; }
+        public ICommand EditarUsuarioCommand { get; set; }
+
+
+
+
+
+
+
+        public ICommand RegresarCommand { get; set; }
+
+
+        public ICommand RegistrarReseñaCommand { get; set; }
+
+        public ICommand VerEliminarReseñaCommand { get; set; }
+        public ICommand EliminarReseñaCommand { get; set; }
+
+        public ICommand VerEditarReseñaCommand { get; set; }
+        public ICommand EditarReseñaCommand { get; set; }
+        public ICommand VerPerfilUsuarioCommand { get; set; }
+
+        public ICommand ConfirmarReseñaCommand { get; set; }
+        public ICommand RegresarReseñasCommand { get; set; }
+        public ICommand RegresarAReseñasXUsuarioCommand { get; set; }
+
+
         public PeliculasViewModel()
         {
-            
+            //Películas
             VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
             RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
             VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
             EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
             VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
             EditarPeliculaCommand = new RelayCommand(EditarPelicula);
-            ActualizarBD();
-            Vista = "Peliculas";
+            VerPeliculaCommand = new RelayCommand<Peliculas>(VerPelicula);
+            CancelarEdicionPeliculaCommand = new RelayCommand(CancelarEdicionPelicula);
+
+            //IndexNavigation
             VerInicioCommand = new RelayCommand(VerInicio);
             VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
             VerReseñasCommand = new RelayCommand(VerReseñas);
             VerPerfilUsuarioCommand = new RelayCommand(VerPerfilUsuario);
-            VerPeliculaCommand = new RelayCommand<Peliculas>(VerPelicula);
-            CancelarEdicionPeliculaCommand = new RelayCommand(CancelarEdicionPelicula);
+            RegresarCommand = new RelayCommand(Regresar);
 
-            //No sé si va en otro VM, pero lo haré mientras aquí
-            //VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
-            //RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
-
-            //Editar
-
+            //Usuarios
             VerEliminarUsuarioCommand = new RelayCommand(VerEliminarUsuario);
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
 
+            //Reseñas
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
             VerEliminarReseñaCommand = new RelayCommand<int>(VerEliminarReseña);
             EliminarReseñaCommand = new RelayCommand(EliminarReseña);
@@ -168,24 +174,87 @@ namespace WatchMe.ViewModels
             EditarReseñaCommand = new RelayCommand(EditarReseña);
             ConfirmarReseñaCommand = new RelayCommand(ConfirmarReseña);
             RegresarAReseñasXUsuarioCommand = new RelayCommand(RegresarAReseñasXUsuario);
-
-            RegresarCommand = new RelayCommand(Regresar);
             RegresarReseñasCommand = new RelayCommand(RegresarReseñas);
-
             if (Application.Current.Properties.Contains("UsuarioActual"))
             {
                 Usuario = Application.Current.Properties["UsuarioActual"] as Usuarios;
             }
+
+            //Actualizar listas
             ActualizarReseñas();
             ActualizarUsuarios();
+            ActualizarBD();
             Actualizar();
-            
         }
 
-        private void CancelarEdicionPelicula()
+        //Películas
+        public void VerRegistrarPelicula()
         {
-            Vista = "VerPeliculaR";
+            Error = "";
+            pelicula = new();
+            Vista = "VerAgregarPelicula";
             Actualizar();
+        }
+
+        private void RegistrarPelicula()
+        {
+            if (pelicula != null)
+            {
+                if (catalogop.Validar(pelicula, out List<string> Errores))
+                {
+                    catalogop.Agregar(pelicula);
+                    ActualizarBD();
+                    Regresar();
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+            }
+        }
+
+        private void VerEliminarPelicula()
+        {
+            Vista = "VerEliminarPelicula";
+            Actualizar();
+        }
+
+        private void EliminarPelicula()
+        {
+            if (pelicula is not null)
+            {
+                catalogop.Eliminar(pelicula);
+                ActualizarBD();
+                Regresar();
+
+            }
+        }
+
+        private void VerEditarPelicula()
+        {
+            if (pelicula != null)
+            {
+                Vista = "VerEditarPelicula";
+                clonpelicula = new()
+                {
+                    DuracionMinutos = pelicula.DuracionMinutos,
+                    FechaLanzamiento = pelicula.FechaLanzamiento,
+                    Genero = pelicula.Genero,
+                    IdPelicula = pelicula.IdPelicula,
+                    Nombre = pelicula.Nombre,
+                    Plataformas = pelicula.Plataformas,
+                    Puntuacion = pelicula.Puntuacion,
+                    Reseñas = pelicula.Reseñas,
+                    Sinopsis = pelicula.Sinopsis,
+                    Urlposter = pelicula.Urlposter
+                };
+                pelicula = clonpelicula;
+                Actualizar();
+            }
         }
 
         private void EditarPelicula()
@@ -222,58 +291,6 @@ namespace WatchMe.ViewModels
             }
         }
 
-        private void VerEditarPelicula()
-        {
-            if (pelicula != null)
-            {
-                Vista = "VerEditarPelicula";
-                clonpelicula = new()
-                {
-                   DuracionMinutos = pelicula.DuracionMinutos,
-                   FechaLanzamiento = pelicula.FechaLanzamiento,
-                   Genero = pelicula.Genero,
-                   IdPelicula = pelicula.IdPelicula,
-                   Nombre = pelicula.Nombre,
-                   Plataformas = pelicula.Plataformas,
-                   Puntuacion = pelicula.Puntuacion,
-                   Reseñas = pelicula.Reseñas,
-                   Sinopsis = pelicula.Sinopsis,
-                   Urlposter = pelicula.Urlposter
-                };
-                pelicula = clonpelicula;
-                Actualizar();
-            }
-        }
-
-        private void EliminarPelicula()
-        {
-            if (pelicula is not null)
-            {
-                catalogop.Eliminar(pelicula);
-                ActualizarBD();
-                Regresar();
-
-            }
-        }
-
-        private void VerEliminarPelicula()
-        {
-                Vista = "VerEliminarPelicula";
-                Actualizar();
-        }
-
-        private void VerPerfilUsuario()
-        {
-            Vista = "VerUsuarioR";
-            Actualizar();
-        }
-
-        private void RegresarAReseñasXUsuario()
-        {
-            Vista = "VerReseñasU";
-            Actualizar();
-        }
-
         private void VerPelicula(Peliculas p)
         {
             if (Thread.CurrentPrincipal != null)
@@ -291,70 +308,13 @@ namespace WatchMe.ViewModels
             Actualizar();
         }
 
-        public void VerRegistrarPelicula()
+        private void CancelarEdicionPelicula()
         {
-            Error = "";
-            pelicula = new();
-            Vista = "VerAgregarPelicula";
+            Vista = "VerPeliculaR";
             Actualizar();
         }
 
-        private void RegistrarPelicula()
-        {
-            if (pelicula != null)
-            {
-                if (catalogop.Validar(pelicula,out List<string> Errores))
-                {
-                    catalogop.Agregar(pelicula);
-                    ActualizarBD();
-                    Regresar();
-                }
-                else
-                {
-                    foreach (var item in Errores)
-                    {
-                        Error = $"{Error} {item} {Environment.NewLine}";
-                    }
-                    Actualizar();
-                }
-            }
-        }
-
-        private void VerEliminarUsuario()
-        {
-
-            Vista = "VerEliminarUsuario";
-            Actualizar();
-        }
-
-        private void EliminarUsuario()
-        {
-            if (Usuario != null)
-            {
-                catalogou.Eliminar(Usuario);
-                ActualizarBD();
-                Regresar();
-            }
-        }
-
-        private void Regresar()
-        {
-            Vista = "VerInicio";
-            Actualizar();
-        }
-
-        private void VerRegistrarUsuario()
-        {
-            Usuario = new();
-            Vista = "VerRegistrar";
-            Actualizar();
-        }
-
-        private void RegistrarUsuario()
-        {
-            throw new NotImplementedException();
-        }
-
+        //IndexNavigation
         private void VerInicio()
         {
             if (Thread.CurrentPrincipal != null)
@@ -410,34 +370,42 @@ namespace WatchMe.ViewModels
             Actualizar();
         }
 
-        private void ActualizarBD()
-         {
-            ListaPeliculas.Clear();
-            foreach (var item in catalogop.GetAllPeliculas())
-            {
-                ListaPeliculas.Add(item);
-            }
+        private void VerPerfilUsuario()
+        {
+            Vista = "VerUsuarioR";
             Actualizar();
         }
 
-        private void ActualizarUsuarios()
+        private void Regresar()
         {
-            ListaUsuarios.Clear();
-            foreach (var item in catalogou.GetAllUsuarios())
-            {
-                ListaUsuarios.Add(item);
-            }
+            Vista = "VerInicio";
             Actualizar();
         }
 
-        private void ActualizarReseñas()
+        //Usuarios
+        private void VerEliminarUsuario()
         {
-            listareseñas.Clear();
-            var proye = catalogoReseñas.GetAllReseñas();
-            foreach (var item in proye)
+
+            Vista = "VerEliminarUsuario";
+            Actualizar();
+        }
+
+        private void EliminarUsuario()
+        {
+            if (Usuario != null)
             {
-                listareseñas.Add(item);
+                catalogou.Eliminar(Usuario);
+                ActualizarBD();
+                Regresar();
             }
+        }
+
+        //Reseñas
+        private void RegistrarReseña()
+        {
+            Error = "";
+            reseña = new();
+            Vista = "VerHacerReseña";
             Actualizar();
         }
 
@@ -463,6 +431,17 @@ namespace WatchMe.ViewModels
             }
         }
 
+        private void EliminarReseña()
+        {
+            if (reseña is not null)
+            {
+                catalogoReseñas.Eliminar(reseña);
+                ActualizarReseñas();
+                RegresarReseñas();
+
+            }
+        }
+
         private void VerEditarReseña(int id)
         {
             reseña = catalogoReseñas.GetReseñaXID(id);
@@ -481,32 +460,6 @@ namespace WatchMe.ViewModels
                 };
                 reseña = clon;
                 Actualizar();
-            }
-        }
-
-        private void ConfirmarReseña()
-        {
-            if (reseña != null)
-            {
-                reseña.IdUsuario = Usuario.IdUsuario;
-                reseña.IdProduccion = pelicula.IdPelicula;
-                if (catalogoReseñas.Validar(reseña, out List<string> Errores))
-                {
-                    catalogoReseñas.Agregar(reseña);
-                    Vista = "VerPeliculaU";
-                    ActualizarReseñas();
-                    Actualizar();
-
-                }
-                else
-                {
-                    foreach (var item in Errores)
-                    {
-                        Error = $"{Error} {item} {Environment.NewLine}";
-                    }
-                    Actualizar();
-                }
-                Error = "";
             }
         }
 
@@ -536,28 +489,73 @@ namespace WatchMe.ViewModels
             }
         }
 
+        private void ConfirmarReseña()
+        {
+            if (reseña != null)
+            {
+                reseña.IdUsuario = Usuario.IdUsuario;
+                reseña.IdProduccion = pelicula.IdPelicula;
+                if (catalogoReseñas.Validar(reseña, out List<string> Errores))
+                {
+                    catalogoReseñas.Agregar(reseña);
+                    Vista = "VerPeliculaU";
+                    ActualizarReseñas();
+                    Actualizar();
+
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+                Error = "";
+            }
+        }
+
+        private void RegresarAReseñasXUsuario()
+        {
+            Vista = "VerReseñasU";
+            Actualizar();
+        }
+
         private void RegresarReseñas()
         {
             Vista = "VerPeliculasU";
             Actualizar();
         }
 
-        private void EliminarReseña()
+        //Actualizar listas
+        private void ActualizarReseñas()
         {
-            if (reseña is not null)
+            listareseñas.Clear();
+            var proye = catalogoReseñas.GetAllReseñas();
+            foreach (var item in proye)
             {
-                catalogoReseñas.Eliminar(reseña);
-                ActualizarReseñas();
-                RegresarReseñas();
-
+                listareseñas.Add(item);
             }
+            Actualizar();
         }
 
-        private void RegistrarReseña()
+        private void ActualizarUsuarios()
         {
-            Error = "";
-            reseña = new();
-            Vista = "VerHacerReseña";
+            ListaUsuarios.Clear();
+            foreach (var item in catalogou.GetAllUsuarios())
+            {
+                ListaUsuarios.Add(item);
+            }
+            Actualizar();
+        }
+
+        private void ActualizarBD()
+         {
+            ListaPeliculas.Clear();
+            foreach (var item in catalogop.GetAllPeliculas())
+            {
+                ListaPeliculas.Add(item);
+            }
             Actualizar();
         }
 
