@@ -72,7 +72,9 @@
                         </Button>
                     </Border>
                 </WrapPanel>
-                <TextBlock Foreground="Red" Text="{Binding Error}"  HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                <WrapPanel>
+                    <TextBlock TextWrapping="Wrap" Foreground="Red" Text="{Binding Error}" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                </WrapPanel>
             </StackPanel>
         </Grid>
     </Border>

@@ -118,6 +118,9 @@
                         <DataTrigger Binding="{Binding Vista}" Value="VerUsuarioR">
                             <Setter Property="Content" Value="{StaticResource VerUsuarioR}"></Setter>
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEditarUsuarioR">
+                            <Setter Property="Content" Value="{StaticResource VerEditarUsuarioR}"></Setter>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>

@@ -17,16 +17,16 @@
                 <TextBlock Text="Ingrese los siguientes datos:" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="Nombre:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,20,0,0"/>
                 <Border Background="#eeeeee"  Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                    <TextBox  />
+                    <TextBox Text="{Binding Usuario.NombreUsuario}" />
                 </Border>
                 <WrapPanel HorizontalAlignment="Center" Margin="0,15,0,0" >
                     <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
-                        <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <Button Command="{Binding EditarUsuarioCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                             <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                         </Button>
                     </Border>
                     <Border Background="#292f33"  CornerRadius="15">
-                        <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <Button Command="{Binding VerPerfilUsuarioCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                             <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                         </Button>
                     </Border>

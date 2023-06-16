@@ -123,7 +123,7 @@ namespace WatchMe.Catalogos
 
             if (u.Contraseña != null)
             {
-                if (u.Contraseña.Length > 20)
+                if (u.Contraseña.Length > 256)
                     Errores.Add("La contraseña no puede pasar de los 20 caracteres.");
             }
             if (string.IsNullOrWhiteSpace(u.Contraseña))

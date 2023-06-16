@@ -24,5 +24,6 @@ namespace WatchMe.Views.AdministradorViews
         {
             InitializeComponent();
         }
+        //combogenero.SelectedItem = combogenero.Items[1];
     }
 }

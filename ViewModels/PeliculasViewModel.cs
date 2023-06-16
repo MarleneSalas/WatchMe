@@ -95,6 +95,7 @@ namespace WatchMe.ViewModels
         public string Vista { get; set; }
 
         public Usuarios? Usuario { get; set; }
+        public Usuarios? clonusuario { get; set; }
 
         //Películas
         public ICommand VerRegistrarPeliculaCommand { get; set; }
@@ -154,6 +155,8 @@ namespace WatchMe.ViewModels
             //Usuarios
             VerEliminarUsuarioCommand = new RelayCommand(VerEliminarUsuario);
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
+            VerEditarUsuarioCommand = new RelayCommand(VerEditarUsuario);
+            EditarUsuarioCommand = new RelayCommand(EditarUsuario);
 
             //Reseñas
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
@@ -174,6 +177,72 @@ namespace WatchMe.ViewModels
             ActualizarUsuarios();
             ActualizarBD();
             Actualizar();
+        }
+
+        private void EditarUsuario()
+        {
+            Error = "";
+            var usuarioexistente = catalogou.GetUsuarioID(Usuario.IdUsuario);
+            if (usuarioexistente != null)
+            {
+                if (catalogou.Validar(Usuario, out List<string> Errores))
+                {
+                    usuarioexistente.IdUsuario = Usuario.IdUsuario;
+                    usuarioexistente.NombreUsuario = Usuario.NombreUsuario;
+                    usuarioexistente.CorreoElectronico = Usuario.CorreoElectronico;
+                    usuarioexistente.Contraseña = Usuario.Contraseña;
+                    usuarioexistente.Rol = Usuario.Rol;
+
+                    catalogou.Editar(usuarioexistente);
+                    if (Thread.CurrentPrincipal != null)
+                    {
+                        if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                        {
+                            Vista = "VerUsuario";
+                            ActualizarReseñas();
+                        }
+                        if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                        {
+                            Vista = "VerUsuarioR";
+                        }
+                    }
+                    Actualizar();
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+            }
+        }
+
+        private void VerEditarUsuario()
+        {
+            if (Usuario != null)
+            {
+                if (Thread.CurrentPrincipal != null)
+                {
+                    if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                    {
+                        Vista = "VerEditarUsuario";
+                    }
+                    if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                    {
+                        Vista = "VerEditarUsuarioR";
+                    }
+                }
+                clonusuario = new Usuarios(); // Reemplaza Usuario con el tipo real de clonusuario
+                clonusuario.IdUsuario = Usuario.IdUsuario;
+                clonusuario.NombreUsuario = Usuario.NombreUsuario;
+                clonusuario.CorreoElectronico = Usuario.CorreoElectronico;
+                clonusuario.Contraseña = Usuario.Contraseña;
+                clonusuario.Rol = Usuario.Rol;
+                Usuario = clonusuario;
+                Actualizar();
+            }
         }
 
         //Películas
@@ -219,7 +288,6 @@ namespace WatchMe.ViewModels
                 catalogop.Eliminar(pelicula);
                 ActualizarBD();
                 Regresar();
-
             }
         }
 
