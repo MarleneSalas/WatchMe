@@ -133,12 +133,9 @@ namespace WatchMe.ViewModels
             get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).Take(10); }
         }
 
-
         //No sé si va en otro VM, pero lo haré mientras aquí
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
         private ObservableCollection<Reseñas> listareseñas { get; set; } = new();
-
-
 
         public IEnumerable<Reseñas> GetReseñasXPelicula
         {
@@ -172,7 +169,6 @@ namespace WatchMe.ViewModels
             //VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
             //EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
 
-
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
             VerEliminarReseñaCommand = new RelayCommand<int>(VerEliminarReseña);
             EliminarReseñaCommand = new RelayCommand(EliminarReseña);
@@ -199,7 +195,7 @@ namespace WatchMe.ViewModels
                 pelicula = p;
                 if (Thread.CurrentPrincipal.IsInRole("Administrador"))
                 {
-                    Vista = "VerPelicula";
+                    Vista = "VerPeliculaR";
                 }
                 if (Thread.CurrentPrincipal.IsInRole("Usuario"))
                 {

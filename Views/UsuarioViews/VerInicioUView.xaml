@@ -168,7 +168,7 @@
                         </ListBox.ItemContainerStyle>
                     </ListBox>
                 </StackPanel>
-
+                <Button Command="{Binding VerPeliculaCommand}">AAAA</Button>
                 <StackPanel  Margin="0,0,0,20" >
                     <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue"
                                 Margin="0,0,0,5" Foreground="Black">¡Anímate con las mejores obras animadas!</TextBlock>

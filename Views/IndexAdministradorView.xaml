@@ -27,7 +27,7 @@
         <views:VerEliminarPeliculaView x:Key="VerEliminarPelicula"></views:VerEliminarPeliculaView>
         <views:VerEliminarReseñasView x:Key="VerEliminarReseña"></views:VerEliminarReseñasView>
 
-        <views:VerPeliculaView x:Key="VerPelicula"></views:VerPeliculaView>
+        <views:VerPeliculaView x:Key="VerPeliculaAdmin"></views:VerPeliculaView>
         <views:VerUsuarioView x:Key="VerUsuario"></views:VerUsuarioView>
     </UserControl.Resources>
 
@@ -137,8 +137,8 @@
                             <Setter Property="Content" Value="{StaticResource VerEliminarPelicula}"></Setter>
                         </DataTrigger>
 
-                        <DataTrigger Binding="{Binding Vista}" Value="VerPelicula">
-                            <Setter Property="Content" Value="{StaticResource VerPelicula}"></Setter>
+                        <DataTrigger Binding="{Binding Vista}" Value="VerPeliculaR">
+                            <Setter Property="Content" Value="{StaticResource VerPeliculaAdmin}"></Setter>
                         </DataTrigger>
 
                         <DataTrigger Binding="{Binding Vista}" Value="VerUsuario">
