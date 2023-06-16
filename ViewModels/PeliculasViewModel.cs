@@ -60,9 +60,11 @@ namespace WatchMe.ViewModels
         public ICommand VerRegistrarUsuarioCommand { get; set; }
         public ICommand RegistrarUsuarioCommand { get; set; }
 
+        
+        */
+
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand EditarUsuarioCommand { get; set; }
-        */
 
         public ICommand VerInicioCommand { get; set; }
         public ICommand VerUsuariosCommand { get; set; }
@@ -76,8 +78,8 @@ namespace WatchMe.ViewModels
 
         ////Editar
 
-        //public ICommand VerEliminarUsuarioCommand { get; set; }
-        //public ICommand EliminarUsuarioCommand { get; set; }
+        public ICommand VerEliminarUsuarioCommand { get; set; }
+        public ICommand EliminarUsuarioCommand { get; set; }
 
 
         public ICommand VerRegistrarPeliculaCommand { get; set; }
