@@ -523,7 +523,7 @@ namespace WatchMe.ViewModels
 
         private void RegresarReseñas()
         {
-            Vista = "VerPeliculasU";
+            Vista = "VerInicioU";
             Actualizar();
         }
 

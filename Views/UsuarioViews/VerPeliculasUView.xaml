@@ -16,7 +16,7 @@
 
             <!--Lista de todas las peliculas-->
             <ListBox ItemsSource="{Binding ListaPeliculas}"
-                ItemContainerStyle="{StaticResource ListStackPanel}"
+               
                 Grid.Row="1">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -83,6 +83,11 @@
 
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown"></EventSetter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
             </ListBox>
         </Grid>
     </Border>
