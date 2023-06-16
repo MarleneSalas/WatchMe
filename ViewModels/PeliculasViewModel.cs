@@ -141,6 +141,16 @@ namespace WatchMe.ViewModels
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
         public ObservableCollection<Reseñas> listareseñas { get; set; } = new();
 
+        public IEnumerable<Usuarios> GetUsuariosAdmin
+        {
+            get { return ListaUsuarios.Where(x => x.Rol == "Administrador"); } 
+        }
+
+        public IEnumerable<Usuarios> GetUsuariosComunes
+        {
+            get { return ListaUsuarios.Where(x => x.Rol == "Usuario"); }
+        }
+
         public IEnumerable<Reseñas> GetReseñasXPelicula
         {
             get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula); }
@@ -170,8 +180,8 @@ namespace WatchMe.ViewModels
 
             //Editar
 
-            //VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
-            //EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
+            VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
+            EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
 
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
             VerEliminarReseñaCommand = new RelayCommand<int>(VerEliminarReseña);
@@ -189,6 +199,7 @@ namespace WatchMe.ViewModels
                 Usuario = Application.Current.Properties["UsuarioActual"] as Usuarios;
             }
             ActualizarReseñas();
+            ActualizarUsuarios();
             Actualizar();
             
         }
@@ -350,6 +361,15 @@ namespace WatchMe.ViewModels
             Actualizar();
         }
 
+        private void ActualizarUsuarios()
+        {
+            ListaUsuarios.Clear();
+            foreach (var item in catalogou.GetAllUsuarios())
+            {
+                ListaUsuarios.Add(item);
+            }
+            Actualizar();
+        }
 
         private void ActualizarReseñas()
         {
@@ -368,7 +388,18 @@ namespace WatchMe.ViewModels
             if (temp is not null)
             {
                 reseña = temp;
-                Vista = "VerEliminarReseñaU";
+                if (Thread.CurrentPrincipal != null)
+                {
+                    if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                    {
+                        Vista = "VerEliminarReseña";
+                        ActualizarReseñas();
+                    }
+                    if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                    {
+                        Vista = "VerEliminarReseñaU";
+                    }
+                }
                 Actualizar();
             }
         }

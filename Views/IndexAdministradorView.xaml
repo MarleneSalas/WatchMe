@@ -137,6 +137,10 @@
                             <Setter Property="Content" Value="{StaticResource VerEliminarPelicula}"></Setter>
                         </DataTrigger>
 
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEliminarReseña">
+                            <Setter Property="Content" Value="{StaticResource VerEliminarReseña}"></Setter>
+                        </DataTrigger>
+                        
                         <DataTrigger Binding="{Binding Vista}" Value="VerPeliculaR">
                             <Setter Property="Content" Value="{StaticResource VerPeliculaAdmin}"></Setter>
                         </DataTrigger>

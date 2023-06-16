@@ -11,12 +11,12 @@
         <DockPanel>
             <TextBlock DockPanel.Dock="Top" FontFamily="/Fonts/# Bebas Neue"  FontSize="30" >Eliminar usuario</TextBlock>
             <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,15,0,0" >
-                <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
+                <Border Background="#292f33" CornerRadius="15" Margin="0,0,10,0">
                     <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
                         <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
-                <Border Background="#292f33"  CornerRadius="15">
+                <Border Background="#292f33" CornerRadius="15">
                     <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
                         <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                     </Button>
