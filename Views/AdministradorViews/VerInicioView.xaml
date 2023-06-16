@@ -63,9 +63,9 @@
             </StackPanel>
         </Border>
 
-        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" Grid.ColumnSpan="2" Background="#eeeeee"  Margin="0,20,20,0" Padding="3" Width="455" CornerRadius="15" BorderThickness="2" BorderBrush="Gray" Height="30">
+        <Border VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Row="0" Grid.ColumnSpan="2" Background="#eeeeee"  Margin="0,20,20,0" Padding="3" Width="455" CornerRadius="15" BorderThickness="2" BorderBrush="Gray" Height="40">
             <WrapPanel>
-                <TextBox x:Name="txtBuscar" Width="200">
+                <TextBox x:Name="txtBuscar" Margin="0,3,0,0" Width="200">
                 </TextBox>
                 <ComboBox FontSize="10" Margin="10,0,0,0" Width="200" Background="Transparent" BorderThickness="2,0,0,0" Loaded="ComboBox_Loaded" x:Name="ComboGenero">
                     <ComboBoxItem Content="Animación"/>

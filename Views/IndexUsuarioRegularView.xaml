@@ -93,16 +93,16 @@
                 <Style TargetType="ContentControl">
                     <Setter Property="Content" Value="{StaticResource VerInicioU}"></Setter>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Vista}" Value="VerInicio">
+                        <DataTrigger Binding="{Binding Vista}" Value="VerInicioU">
                             <Setter Property="Content" Value="{StaticResource VerInicioU}"></Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Vista}" Value="VerPeliculas">
+                        <DataTrigger Binding="{Binding Vista}" Value="VerPeliculasU">
                             <Setter Property="Content" Value="{StaticResource VerPeliculasU}"></Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Vista}" Value="VerReseñas">
+                        <DataTrigger Binding="{Binding Vista}" Value="VerReseñasU">
                             <Setter Property="Content" Value="{StaticResource VerReseñasU}"></Setter>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Vista}" Value="VerMasTarde">
+                        <DataTrigger Binding="{Binding Vista}" Value="VerMasTardeU">
                             <Setter Property="Content" Value="{StaticResource VerMasTarde}"></Setter>
                         </DataTrigger>
                     </Style.Triggers>

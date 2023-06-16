@@ -420,7 +420,7 @@
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="10" TextAlignment="Left" Margin="0,0,0,5">
                                                     Duración:<LineBreak/>
                                                     <!--La Duracion de la pelicula va en el sig run-->
-                                                    <Run Text="{Binding Duracion}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
+                                                    <Run Text="{Binding DuracionMinutos}" FontSize="15"></Run><Run FontSize="15"> min</Run></TextBlock>
                                                 <TextBlock TextWrapping="Wrap" Foreground="White" FontSize="15" TextAlignment="Left" Margin="0,0,0,80"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image>
                                                     <!--La califición de la pelicula va en el sig run-->
                                                     <Run Text="{Binding Puntuacion}"></Run></TextBlock>
