@@ -31,9 +31,6 @@ namespace WatchMe.ViewModels
         PrincipalViewModel pvm = new();
 
 
-        public string SiHayResultados { get; set; } = "Collapsed";
-        public string NoHayResultados { get; set; } = "Collabsed";
-
         //Listas
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
@@ -129,6 +126,8 @@ namespace WatchMe.ViewModels
         public ICommand RegresarCommand { get; set; }
         public ICommand FiltroBuscadorPeliculasCommand { get; set; }
 
+        public bool Encontrado { get; set; } = false;
+        public bool NoEncontrado { get; set; } = false;
         //Usuarios
         public ICommand VerEliminarUsuarioCommand { get; set; }
         public ICommand EliminarUsuarioCommand { get; set; }
@@ -146,11 +145,14 @@ namespace WatchMe.ViewModels
         public ICommand ConfirmarReseñaCommand { get; set; }
         public ICommand RegresarAReseñasXUsuarioCommand { get; set; }
         public ICommand RegresarReseñasCommand { get; set; }
+        public ICommand LimpiarCommand { get; set; }
 
         public PeliculasViewModel()
         {
             //Películas
             VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
+            LimpiarCommand = new RelayCommand(Limpiar);
+
             RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
             VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
             EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
@@ -164,8 +166,7 @@ namespace WatchMe.ViewModels
             VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
             VerReseñasCommand = new RelayCommand(VerReseñas);
-            SiHayResultados = "Collapsed";
-            NoHayResultados = "Collapsed";
+            
 
 
 
@@ -180,6 +181,8 @@ namespace WatchMe.ViewModels
             //Usuarios
             VerEliminarUsuarioCommand = new RelayCommand<Usuarios>(VerEliminarUsuario);
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
+            VerEditarUsuarioCommand = new RelayCommand(VerEditarUsuario);
+            EditarUsuarioCommand = new RelayCommand(EditarUsuario);
 
             //Reseñas
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
@@ -199,6 +202,13 @@ namespace WatchMe.ViewModels
             ActualizarReseñas();
             ActualizarUsuarios();
             ActualizarBD();
+            Actualizar();
+        }
+
+        private void Limpiar()
+        {
+            Encontrado = false;
+            NoEncontrado = false;
             Actualizar();
         }
 
@@ -268,39 +278,35 @@ namespace WatchMe.ViewModels
             }
         }
 
-        private void CerrarSesion()
-        {
-            pvm.CerrarSesion();
-        }
 
         private void FiltroBuscadorPeliculas(string busqueda)
         {
-            listapeliculasfiltrado.Clear();
-            var peliculasEncontradas = from pelicula in ListaPeliculas
-                                       where pelicula.Nombre.Contains(busqueda)
-                                       select pelicula;
-
-            foreach (var item in peliculasEncontradas)
+            if(busqueda != "")
             {
-                listapeliculasfiltrado.Add(item);
+                busqueda.ToLower();
+                listapeliculasfiltrado.Clear();
+                var peliculasEncontradas = from pelicula in ListaPeliculas
+                                           where pelicula.Nombre.ToLower().Contains(busqueda)
+                                           select pelicula;
+
+                foreach (var item in peliculasEncontradas)
+                {
+                    listapeliculasfiltrado.Add(item);
+                }
+
+                if (listapeliculasfiltrado.Count == 0)
+                {
+                    Encontrado = false;
+                    NoEncontrado = true;
+                }
+                else
+                {
+                    Encontrado = true;
+                    NoEncontrado = false;
+                }
+                Actualizar();
             }
-
-            if (listapeliculasfiltrado.Count == 0)
-            {
-                NoHayResultados = "Visible";
-                SiHayResultados = "Collapsed";
-            }
-
-
-            else
-            {
-                SiHayResultados = "Visible";
-                NoHayResultados = "Collapsed";
-            }
-                
-
-            Actualizar();
-
+           
         }
 
         //Películas
@@ -351,6 +357,7 @@ namespace WatchMe.ViewModels
 
         private void VerEditarPelicula()
         {
+            Error = "";
             if (pelicula != null)
             {
                 Vista = "VerEditarPelicula";
@@ -576,6 +583,7 @@ namespace WatchMe.ViewModels
 
         private void VerEditarReseña(int id)
         {
+            Error = "";
             reseña = catalogoReseñas.GetReseñaXID(id);
             if (reseña != null)
             {
@@ -607,6 +615,7 @@ namespace WatchMe.ViewModels
                     reseñaexistente.Reseña = reseña.Reseña;
                     reseñaexistente.Valoracion = reseña.Valoracion;
                     catalogoReseñas.Editar(reseñaexistente);
+                    catalogop.Recargar(pelicula);
                     RegresarAReseñasXUsuario();
                 }
                 else
@@ -631,6 +640,7 @@ namespace WatchMe.ViewModels
                 {
                     catalogoReseñas.Agregar(reseña);
                     Vista = "VerPeliculaU";
+                    catalogop.Recargar(pelicula);
                     ActualizarReseñas();
                     Actualizar();
 

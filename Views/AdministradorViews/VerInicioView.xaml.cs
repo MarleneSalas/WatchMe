@@ -40,11 +40,6 @@ namespace WatchMe.Views.AdministradorViews
             txtBuscar.Clear();
         }
 
-        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            ComboGenero.SelectedItem = ComboGenero.Items[0];
-        }
-
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             
@@ -65,18 +60,14 @@ namespace WatchMe.Views.AdministradorViews
             }
         }
 
-        private void btnBusqueda_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if(ListaFiltradas.AlternationCount == 0)
-            {
-                NoHayResultados.Visibility = Visibility.Visible;
-                HayResultados.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                NoHayResultados.Visibility = Visibility.Collapsed;
-                HayResultados.Visibility = Visibility.Visible;
-            }
+            txtBuscar.Clear();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            txtBuscar.Clear();
         }
     }
 }

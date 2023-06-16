@@ -16,51 +16,52 @@
 
             <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40">Reseñas</TextBlock>
 
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding listareseñas}">
+            <ScrollViewer Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding listareseñas}">
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border Padding="10" CornerRadius="20" Background="#667580">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width=".10*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".90*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height=".10*"></RowDefinition>
-                                    <RowDefinition Height=".08*"></RowDefinition>
-                                    <RowDefinition Height=".72*"></RowDefinition>
-                                    <RowDefinition Height=".10*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Image Grid.Column="0" Grid.Row="0" Height="50" Source="/Images/IconoUU.png"></Image>
-                                <TextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="10" Margin="0,0,0,10" CornerRadius="20" Background="#667580">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".10*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".90*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".10*"></RowDefinition>
+                                        <RowDefinition Height=".08*"></RowDefinition>
+                                        <RowDefinition Height=".72*"></RowDefinition>
+                                        <RowDefinition Height=".10*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Column="0" Grid.Row="0" Height="50" Source="/Images/IconoUU.png"></Image>
+                                    <TextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
                             Comentaste en 
                             <!--Nombre la película-->
                             <Run Text="{Binding IdProduccionNavigation.Nombre}" FontWeight="Bold"></Run>:</TextBlock>
-                                <TextBlock Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+                                    <TextBlock Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
                             Valoración: <Image Source="/Images/Estrella.png" Width="20"></Image>
                             <!--Valoracion-->
                             <Run Text="{Binding Valoracion}"></Run>
-                                </TextBlock>
-                                <!--Reseña-->
-                                <TextBlock Text="{Binding Reseña}" Grid.Column="1" Grid.Row="2" Foreground="White" FontSize="17" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,0,20,5">
-                                </TextBlock>
+                                    </TextBlock>
+                                    <!--Reseña-->
+                                    <TextBlock Text="{Binding Reseña}" Grid.Column="1" Grid.Row="2" Foreground="White" FontSize="17" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,0,20,5">
+                                    </TextBlock>
 
-                                <WrapPanel Grid.ColumnSpan="2" Grid.Row="3" >
-                                    <!--Comando para ver eliminar reseña-->
-                                    <Button Width="25" Height="25" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}" Command="{Binding Source={x:Reference verReseña}, 
+                                    <WrapPanel Grid.ColumnSpan="2" Grid.Row="3" >
+                                        <!--Comando para ver eliminar reseña-->
+                                        <Button Width="25" Height="25" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}" Command="{Binding Source={x:Reference verReseña}, 
                                     Path=DataContext.VerEliminarReseñaCommand}" 
                                            CommandParameter="{Binding IdReseña}">
-                                        <Image Source="/Images/Remove.png"/>
-                                    </Button>
-                                </WrapPanel>
+                                            <Image Source="/Images/Remove.png"/>
+                                        </Button>
+                                    </WrapPanel>
 
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-
-            </ItemsControl>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
     </Border>
 </UserControl>

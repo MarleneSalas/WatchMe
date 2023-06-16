@@ -9,7 +9,7 @@
     <Border Height="200" Width="500" CornerRadius="5" Background="White" Padding="20">
         <DockPanel>
             <!--Ver editar usuario-->
-            <Button DockPanel.Dock="Bottom" Height="30">
+            <Button DockPanel.Dock="Bottom" Height="30" Command="{Binding VerEditarUsuarioCommand}">
                 <Image Source="/Images/Editar.png"></Image>
             </Button>
             <WrapPanel >

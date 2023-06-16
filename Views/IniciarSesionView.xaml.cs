@@ -30,5 +30,10 @@ namespace WatchMe.Views
             txtPassword1.Text = "";
             txtPassword1.Text = pwb.Password;
         }
+
+        private void pwb_Loaded(object sender, RoutedEventArgs e)
+        {
+            pwb.Clear();
+        }
     }
 }

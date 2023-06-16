@@ -25,7 +25,9 @@
                 <Border Background="#eeeeee"  Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
                     <StackPanel>
                         <TextBox Text="{Binding Usuario.Contraseña, UpdateSourceTrigger=PropertyChanged}" Name="txtPassword1" Visibility="Collapsed" />
-                        <PasswordBox BorderThickness="0" Background="Transparent" FontSize="18" Name="pwb" LostFocus="pwb_LostFocus"></PasswordBox>
+                        <PasswordBox 
+                            Loaded="pwb_Loaded"
+                            BorderThickness="0" Background="Transparent" FontSize="18" Name="pwb" LostFocus="pwb_LostFocus"></PasswordBox>
                     </StackPanel>
                 </Border>
                 <Button Command="{Binding IniciarSesionCommand}" Style="{StaticResource NavigationButtons}" Width="100"  Margin="0,20,0,0" HorizontalAlignment="Center">

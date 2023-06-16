@@ -64,57 +64,55 @@
                     </StackPanel>
                     <!--Boton para ver registrar reseña-->
                     <TextBlock Grid.Row="1" Grid.Column="2" FontSize="15" Foreground="White"  Text="{Binding pelicula.Sinopsis}"  TextWrapping="Wrap">
-                        
+
                     </TextBlock>
                     <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding RegistrarReseñaCommand}">
                         <TextBlock Foreground="White">Escribir reseña</TextBlock>
                     </Button>
                 </Grid>
             </Border>
+
             <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue" Foreground="#e50914" Margin="0,0,20,10">Reseñas</TextBlock>
             <!--Lista de las reseñas-->
-            <ScrollViewer>
-            <ItemsControl
+            <ScrollViewer Height="235" VerticalScrollBarVisibility="Auto">
+                <ItemsControl
                 Margin="0,0,20,0"
                 ItemsSource="{Binding GetReseñasXPelicula}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Height="275"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
 
-                        <!--Plantilla-->
-                        <Border Padding="7,10,10,5" CornerRadius="5" Background="#667580">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width=".05*"></ColumnDefinition>
-                                    <ColumnDefinition Width=".95*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height=".05*"></RowDefinition>
-                                    <RowDefinition Height=".05*"></RowDefinition>
-                                    <RowDefinition Height=".90*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Image Grid.Column="0" Grid.Row="0" Height="30" Source="/Images/IconoUU.png"></Image>
-                                <TextBlock FontSize="15" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+
+                            <!--Plantilla-->
+                            <Border Padding="7,10,10,5" Margin="0,0,0,10" CornerRadius="5" Background="#667580">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".05*"></ColumnDefinition>
+                                        <ColumnDefinition Width=".95*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".05*"></RowDefinition>
+                                        <RowDefinition Height=".05*"></RowDefinition>
+                                        <RowDefinition Height=".90*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Column="0" Grid.Row="0" Height="30" Source="/Images/IconoUU.png"></Image>
+                                    <TextBlock FontSize="15" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
                                 <!--Aquí el nombre del usuario-->
                                   <Run Text="{Binding IdUsuarioNavigation.NombreUsuario}" FontWeight="Bold" ></Run> comentó:</TextBlock>
-                                <TextBlock FontSize="15" Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
+                                    <TextBlock FontSize="15" Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
                             Valoración: <Image Source="/Images/Estrella.png" Width="15"></Image>
                         <!--Aquí ira la valoracion-->
                             <Run Text="{Binding Valoracion}"></Run>
-                                </TextBlock>
-                                <!--Aquí ira la reseña-->
-                                <TextBlock Text="{Binding Reseña}"
+                                    </TextBlock>
+                                    <!--Aquí ira la reseña-->
+                                    <TextBlock Text="{Binding Reseña}"
                             Grid.Column="1" Grid.Row="2"   Foreground="White" FontSize="17" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,0,20,20"></TextBlock>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </ScrollViewer>
         </StackPanel>
     </Border>
+   
 </UserControl>

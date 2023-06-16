@@ -163,7 +163,7 @@ namespace WatchMe.ViewModels
                     Subject = "¡Bienvenido a WatchMe!"
                 };
                 mail.IsBodyHtml = true;
-                mail.Body = $"<div>\r\n        <h1 style=\"color:#77726f; text-align: center;\">Estimado usuario: {userregistrado.NombreUsuario}</h1>\r\n    </div>  \r\n    <div style=\"border-top: 8px solid red;text-align: center; padding:15px;background-color: #fefefe;\">\r\n        <h1>¡Registro exitoso!</h1>\r\n        <p>Por medio de este correo, le informamos que el registro de usuario en la plataforma \"WatchMe\" fue exitoso. Su usuario fue registrado con el correo: {{Usuario.CorreoElectronico}}.</p>\r\n        <p>¡Gracias por formar parte de nuestra institución!</p>\r\n        <h4>WatchMe. Inc - 2023 - Todos los derechos reservados.</h4>\r\n    </div>";
+                mail.Body = $"<div>\r\n        <h1 style=\"color:#77726f; text-align: center;\">Estimado usuario: {userregistrado.NombreUsuario}</h1>\r\n    </div>  \r\n    <div style=\"border-top: 8px solid red;text-align: center; padding:15px;background-color: #fefefe;\">\r\n        <h1>¡Registro exitoso!</h1>\r\n        <p>Por medio de este correo, le informamos que el registro de usuario en la plataforma \"WatchMe\" fue exitoso. Su usuario fue registrado con el correo: {userregistrado.CorreoElectronico}.</p>\r\n        <p>¡Gracias por formar parte de nuestra institución!</p>\r\n        <h4>WatchMe. Inc - 2023 - Todos los derechos reservados.</h4>\r\n    </div>";
                 mail.Bcc.Add($"{userregistrado.CorreoElectronico}"); 
                 SmtpClient cliente = new("smtp.outlook.office365.com");
                 cliente.Port = 587;

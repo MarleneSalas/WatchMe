@@ -83,19 +83,16 @@
             </Border>
             <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue" Foreground="#e50914" Margin="0,0,20,10">Reseñas</TextBlock>
             <!--Lista de las reseñas-->
+            <ScrollViewer Height="235">
             <ItemsControl
                 Margin="0,0,20,0"
                 ItemsSource="{Binding GetReseñasXPelicula}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Height="275"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+                
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         
                         <!--Plantilla-->
-                        <Border Padding="7,10,10,5" CornerRadius="5" Background="#667580">
+                        <Border Padding="7,10,10,5" Margin="0,0,0,10" CornerRadius="5" Background="#667580">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width=".05*"></ColumnDefinition>
@@ -123,6 +120,7 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+            </ScrollViewer>
         </StackPanel>
     </Border>
 </UserControl>

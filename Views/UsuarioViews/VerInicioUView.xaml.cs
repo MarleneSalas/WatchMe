@@ -41,30 +41,15 @@ namespace WatchMe.Views.UsuarioViews
                 }
             }
         }
-
-        //private void FiltrarPelicula_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (ListaFiltradas.AlternationCount == 0)
-        //    {
-        //        NoHayResultados.Visibility = Visibility.Visible;
-        //        HayResultados.Visibility = Visibility.Collapsed;
-        //    }
-        //    else
-        //    {
-        //        NoHayResultados.Visibility = Visibility.Collapsed;
-        //        HayResultados.Visibility = Visibility.Visible;
-        //    }
-        //}
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NoHayResultados.Visibility = Visibility.Collapsed;
-            txtBuscar.Clear();
+            
+             txtBuscar.Clear();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            HayResultados.Visibility = Visibility.Collapsed;
+           
             txtBuscar.Clear();
         }
     }

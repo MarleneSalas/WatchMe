@@ -16,6 +16,12 @@ namespace WatchMe.Catalogos
             return contenedor.Peliculas;
         }
 
+        public void Recargar(Peliculas p)
+        {
+            contenedor.Entry(p).Reload();
+        }
+
+
         public Peliculas GetPeliculaXID(int id)
         {
             return contenedor.Peliculas.Where(x=>x.IdPelicula == id).FirstOrDefault();

@@ -15,9 +15,9 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40">Reseñas</TextBlock>
-            
 
-            <ItemsControl Grid.Row="1" ItemsSource="{Binding ReseñasXUsuario}">
+            <ScrollViewer Grid.Row="1"  VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding ReseñasXUsuario}">
              
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -66,6 +66,7 @@
                 </ItemsControl.ItemTemplate>
 
             </ItemsControl>
+            </ScrollViewer>
         </Grid>
     </Border>
 </UserControl>
