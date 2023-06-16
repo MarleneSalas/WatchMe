@@ -41,7 +41,7 @@ namespace WatchMe.Views.AdministradorViews
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            ComboGenero.SelectedItem = ComboGenero.Items[1];
+            ComboGenero.SelectedItem = ComboGenero.Items[0];
         }
 
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
