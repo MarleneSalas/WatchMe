@@ -26,19 +26,10 @@ namespace WatchMe.ViewModels
         UsuariosCatalogo catalogou = new();
         private ReseñasCatalogo catalogoReseñas = new();
 
-        VerEditarReseñaUView editarreseña;
-        VerEliminarReseñasUView eliminarreseña;
-        VerHacerReseñaView hacerreseña;
-        VerPeliculaUView verPelicula;
-
-
         public IEnumerable<Reseñas> ReseñasXUsuario
         {
             get { return listareseñas.Where(x => x.IdUsuario == Usuario.IdUsuario); }
         }
-
-
-
 
         public Reseñas reseña { get; set; } = new();
         public Reseñas clon { get; set; }
@@ -51,17 +42,7 @@ namespace WatchMe.ViewModels
 
         public string Vista { get; set; }
 
-
-
-        //No sé si va en otro VM, pero lo haré mientras aquí
         public Usuarios? Usuario { get; set; }
-
-        /*
-        public ICommand VerRegistrarUsuarioCommand { get; set; }
-        public ICommand RegistrarUsuarioCommand { get; set; }
-
-        
-        */
 
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand EditarUsuarioCommand { get; set; }
@@ -73,10 +54,6 @@ namespace WatchMe.ViewModels
 
         public ICommand VerPeliculaCommand { get; set; }
 
-        //public ICommand VerRegistrarUsuarioCommand { get; set; }
-        //public ICommand RegistrarUsuarioCommand { get; set; }
-
- 
 
         public ICommand VerEliminarUsuarioCommand { get; set; }
         public ICommand EliminarUsuarioCommand { get; set; }
@@ -138,7 +115,6 @@ namespace WatchMe.ViewModels
             get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).Take(10); }
         }
 
-        //No sé si va en otro VM, pero lo haré mientras aquí
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
         public ObservableCollection<Reseñas> listareseñas { get; set; } = new();
 
