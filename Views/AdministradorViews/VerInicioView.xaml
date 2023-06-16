@@ -67,7 +67,7 @@
             <WrapPanel>
                 <TextBox x:Name="txtBuscar" Margin="0,3,0,0" Width="200">
                 </TextBox>
-                <ComboBox FontSize="10" Margin="10,0,0,0" Width="200" Background="Transparent" BorderThickness="2,0,0,0" Loaded="ComboBox_Loaded" x:Name="ComboGenero">
+                <ComboBox FontSize="10" Margin="10,0,0,0" Width="200" Padding="2" Background="Transparent" BorderThickness="2,0,0,0" Loaded="ComboBox_Loaded" x:Name="ComboGenero">
                     <ComboBoxItem Content="Animación"/>
                     <ComboBoxItem Content="Musical"/>
                     <ComboBoxItem Content="Drama"/>
@@ -75,7 +75,8 @@
                     <ComboBoxItem Content="Ciencia Ficción"/>
                     <ComboBoxItem Content="Acción"/>
                 </ComboBox>
-                <Button Margin="10,0,0,0" Width="20" Command="{Binding }">
+                <Button x:Name="btnBusqueda" Margin="10,0,0,0" Command="{Binding FiltroBuscadorPeliculasCommand}" CommandParameter="{Binding Text, ElementName=txtBuscar}" 
+                        >
                     <Image VerticalAlignment="Center" Source="/Images/Search.png" Opacity=".70"></Image>
                 </Button>
             </WrapPanel>
@@ -494,7 +495,7 @@
                     <TextBlock HorizontalAlignment="Center" FontSize="15">Limpiar búsqueda</TextBlock>
                 </Button>
                 <!--Lista de resultados de la busqueda-->
-                <ListBox ItemsSource="{Binding ListaPeliculas}">
+                <ListBox x:Name="ListaFiltradas" ItemsSource="{Binding listapeliculasfiltrado}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate >
                             <StackPanel />
@@ -504,7 +505,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <!--Nombre de la pelicula en el siguiente text block-->
-                            <TextBlock Text="" FontSize="15" TextWrapping="Wrap" TextAlignment="Left"></TextBlock>
+                            <TextBlock Text="{Binding pelicula.Nombre}" FontSize="15" TextWrapping="Wrap" TextAlignment="Left"></TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

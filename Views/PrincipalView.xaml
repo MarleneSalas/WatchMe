@@ -41,7 +41,7 @@
         </Button>
 
         <ContentControl Grid.Row="1" Grid.RowSpan="2"  Margin="30,0,30,30" 
-                        Content="{Binding Vista}" >
+                       Content="{Binding Vista}" >
 
         </ContentControl>
     </Grid>

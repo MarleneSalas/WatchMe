@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WatchMe.Models;
 using WatchMe.ViewModels;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace WatchMe.Views.AdministradorViews
 {
@@ -61,6 +62,20 @@ namespace WatchMe.Views.AdministradorViews
                 {
                     viewModel.VerPeliculaCommand.Execute(peliculaSeleccionada);
                 }
+            }
+        }
+
+        private void btnBusqueda_Click(object sender, RoutedEventArgs e)
+        {
+            if(ListaFiltradas.AlternationCount == 0)
+            {
+                NoHayResultados.Visibility = Visibility.Visible;
+                HayResultados.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                NoHayResultados.Visibility = Visibility.Collapsed;
+                HayResultados.Visibility = Visibility.Visible;
             }
         }
     }
