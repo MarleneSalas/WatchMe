@@ -24,5 +24,11 @@ namespace WatchMe.Views
         {
             InitializeComponent();
         }
+
+        private void pwb_LostFocus(object sender, RoutedEventArgs e)
+        {
+            txtPassword.Text = "";
+            txtPassword.Text = pwb.Password;
+        }
     }
 }

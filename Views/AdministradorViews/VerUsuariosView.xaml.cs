@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WatchMe.Models;
+using WatchMe.ViewModels;
 
 namespace WatchMe.Views.AdministradorViews
 {
@@ -23,6 +25,21 @@ namespace WatchMe.Views.AdministradorViews
         public VerUsuariosView()
         {
             InitializeComponent();
+        }
+
+        private void ContentPresenter_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ContentPresenter contentpresenterItem = sender as ContentPresenter;
+            var item = contentpresenterItem.DataContext;
+            var usuarioSeleccionado = contentpresenterItem.DataContext as Peliculas;
+
+            if (item != null)
+            {
+                if (DataContext is PeliculasViewModel viewModel)
+                {
+                    viewModel.VerEliminarUsuarioCommand.Execute(usuarioSeleccionado);
+                }
+            }
         }
     }
 }

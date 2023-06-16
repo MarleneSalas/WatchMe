@@ -29,7 +29,7 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <!--Plantilla-->
-                            <Border HorizontalAlignment="Left" Height="60" Background="#667580" CornerRadius="30" Padding="7,0,0,0">
+                            <Border HorizontalAlignment="Left" Height="60" Background="#667580" CornerRadius="30" Padding="7,0,0,0" Margin="0,0,0,10">
                                 <WrapPanel Width="335" VerticalAlignment="Center">
                                     <Image Height="40" Source="/Images/IconoUA.png"></Image>
                                     <StackPanel Margin="7,5,70,0">
@@ -40,14 +40,15 @@
                                         <TextBlock Text="{Binding CorreoElectronico}"
                                             Foreground="White" FontSize="15"></TextBlock>
                                     </StackPanel>
-                                    <!--Boton para el comando vereliminarusuario-->
-                                    <Button Command="{Binding VerEliminarUsuarioCommand}" Margin="25,0,0,0" Width="25" Height="25" Style="{StaticResource ButtonsEditarEliminar}">
-                                        <Image Source="/Images/Remove.png"/>
-                                    </Button>
                                 </WrapPanel>
                             </Border>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="ContentPresenter">
+                            <EventSetter Event="PreviewMouseDown" Handler="ContentPresenter_PreviewMouseDown"></EventSetter>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
             </StackPanel>
 
@@ -64,7 +65,7 @@
                         <DataTemplate>
 
                             <!--Plantilla-->
-                            <Border HorizontalAlignment="Left" Height="60" Background="#667580" CornerRadius="30" Padding="7,0,0,0">
+                            <Border HorizontalAlignment="Left" Height="60" Background="#667580" CornerRadius="30" Padding="7,0,0,0" Margin="0,0,0,10">
                                 <WrapPanel Width="375" VerticalAlignment="Center">
                                     <Image Height="40" Source="/Images/IconoUU.png"></Image>
                                     <StackPanel Margin="7,5,70,0">
@@ -76,14 +77,16 @@
                                             Foreground="White" FontSize="15"></TextBlock>
                                     </StackPanel>
                                     <!--Boton para el comando vereliminarusuario-->
-                                    <Button Command="{Binding VerEliminarUsuarioCommand}" Width="25" Height="25" Style="{StaticResource ButtonsEditarEliminar}">
-                                        <Image Source="/Images/Remove.png"/>
-                                    </Button>
                                 </WrapPanel>
                             </Border>
 
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="ContentPresenter">
+                            <EventSetter Event="PreviewMouseDown" Handler="ContentPresenter_PreviewMouseDown"></EventSetter>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
                 </ItemsControl>
             </StackPanel>
         </Grid>

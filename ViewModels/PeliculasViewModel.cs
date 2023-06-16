@@ -182,7 +182,7 @@ namespace WatchMe.ViewModels
 
             //Editar
 
-            VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
+            VerEliminarUsuarioCommand = new RelayCommand(VerEliminarUsuario);
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
 
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
@@ -344,9 +344,9 @@ namespace WatchMe.ViewModels
             }
         }
 
-        private void VerEliminarUsuario(int obj)
+        private void VerEliminarUsuario()
         {
-            Usuario = catalogou.GetUsuarioID(obj);
+
             Vista = "VerEliminarUsuario";
             Actualizar();
         }

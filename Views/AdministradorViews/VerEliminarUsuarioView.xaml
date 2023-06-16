@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WatchMe.Views.AdministradorViews"
+             xmlns:local="clr-namespace:WatchMe.Views.AdministradorViews" xmlns:viewmodels="clr-namespace:WatchMe.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:PeliculasViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -12,18 +12,18 @@
             <TextBlock DockPanel.Dock="Top" FontFamily="/Fonts/# Bebas Neue"  FontSize="30" >Eliminar usuario</TextBlock>
             <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,15,0,0" >
                 <Border Background="#292f33" CornerRadius="15" Margin="0,0,10,0">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Command="{Binding EliminarUsuarioCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                         <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
                 <Border Background="#292f33" CornerRadius="15">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Command="{Binding VerUsuariosCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                         <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
             </WrapPanel>
             <StackPanel  Margin="0,20,10,0">
-                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar a <Run Foreground="#e50914">Marlene salas</Run>?</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar a <Run Foreground="#e50914" Text="{Binding Usuario.NombreUsuario}"></Run>?</TextBlock>
                 <TextBlock HorizontalAlignment="Center" Foreground="#e50914">La eliminación será permantente.</TextBlock>
             </StackPanel>
         </DockPanel>
