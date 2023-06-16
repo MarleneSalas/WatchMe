@@ -27,11 +27,6 @@ namespace WatchMe.Views.UsuarioViews
             InitializeComponent();
         }
 
-        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
-        {
-            ComboGenero.SelectedItem = ComboGenero.Items[0];
-        }
-
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             ListBoxItem listBoxItem = sender as ListBoxItem;

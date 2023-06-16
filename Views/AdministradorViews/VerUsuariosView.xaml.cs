@@ -31,13 +31,12 @@ namespace WatchMe.Views.AdministradorViews
         {
             ContentPresenter contentpresenterItem = sender as ContentPresenter;
             var item = contentpresenterItem.DataContext;
-            var usuarioSeleccionado = contentpresenterItem.DataContext as Peliculas;
 
             if (item != null)
             {
                 if (DataContext is PeliculasViewModel viewModel)
                 {
-                    viewModel.VerEliminarUsuarioCommand.Execute(usuarioSeleccionado);
+                    viewModel.VerEliminarUsuarioCommand.Execute(item);
                 }
             }
         }

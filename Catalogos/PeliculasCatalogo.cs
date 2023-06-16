@@ -67,6 +67,9 @@ namespace WatchMe.Catalogos
             if (string.IsNullOrWhiteSpace(p.Sinopsis))
                 Errores.Add("Debe añadir una sinópsis para la película.");
 
+            if (p.Sinopsis.Length > 500)
+                Errores.Add("La sinopsis debe ser menor a 500 caracteres.");
+
             if (!Uri.TryCreate(p.Urlposter, UriKind.Absolute, out var uri))
             {
                 Errores.Add("Escriba una URL válida para la imagen.");

@@ -1,11 +1,13 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Versioning;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,17 +28,22 @@ namespace WatchMe.ViewModels
         PeliculasCatalogo catalogop = new();
         UsuariosCatalogo catalogou = new();
         private ReseñasCatalogo catalogoReseñas = new();
+        PrincipalViewModel pvm = new();
 
         //Listas
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
         public ObservableCollection<Reseñas> listareseñas { get; set; } = new();
+        public ObservableCollection<Peliculas> listapeliculasfiltrado { get; set; } = new();
 
         //Consultas
         public Peliculas GetPeliculaMejorValorada
         {
             get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).First(); }
         }
+
+
+        
 
         public IEnumerable<Peliculas> GetPeliculasGeneroAnimacion
         {
@@ -81,6 +88,8 @@ namespace WatchMe.ViewModels
             get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula); }
 
         }
+
+        
         
         //Objetos
         public Reseñas reseña { get; set; } = new();
@@ -121,6 +130,7 @@ namespace WatchMe.ViewModels
 
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand EditarUsuarioCommand { get; set; }
+        public ICommand CerrarSesionCommand { get; set; }
 
         //Reseñas
         public ICommand RegistrarReseñaCommand { get; set; }
@@ -151,12 +161,11 @@ namespace WatchMe.ViewModels
             VerReseñasCommand = new RelayCommand(VerReseñas);
             VerPerfilUsuarioCommand = new RelayCommand(VerPerfilUsuario);
             RegresarCommand = new RelayCommand(Regresar);
+            FiltroBuscadorPeliculasCommand = new RelayCommand<string>(FiltroBuscadorPeliculas);
 
             //Usuarios
-            VerEliminarUsuarioCommand = new RelayCommand(VerEliminarUsuario);
+            VerEliminarUsuarioCommand = new RelayCommand<Usuarios>(VerEliminarUsuario);
             EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
-            VerEditarUsuarioCommand = new RelayCommand(VerEditarUsuario);
-            EditarUsuarioCommand = new RelayCommand(EditarUsuario);
 
             //Reseñas
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
@@ -242,6 +251,24 @@ namespace WatchMe.ViewModels
                 clonusuario.Rol = Usuario.Rol;
                 Usuario = clonusuario;
                 Actualizar();
+            }
+        }
+
+        private void CerrarSesion()
+        {
+            pvm.CerrarSesion();
+        }
+
+        private void FiltroBuscadorPeliculas(string busqueda)
+        {
+            listapeliculasfiltrado.Clear();
+            var peliculasEncontradas = from pelicula in ListaPeliculas
+                                       where pelicula.Nombre.Contains(busqueda)
+                                       select pelicula;
+
+            foreach (var item in peliculasEncontradas)
+            {
+                listapeliculasfiltrado.Add(item);
             }
         }
 
@@ -451,11 +478,16 @@ namespace WatchMe.ViewModels
         }
 
         //Usuarios
-        private void VerEliminarUsuario()
+        private void VerEliminarUsuario(Usuarios u)
         {
-
-            Vista = "VerEliminarUsuario";
-            Actualizar();
+            Usuario = u;
+            var temp = catalogou.GetUsuarioID(u.IdUsuario);
+            if (temp is not null)
+            {
+                Usuario = temp;
+                Vista = "VerEliminarUsuario";
+                Actualizar();
+            }
         }
 
         private void EliminarUsuario()
@@ -463,7 +495,8 @@ namespace WatchMe.ViewModels
             if (Usuario != null)
             {
                 catalogou.Eliminar(Usuario);
-                ActualizarBD();
+                Usuario = Application.Current.Properties["UsuarioActual"] as Usuarios;
+                ActualizarUsuarios();
                 Regresar();
             }
         }

@@ -16,8 +16,7 @@
         <views:VerUsuariosView x:Key="VerUsuarios"></views:VerUsuariosView>
         <views:VerPeliculasView x:Key="VerPeliculas"></views:VerPeliculasView>
         <views:VerReseñasView x:Key="VerReseñas"></views:VerReseñasView>
-
-        <views:VerAgregarUsuarioView x:Key="VerAgregarUsuario"></views:VerAgregarUsuarioView>
+        
         <views:VerAgregarPeliculaView x:Key="VerAgregarPelicula"></views:VerAgregarPeliculaView>
 
         <views:VerEditarUsuarioView x:Key="VerEditarUsuario"></views:VerEditarUsuarioView>
@@ -66,11 +65,8 @@
                 </StackPanel>
                 <Border Grid.Row="2" BorderBrush="#292f33" BorderThickness="0,.7,0,0" Width="175"></Border>
                 <StackPanel Margin="20,10,0,0" Grid.Row="2">
-                    <TextBlock FontSize="15" Margin="0,0,0,10" Foreground="Gray" >Crear nuevo</TextBlock>
-                    <Button Command="{Binding VerRegistrarUsuarioCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnCrearUsuario">
-                        <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/User.png"></Image>
-                            Usuario</TextBlock>
-                    </Button>
+                    <TextBlock FontSize="15" Margin="0,0,0,10" Foreground="Gray" >Agregar nueva</TextBlock>
+                    
                     <Button Command="{Binding VerRegistrarPeliculaCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnCrearPelicula">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
                                     Película</TextBlock>
@@ -116,10 +112,7 @@
                         <DataTrigger Binding="{Binding Vista}" Value="VerReseñas">
                             <Setter Property="Content" Value="{StaticResource VerReseñas}"></Setter>
                         </DataTrigger>
-
-                        <DataTrigger Binding="{Binding Vista}" Value="VerAgregarUsuario">
-                            <Setter Property="Content" Value="{StaticResource VerAgregarUsuario}"></Setter>
-                        </DataTrigger>
+                        
                         <DataTrigger Binding="{Binding Vista}" Value="VerEditarUsuario">
                             <Setter Property="Content" Value="{StaticResource VerEditarUsuario}"></Setter>
                         </DataTrigger>

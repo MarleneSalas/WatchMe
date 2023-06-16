@@ -13,6 +13,7 @@ using WatchMe.Views;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading;
 using System.Windows;
+using System.Net.Mail;
 
 namespace WatchMe.ViewModels
 {
@@ -103,7 +104,7 @@ namespace WatchMe.ViewModels
             Vista = new IndexUsuarioRegularView();
         }
 
-        private void CerrarSesion()
+        public void CerrarSesion()
         {
             Usuario = new();
             Vista = view;
@@ -134,6 +135,7 @@ namespace WatchMe.ViewModels
                 if(uscatalogo.Validar(Usuario, out List<string> Errores))
                 {
                     uscatalogo.Agregar(Usuario);
+                    EnviarCorreo(Usuario);
                     Vista = view;
                     Usuario = new();
                     Actualizar();
@@ -147,6 +149,33 @@ namespace WatchMe.ViewModels
                     Actualizar();
                 }
                 Error = "";
+            }
+        }
+
+
+        public void EnviarCorreo(Usuarios userregistrado)
+        {
+            try
+            {
+                MailMessage mail = new()
+                {
+                    From = new MailAddress("201G0246@rcarbonifera.tecnm.mx", "Registro en WatchMe"),
+                    Subject = "¡Bienvenido a WatchMe!"
+                };
+                mail.IsBodyHtml = true;
+                mail.Body = $"<h1 style=\"font-family:Arial\"> ¡Bienvenido al sistema!</h1>\r\n    <h3 style=\"font-family:Arial\">Estimado {userregistrado.NombreUsuario}</h3>\r\n    <p style=\"font-family:Arial\">\r\n        Mediante este correo le informamos que su registro ha sido exitoso. <br /> A partir de ahora puede acceder a su cuenta con las credenciales que ha brindado durante el registro.<br />\r\n        Le recomendamos que revise nuestros Términos y Condiciones de uso y nuestra Política de Privacidad para conocer más sobre cómo se manejan sus datos personales.<br />\r\n        Si tiene alguna pregunta o necesita asistencia adicional, no dude en ponerse en contacto con nuestro equipo de soporte.<br /><br />\r\n        Gracias por unirse a nuestra plataforma.<br /><br />\r\n        Atentamente, Rodrigo Elias Castillo.\r\n    </p>"; //El cuerpo del correo
+                mail.Bcc.Add($"{userregistrado.CorreoElectronico}"); 
+                SmtpClient cliente = new("smtp.outlook.office365.com");
+                cliente.Port = 587;
+                cliente.EnableSsl = true;
+                cliente.UseDefaultCredentials = false;
+                System.Net.NetworkCredential cred = new("201G0246@rcarbonifera.tecnm.mx", "rec2003@7"); //La del usuario a la que le vamos a mandar el correo
+                cliente.Credentials = cred;
+                cliente.Send(mail);
+            }
+            catch (Exception)
+            {
+                Error = "Ha ocurrido un error inesperado. Comuniquese con servicio al cliente de WatchMe.";
             }
         }
 

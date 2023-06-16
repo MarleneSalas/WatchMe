@@ -75,7 +75,7 @@
                     <ComboBoxItem Content="Ciencia Ficción"/>
                     <ComboBoxItem Content="Acción"/>
                 </ComboBox>
-                <Button Margin="10,0,0,0" Width="20">
+                <Button Margin="10,0,0,0" Width="20" Command="{Binding }">
                     <Image VerticalAlignment="Center" Source="/Images/Search.png" Opacity=".70"></Image>
                 </Button>
             </WrapPanel>
@@ -494,7 +494,7 @@
                     <TextBlock HorizontalAlignment="Center" FontSize="15">Limpiar búsqueda</TextBlock>
                 </Button>
                 <!--Lista de resultados de la busqueda-->
-                <ListBox>
+                <ListBox ItemsSource="{Binding ListaPeliculas}">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate >
                             <StackPanel />
