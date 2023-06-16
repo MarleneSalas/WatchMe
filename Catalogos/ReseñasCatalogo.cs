@@ -16,9 +16,9 @@ namespace WatchMe.Catalogos
             return contenedor.Reseñas;
         }
 
-        public IEnumerable<Reseñas> GetReseñasXPelicula(int id)
+        public Reseñas GetReseñasXPelicula(int id)
         {
-            return contenedor.Reseñas.Where(x=>x.IdProduccion == id);
+            return (Reseñas)contenedor.Reseñas.Where(x=>x.IdProduccion == id);
         }
        
 
