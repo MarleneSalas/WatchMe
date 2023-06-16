@@ -16,9 +16,9 @@
                 <Image Height="100" Source="/Images/IconoUU.png" Margin="0,0,20,0"></Image>
                 <StackPanel VerticalAlignment="Center">
                     <!--Nombre del usuario-->
-                    <TextBlock Text="" FontSize="25"></TextBlock>
+                    <TextBlock Text="{Binding usuario.NombreUsuario}" FontSize="25"></TextBlock>
                     <!--Correo del usuario-->
-                    <TextBlock Text="" FontSize="20"></TextBlock>
+                    <TextBlock Text="{Binding usuario.CorreoElectronico}" FontSize="20"></TextBlock>
                 </StackPanel>
             </WrapPanel>
         </DockPanel>

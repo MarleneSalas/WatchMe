@@ -99,6 +99,7 @@ namespace WatchMe.ViewModels
 
         public ICommand VerEditarReseñaCommand { get; set; }
         public ICommand EditarReseñaCommand { get; set; }
+        public ICommand VerPerfilUsuarioCommand { get; set; }
 
         public ICommand ConfirmarReseñaCommand { get; set; }
         public ICommand RegresarReseñasCommand { get; set; }
@@ -158,7 +159,7 @@ namespace WatchMe.ViewModels
             VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
             VerReseñasCommand = new RelayCommand(VerReseñas);
-
+            VerPerfilUsuarioCommand = new RelayCommand(VerPerfilUsuario);
             VerPeliculaCommand = new RelayCommand<Peliculas>(VerPelicula);
 
             //No sé si va en otro VM, pero lo haré mientras aquí
@@ -188,6 +189,12 @@ namespace WatchMe.ViewModels
             ActualizarReseñas();
             Actualizar();
             
+        }
+
+        private void VerPerfilUsuario()
+        {
+            Vista = "VerUsuarioR";
+            Actualizar();
         }
 
         private void RegresarAReseñasXUsuario()
