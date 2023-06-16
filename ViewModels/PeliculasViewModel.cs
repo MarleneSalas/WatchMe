@@ -142,13 +142,7 @@ namespace WatchMe.ViewModels
 
         public IEnumerable<Reseñas> GetReseñasXPelicula
         {
-            get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula).Select(r =>
-            {
-                // Obtener el nombre del usuario correspondiente a la reseña
-                Usuarios usuario = GetUsuarioPorId(r.IdUsuario);
-                r.NombreUsuario = usuario.NombreUsuario;
-                return r;
-            }); ; }
+            get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula); }
            
         }
         public PeliculasViewModel()
