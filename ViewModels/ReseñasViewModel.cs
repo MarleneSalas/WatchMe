@@ -96,7 +96,7 @@ namespace WatchMe.ViewModels
 
         private void VerEliminarReseña(int id)
         {
-            var temp = catalogoReseñas.GetReseñaXID(id);
+            var temp = catalogoReseñas.GetReseñasXPelicula(id);
             if (temp is not null)
             {
                 reseña = temp;
@@ -107,7 +107,7 @@ namespace WatchMe.ViewModels
 
         private void VerEditarReseña(int id)
         {
-            reseña = catalogoReseñas.GetReseñaXID(id);
+            reseña = catalogoReseñas.GetReseñasXPelicula(id);
             if(reseña !=null)
             {
                 Vista = editarreseña;
@@ -149,7 +149,7 @@ namespace WatchMe.ViewModels
 
         private void EditarReseña()
         {
-            var reseñaexistente = catalogoReseñas.GetReseñaXID(reseña.IdReseña);
+            var reseñaexistente = catalogoReseñas.GetReseñasXPelicula(reseña.IdReseña);
             if(reseñaexistente != null)
             {
                 if(catalogoReseñas.Validar(reseña, out List<string> Errores))
