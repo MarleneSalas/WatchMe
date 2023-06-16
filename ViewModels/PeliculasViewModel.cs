@@ -250,7 +250,7 @@ namespace WatchMe.ViewModels
         {
             if (pelicula != null)
             {
-                Vista = "VerEditarReseña";
+                Vista = "VerEditarPelicula";
                 clonpelicula = new()
                 {
                    DuracionMinutos = pelicula.DuracionMinutos,
