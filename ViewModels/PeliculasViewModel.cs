@@ -76,7 +76,7 @@ namespace WatchMe.ViewModels
         //public ICommand VerRegistrarUsuarioCommand { get; set; }
         //public ICommand RegistrarUsuarioCommand { get; set; }
 
-        ////Editar
+ 
 
         public ICommand VerEliminarUsuarioCommand { get; set; }
         public ICommand EliminarUsuarioCommand { get; set; }
@@ -161,8 +161,8 @@ namespace WatchMe.ViewModels
             
             VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
             RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
-            //VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
-            //EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
+            VerEliminarPeliculaCommand = new RelayCommand<int>(VerEliminarPelicula);
+            EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
             //VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
             //EditarPeliculaCommand = new RelayCommand(EditarPelicula);
             ActualizarBD();
@@ -204,6 +204,28 @@ namespace WatchMe.ViewModels
             
         }
 
+        private void EliminarPelicula()
+        {
+            if (pelicula is not null)
+            {
+                catalogop.Eliminar(pelicula);
+                ActualizarBD();
+                Regresar();
+
+            }
+        }
+
+        private void VerEliminarPelicula(int id)
+        {
+            var temp = catalogop.GetPeliculaXID(id);
+            if (temp is not null)
+            {
+                pelicula = temp;
+                Vista = "VerEliminarPelicula";
+                Actualizar();
+            }
+        }
+
         private void VerPerfilUsuario()
         {
             Vista = "VerUsuarioR";
@@ -236,6 +258,7 @@ namespace WatchMe.ViewModels
         public void VerRegistrarPelicula()
         {
             Error = "";
+            pelicula = new();
             Vista = "VerAgregarPelicula";
             Actualizar();
         }

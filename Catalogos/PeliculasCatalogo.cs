@@ -16,9 +16,9 @@ namespace WatchMe.Catalogos
             return contenedor.Peliculas;
         }
 
-        public Peliculas GetPeliculaXID(Peliculas p)
+        public Peliculas GetPeliculaXID(int id)
         {
-            return contenedor.Peliculas.Find(p.IdPelicula);
+            return contenedor.Peliculas.Where(x=>x.IdPelicula == id).FirstOrDefault();
         }
 
         public void Agregar(Peliculas p)

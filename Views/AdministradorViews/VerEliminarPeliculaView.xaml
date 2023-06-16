@@ -11,18 +11,18 @@
             <TextBlock DockPanel.Dock="Top" FontFamily="/Fonts/# Bebas Neue"  FontSize="30" >Eliminar película</TextBlock>
             <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,15,0,0" >
                 <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Style="{StaticResource ButtonsRegistro}" Width="100" Command="{Binding EliminarPeliculaCommand}"  >
                         <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
                 <Border Background="#292f33"  CornerRadius="15">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Style="{StaticResource ButtonsRegistro}" Width="100" Command="{Binding RegresarCommand}" Cursor="Hand" >
                         <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
             </WrapPanel>
             <StackPanel  Margin="0,20,10,0">
-                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar:  "<Run Foreground="#e50914">El viaje de chihiro</Run>"?</TextBlock>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar:  "<Run Foreground="#e50914" Text="{Binding pelicula.Nombre}"></Run>"?</TextBlock>
                 <TextBlock HorizontalAlignment="Center" Foreground="#e50914">La eliminación será permantente.</TextBlock>
             </StackPanel>
         </DockPanel>

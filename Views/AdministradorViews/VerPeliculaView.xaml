@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WatchMe.Views.AdministradorViews"
              mc:Ignorable="d" 
+             x:Name="verPeli"
              d:DesignHeight="450" d:DesignWidth="800">
     <Border CornerRadius="0,5,5,0" Background="White" Padding="20,0,0,20">
 
@@ -59,12 +60,12 @@
                     </StackPanel>
                     <WrapPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <!--Boton para el comando VerEditarPelicula-->
-                        <Button Command="" 
+                        <Button Command="{Binding Source={x:Reference verPeli}, Path=DataContext.VerEditarPeliculaCommand}" CommandParameter="{Binding IdPelicula}" 
                             Background="White"  Width="40" Height="40" Margin="0,0,10,0" Style="{StaticResource ButtonsEditarEliminar}">
                             <Image Source="/Images/Editar.png"/>
                         </Button>
                         <!--Boton para el comando VerEliminarPelicula-->
-                        <Button Command="" 
+                        <Button Command="{Binding Source={x:Reference verPeli}, Path=DataContext.VerEliminarPeliculaCommand}" CommandParameter="{Binding IdPelicula}" 
                            Background="White" Width="40" Height="40" Style="{StaticResource ButtonsEditarEliminar}">
                             <Image Source="/Images/Remove.png"/>
                         </Button>
