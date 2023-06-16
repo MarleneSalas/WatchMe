@@ -111,6 +111,8 @@ namespace WatchMe.ViewModels
         public ICommand VerUsuariosCommand { get; set; }
         public ICommand VerPeliculasCommand { get; set; }
         public ICommand VerReseñasCommand { get; set; }
+        public ICommand VerPerfilUsuarioCommand { get; set; }
+        public ICommand RegresarCommand { get; set; }
 
         //Usuarios
         public ICommand VerEliminarUsuarioCommand { get; set; }
@@ -119,28 +121,15 @@ namespace WatchMe.ViewModels
         public ICommand VerEditarUsuarioCommand { get; set; }
         public ICommand EditarUsuarioCommand { get; set; }
 
-
-
-
-
-
-
-        public ICommand RegresarCommand { get; set; }
-
-
+        //Reseñas
         public ICommand RegistrarReseñaCommand { get; set; }
-
         public ICommand VerEliminarReseñaCommand { get; set; }
         public ICommand EliminarReseñaCommand { get; set; }
-
         public ICommand VerEditarReseñaCommand { get; set; }
         public ICommand EditarReseñaCommand { get; set; }
-        public ICommand VerPerfilUsuarioCommand { get; set; }
-
         public ICommand ConfirmarReseñaCommand { get; set; }
-        public ICommand RegresarReseñasCommand { get; set; }
         public ICommand RegresarAReseñasXUsuarioCommand { get; set; }
-
+        public ICommand RegresarReseñasCommand { get; set; }
 
         public PeliculasViewModel()
         {
