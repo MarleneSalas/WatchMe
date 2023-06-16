@@ -19,11 +19,9 @@ public partial class Peliculas
 
     public string Urlposter { get; set; } = null!;
 
-    public int? Puntuacion { get; set; }
+    public decimal? Puntuacion { get; set; }
 
     public string Sinopsis { get; set; } = null!;
 
     public virtual ICollection<Reseñas> Reseñas { get; set; } = new List<Reseñas>();
-
-    public virtual ICollection<Vermastarde> Vermastarde { get; set; } = new List<Vermastarde>();
 }

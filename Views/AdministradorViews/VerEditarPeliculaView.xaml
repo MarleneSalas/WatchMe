@@ -18,34 +18,34 @@
                 <StackPanel Margin="0,20,10,0">
                     <TextBlock Text="Título:" HorizontalAlignment="Left" Foreground="Gray" />
                     <Border Background="#eeeeee" Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                        <TextBox  />
+                        <TextBox Text="{Binding pelicula.Nombre}" />
                     </Border>
                     <TextBlock Text="Fecha de lanzamiento:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0"/>
                     <Border Background="#eeeeee" Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                        <TextBox  />
+                        <TextBox Text="{Binding pelicula.FechaLanzamiento, StringFormat={}{0:dd/MM/yyyy}}" />
                     </Border>
                     <TextBlock Text="Duración:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0"/>
                     <Border Background="#eeeeee" Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                        <TextBox  />
+                        <TextBox Text="{Binding pelicula.DuracionMinutos}" />
                     </Border>
                     <TextBlock Text="Género:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0"/>
                     <Border Background="#eeeeee" Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                        <TextBox  />
+                        <TextBox  Text="{Binding pelicula.Genero}"/>
                     </Border>
                     <TextBlock Text="Plataformas:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0"/>
                     <Border Background="#eeeeee" Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                        <TextBox  />
+                        <TextBox Text="{Binding pelicula.Plataformas}" />
                     </Border>
                 </StackPanel>
 
                 <StackPanel Margin="10,20,0,0">
                     <TextBlock Text="Portada:" HorizontalAlignment="Left" Foreground="Gray"/>
                     <Border Background="#eeeeee" Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                        <TextBox  />
+                        <TextBox Text="{Binding pelicula.Urlposter}" />
                     </Border>
                     <TextBlock Text="Sinopsis:" HorizontalAlignment="Left" Foreground="Gray" Margin="0,10,0,0"/>
                     <Border Background="#eeeeee" Margin="0,5,0,0" Padding="3" CornerRadius="15" BorderThickness="2" BorderBrush="Gray">
-                        <TextBox Height="232" TextWrapping="Wrap" />
+                        <TextBox Height="232" Text="{Binding pelicula.Sinopsis}" TextWrapping="Wrap" />
                     </Border>
                 </StackPanel>
             </UniformGrid>
@@ -53,17 +53,17 @@
             <StackPanel Grid.Row="2">
                 <WrapPanel HorizontalAlignment="Center" Margin="0,15,0,0" >
                     <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
-                        <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <Button Style="{StaticResource ButtonsRegistro}" Width="100" Command="{Binding EditarPeliculaCommand}" >
                             <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                         </Button>
                     </Border>
                     <Border Background="#292f33"  CornerRadius="15">
-                        <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                        <Button Style="{StaticResource ButtonsRegistro}" Width="100" Command="{Binding CancelarEdicionPeliculaCommand}" >
                             <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                         </Button>
                     </Border>
                 </WrapPanel>
-                <TextBlock Foreground="Red"  Text="Aquí aparecerán todos los errores."  HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                <TextBlock Foreground="Red"  Text="{Binding Error}"  HorizontalAlignment="Center" Margin="0,20,0,0"/>
             </StackPanel>
         </Grid>
     </Border>

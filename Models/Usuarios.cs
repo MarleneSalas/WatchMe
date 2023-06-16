@@ -16,6 +16,4 @@ public partial class Usuarios
     public string Rol { get; set; } = null!;
 
     public virtual ICollection<Reseñas> Reseñas { get; set; } = new List<Reseñas>();
-
-    public virtual ICollection<Vermastarde> Vermastarde { get; set; } = new List<Vermastarde>();
 }

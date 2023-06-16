@@ -106,6 +106,7 @@ namespace WatchMe.ViewModels
         public ICommand ConfirmarReseñaCommand { get; set; }
         public ICommand RegresarReseñasCommand { get; set; }
         public ICommand RegresarAReseñasXUsuarioCommand { get; set; }
+        public ICommand CancelarEdicionPeliculaCommand { get; set; }
 
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
 
@@ -161,10 +162,10 @@ namespace WatchMe.ViewModels
             
             VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
             RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
-            VerEliminarPeliculaCommand = new RelayCommand<int>(VerEliminarPelicula);
+            VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
             EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
-            //VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
-            //EditarPeliculaCommand = new RelayCommand(EditarPelicula);
+            VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
+            EditarPeliculaCommand = new RelayCommand(EditarPelicula);
             ActualizarBD();
             Vista = "Peliculas";
             VerInicioCommand = new RelayCommand(VerInicio);
@@ -173,6 +174,7 @@ namespace WatchMe.ViewModels
             VerReseñasCommand = new RelayCommand(VerReseñas);
             VerPerfilUsuarioCommand = new RelayCommand(VerPerfilUsuario);
             VerPeliculaCommand = new RelayCommand<Peliculas>(VerPelicula);
+            CancelarEdicionPeliculaCommand = new RelayCommand(CancelarEdicionPelicula);
 
             //No sé si va en otro VM, pero lo haré mientras aquí
             //VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
@@ -204,6 +206,69 @@ namespace WatchMe.ViewModels
             
         }
 
+        private void CancelarEdicionPelicula()
+        {
+            Vista = "VerPeliculaR";
+            Actualizar();
+        }
+
+        private void EditarPelicula()
+        {
+
+            var peliculaexistente = catalogop.GetPeliculaXID(pelicula.IdPelicula);
+            if (peliculaexistente != null)
+            {
+                if (catalogop.Validar(pelicula, out List<string> Errores))
+                {
+                    peliculaexistente.DuracionMinutos = pelicula.DuracionMinutos;
+                    peliculaexistente.IdPelicula = pelicula.IdPelicula;
+                    peliculaexistente.Urlposter = pelicula.Urlposter;
+                    pelicula.Sinopsis = pelicula.Sinopsis;
+                    peliculaexistente.FechaLanzamiento = pelicula.FechaLanzamiento;
+                    peliculaexistente.Genero = pelicula.Genero;
+                    peliculaexistente.Nombre = pelicula.Nombre;
+                    peliculaexistente.Plataformas = pelicula.Plataformas;
+                    peliculaexistente.Puntuacion = pelicula.Puntuacion;
+                    peliculaexistente.Sinopsis = pelicula.Sinopsis;
+
+                    catalogop.Editar(peliculaexistente);
+                    Regresar();
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+                Error = "";
+            }
+        }
+
+        private void VerEditarPelicula()
+        {
+            if (pelicula != null)
+            {
+                Vista = "VerEditarReseña";
+                clonpelicula = new()
+                {
+                   DuracionMinutos = pelicula.DuracionMinutos,
+                   FechaLanzamiento = pelicula.FechaLanzamiento,
+                   Genero = pelicula.Genero,
+                   IdPelicula = pelicula.IdPelicula,
+                   Nombre = pelicula.Nombre,
+                   Plataformas = pelicula.Plataformas,
+                   Puntuacion = pelicula.Puntuacion,
+                   Reseñas = pelicula.Reseñas,
+                   Sinopsis = pelicula.Sinopsis,
+                   Urlposter = pelicula.Urlposter
+                };
+                pelicula = clonpelicula;
+                Actualizar();
+            }
+        }
+
         private void EliminarPelicula()
         {
             if (pelicula is not null)
@@ -215,15 +280,10 @@ namespace WatchMe.ViewModels
             }
         }
 
-        private void VerEliminarPelicula(int id)
+        private void VerEliminarPelicula()
         {
-            var temp = catalogop.GetPeliculaXID(id);
-            if (temp is not null)
-            {
-                pelicula = temp;
                 Vista = "VerEliminarPelicula";
                 Actualizar();
-            }
         }
 
         private void VerPerfilUsuario()
