@@ -129,11 +129,6 @@ namespace WatchMe.ViewModels
             get { return ListaPeliculas.OrderByDescending(x => x.Puntuacion).Take(10); }
         }
 
-        public IEnumerable<Reseñas> ReseñasXUsuario
-        {
-            get { return listareseñas.Where(x => x.IdUsuario == reseña.IdUsuario); }
-        }
-
 
         //No sé si va en otro VM, pero lo haré mientras aquí
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
