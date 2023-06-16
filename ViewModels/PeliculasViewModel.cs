@@ -192,7 +192,7 @@ namespace WatchMe.ViewModels
             Actualizar();
         }
 
-        private void VerRegistrarPelicula()
+        public void VerRegistrarPelicula()
         {
             Error = "";
             Vista = "VerAgregarPelicula";

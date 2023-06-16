@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WatchMe.Models;
+using WatchMe.ViewModels;
 
 namespace WatchMe.Views.UsuarioViews
 {
@@ -28,6 +30,20 @@ namespace WatchMe.Views.UsuarioViews
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             ComboGenero.SelectedItem = ComboGenero.Items[1];
+        }
+
+        private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ListBoxItem listBoxItem = sender as ListBoxItem;
+            var item = listBoxItem.DataContext;
+
+            if (item != null)
+            {
+                if (DataContext is PeliculasViewModel viewModel)
+                {
+                    viewModel.VerPeliculasCommand.Execute(item);
+                }
+            }
         }
     }
 }
