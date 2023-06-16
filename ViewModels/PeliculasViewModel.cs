@@ -55,7 +55,6 @@ namespace WatchMe.ViewModels
 
         //No sé si va en otro VM, pero lo haré mientras aquí
         public Usuarios? Usuario { get; set; }
-        public PrincipalViewModel pvm { get; set; }
 
         /*
         public ICommand VerRegistrarUsuarioCommand { get; set; }
@@ -143,7 +142,14 @@ namespace WatchMe.ViewModels
 
         public IEnumerable<Reseñas> GetReseñasXPelicula
         {
-            get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula); }
+            get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula).Select(r =>
+            {
+                // Obtener el nombre del usuario correspondiente a la reseña
+                Usuarios usuario = GetUsuarioPorId(r.IdUsuario);
+                r.NombreUsuario = usuario.NombreUsuario;
+                return r;
+            }); ; }
+           
         }
         public PeliculasViewModel()
         {

@@ -91,7 +91,7 @@
                                 <Image Grid.Column="0" Grid.Row="0" Height="30" Source="/Images/IconoUU.png"></Image>
                                 <TextBlock FontSize="15" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
                                 <!--Aquí el nombre del usuario-->
-                                  <Run Text="{Binding NombreUsuario}" FontWeight="Bold" ></Run> comentó:</TextBlock>
+                                  <Run Text="{Binding Usuario.NombreUsuario}" FontWeight="Bold" ></Run> comentó:</TextBlock>
                                 <TextBlock FontSize="15" Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
                             Valoración: <Image Source="/Images/Estrella.png" Width="15"></Image>
                         <!--Aquí ira la valoracion-->
