@@ -159,8 +159,14 @@ namespace WatchMe.ViewModels
             VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
             VerReseñasCommand = new RelayCommand(VerReseñas);
+           
+            
+            
             VerPerfilUsuarioCommand = new RelayCommand(VerPerfilUsuario);
             RegresarCommand = new RelayCommand(Regresar);
+            
+            
+            
             FiltroBuscadorPeliculasCommand = new RelayCommand<string>(FiltroBuscadorPeliculas);
 
             //Usuarios
