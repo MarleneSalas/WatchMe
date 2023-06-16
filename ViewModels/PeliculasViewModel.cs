@@ -30,6 +30,10 @@ namespace WatchMe.ViewModels
         private ReseñasCatalogo catalogoReseñas = new();
         PrincipalViewModel pvm = new();
 
+
+        public string SiHayResultados { get; set; } = "Collapsed";
+        public string NoHayResultados { get; set; } = "Collabsed";
+
         //Listas
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
@@ -160,9 +164,12 @@ namespace WatchMe.ViewModels
             VerUsuariosCommand = new RelayCommand(VerUsuarios);
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
             VerReseñasCommand = new RelayCommand(VerReseñas);
-           
-            
-            
+            SiHayResultados = "Collapsed";
+            NoHayResultados = "Collapsed";
+
+
+
+
             VerPerfilUsuarioCommand = new RelayCommand(VerPerfilUsuario);
             RegresarCommand = new RelayCommand(Regresar);
             
@@ -277,6 +284,23 @@ namespace WatchMe.ViewModels
             {
                 listapeliculasfiltrado.Add(item);
             }
+
+            if (listapeliculasfiltrado.Count == 0)
+            {
+                NoHayResultados = "Visible";
+                SiHayResultados = "Collapsed";
+            }
+
+
+            else
+            {
+                SiHayResultados = "Visible";
+                NoHayResultados = "Collapsed";
+            }
+                
+
+            Actualizar();
+
         }
 
         //Películas

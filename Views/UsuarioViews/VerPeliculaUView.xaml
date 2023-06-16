@@ -31,7 +31,7 @@
                         <RowDefinition Height=".40*"></RowDefinition>
                         <RowDefinition Height=".10*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="0" Grid.Row="0" Height="200" Width="160" CornerRadius="5" HorizontalAlignment="Left">
+                    <Border Grid.Column="0" Grid.RowSpan="2" Grid.Row="0" Height="200" Width="160" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Border.Background>
                             <!--Imagen de la portada-->
                             <ImageBrush ImageSource="{Binding pelicula.Urlposter}" />
@@ -63,7 +63,7 @@
                         </TextBlock>
                     </StackPanel>
                     <!--Boton para ver registrar reseña-->
-                    <TextBlock Grid.Row="1" Grid.Column="2" Margin="10,5" Text="{Binding pelicula.Sinopsis}"  TextWrapping="Wrap">
+                    <TextBlock Grid.Row="1" Grid.Column="2" FontSize="15" Foreground="White"  Text="{Binding pelicula.Sinopsis}"  TextWrapping="Wrap">
                         
                     </TextBlock>
                     <Button Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding RegistrarReseñaCommand}">
@@ -73,15 +73,16 @@
             </Border>
             <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue" Foreground="#e50914" Margin="0,0,20,10">Reseñas</TextBlock>
             <!--Lista de las reseñas-->
-            <ListBox
+            <ScrollViewer>
+            <ItemsControl
                 Margin="0,0,20,0"
-                ItemContainerStyle="{StaticResource ListStackPanel}" ItemsSource="{Binding GetReseñasXPelicula}">
-                <ListBox.ItemsPanel>
+                ItemsSource="{Binding GetReseñasXPelicula}">
+                <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Height="275"/>
                     </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
                         <!--Plantilla-->
@@ -111,8 +112,9 @@
                             </Grid>
                         </Border>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            </ScrollViewer>
         </StackPanel>
     </Border>
 </UserControl>
