@@ -29,19 +29,20 @@ namespace WatchMe.Views.UsuarioViews
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            ComboGenero.SelectedItem = ComboGenero.Items[1];
+            ComboGenero.SelectedItem = ComboGenero.Items[0];
         }
 
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             ListBoxItem listBoxItem = sender as ListBoxItem;
             var item = listBoxItem.DataContext;
+            var peliculaSeleccionada = listBoxItem.DataContext as Peliculas;
 
             if (item != null)
             {
                 if (DataContext is PeliculasViewModel viewModel)
                 {
-                    viewModel.VerPeliculasCommand.Execute(item);
+                    viewModel.VerPeliculaCommand.Execute(peliculaSeleccionada);
                 }
             }
         }

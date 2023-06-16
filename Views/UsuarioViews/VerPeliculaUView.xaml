@@ -29,21 +29,21 @@
                     <Border Grid.Column="0" Height="200" Width="160" CornerRadius="5" HorizontalAlignment="Left">
                         <Border.Background>
                             <!--Imagen de la portada-->
-                            <ImageBrush ImageSource="/Images/Prueba.jpeg" />
+                            <ImageBrush ImageSource="{Binding Urlposter}" />
                         </Border.Background>
                     </Border>
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                         <!--Nombre de la pelicula-->
-                        <TextBlock Text="" 
+                        <TextBlock Text="{Binding Nombre}" 
                             Foreground="White" Margin="0,0,0,10" FontWeight="Bold" FontSize="25">
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Fecha de lanzamiento: 
                              <!--Fecha de lanzamiento-->
-                            <Run Text=""></Run>
+                            <Run Text="{Binding FechaLanzamiento, StringFormat={}{0:dd/MM/yyyy}}"></Run>
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">
                             <!--Duracion-->
-                            <Run Text=""></Run> min
+                            <Run Text="{Binding DuracionMinutos}"></Run> min
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15"><Image VerticalAlignment="Center" Width="15" Source="/Images/Estrella.png"></Image> 
                          <!--Puntuacion-->   
@@ -51,10 +51,10 @@
                         </TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Plataformas: 
                             <!--Plataformas-->
-                            <Run Text=""></Run></TextBlock>
+                            <Run Text="{Binding Puntuacion}"></Run></TextBlock>
                         <TextBlock Foreground="White" Margin="0,0,0,5" FontSize="15">Género: 
                             <!--Genero de la pelicula-->
-                            <Run Text=""></Run>
+                            <Run Text="{Binding Genero}"></Run>
                         </TextBlock>
                     </StackPanel>
                     <!--Boton para ver registrar reseña-->

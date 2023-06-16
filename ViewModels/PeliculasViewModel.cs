@@ -151,7 +151,7 @@ namespace WatchMe.ViewModels
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
             VerReseñasCommand = new RelayCommand(VerReseñas);
 
-            VerPeliculaCommand = new RelayCommand(VerPelicula);
+            VerPeliculaCommand = new RelayCommand<Peliculas>(VerPelicula);
 
             //No sé si va en otro VM, pero lo haré mientras aquí
             //VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
@@ -176,7 +176,7 @@ namespace WatchMe.ViewModels
             Actualizar();
         }
 
-        private void VerPelicula()
+        private void VerPelicula(Peliculas p)
         {
             if (Thread.CurrentPrincipal != null)
             {
@@ -188,6 +188,7 @@ namespace WatchMe.ViewModels
                 {
                     Vista = "VerPeliculaU";
                 }
+                pelicula = p;
             }
             Actualizar();
         }
