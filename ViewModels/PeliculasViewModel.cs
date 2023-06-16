@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Versioning;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -136,6 +137,12 @@ namespace WatchMe.ViewModels
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
         private ObservableCollection<Reseñas> listareseñas { get; set; } = new();
 
+
+
+        public IEnumerable<Reseñas> GetReseñasXPelicula(int id) 
+        {
+            return listareseñas.Where(x=>x.IdProduccion == id);
+        }
         public PeliculasViewModel()
         {
             VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
@@ -172,7 +179,7 @@ namespace WatchMe.ViewModels
 
             RegresarCommand = new RelayCommand(Regresar);
             RegresarReseñasCommand = new RelayCommand(RegresarReseñas);
-
+            ActualizarReseñas();
             Actualizar();
         }
 
@@ -324,7 +331,7 @@ namespace WatchMe.ViewModels
 
         private void VerEliminarReseña(int id)
         {
-            var temp = catalogoReseñas.GetReseñasXPelicula(id);
+            var temp = catalogoReseñas.GetReseñaXID(id);
             if (temp is not null)
             {
                 reseña = temp;
@@ -335,7 +342,7 @@ namespace WatchMe.ViewModels
 
         private void VerEditarReseña(int id)
         {
-            reseña = catalogoReseñas.GetReseñasXPelicula(id);
+            reseña = catalogoReseñas.GetReseñaXID(id);
             if (reseña != null)
             {
                 Vista = "VerEditarReseña";
@@ -377,7 +384,7 @@ namespace WatchMe.ViewModels
 
         private void EditarReseña()
         {
-            var reseñaexistente = catalogoReseñas.GetReseñasXPelicula(reseña.IdReseña);
+            var reseñaexistente = catalogoReseñas.GetReseñaXID(reseña.IdReseña);
             if (reseñaexistente != null)
             {
                 if (catalogoReseñas.Validar(reseña, out List<string> Errores))
