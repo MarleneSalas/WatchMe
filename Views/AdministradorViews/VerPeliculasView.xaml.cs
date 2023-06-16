@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WatchMe.Models;
+using WatchMe.ViewModels;
 
 namespace WatchMe.Views.AdministradorViews
 {
@@ -23,6 +25,21 @@ namespace WatchMe.Views.AdministradorViews
         public VerPeliculasView()
         {
             InitializeComponent();
+        }
+
+        private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ListBoxItem listBoxItem = sender as ListBoxItem;
+            var item = listBoxItem.DataContext;
+            var peliculaSeleccionada = listBoxItem.DataContext as Peliculas;
+
+            if (item != null)
+            {
+                if (DataContext is PeliculasViewModel viewModel)
+                {
+                    viewModel.VerPeliculaCommand.Execute(peliculaSeleccionada);
+                }
+            }
         }
     }
 }

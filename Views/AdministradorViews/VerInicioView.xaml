@@ -237,6 +237,11 @@
 
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown_1"></EventSetter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                 </StackPanel>
 
@@ -310,6 +315,11 @@
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown_1"></EventSetter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                 </StackPanel>
 
@@ -384,6 +394,11 @@
 
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown_1"></EventSetter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
 
                 </StackPanel>
@@ -459,6 +474,11 @@
 
                             </DataTemplate>
                         </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <EventSetter Event="PreviewMouseDown" Handler="ListBoxItem_PreviewMouseDown_1"></EventSetter>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
                 </StackPanel>
             </StackPanel>

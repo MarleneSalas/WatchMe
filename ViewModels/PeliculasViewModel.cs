@@ -361,7 +361,18 @@ namespace WatchMe.ViewModels
 
         private void VerPerfilUsuario()
         {
-            Vista = "VerUsuarioR";
+            if (Thread.CurrentPrincipal != null)
+            {
+                if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                {
+                    Vista = "VerUsuario";
+                    ActualizarReseñas();
+                }
+                if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                {
+                    Vista = "VerUsuarioR";
+                }
+            }
             Actualizar();
         }
 

@@ -85,7 +85,7 @@
                         <Run Text="{Binding Usuario.NombreUsuario}"></Run>
                     </TextBlock>
                     <!--Ver editar usuario conectado-->
-                    <Button  VerticalAlignment="Bottom" Margin="0,10,0,0" >
+                    <Button Command="{Binding VerPerfilUsuarioCommand}" VerticalAlignment="Bottom" Margin="0,10,0,0" >
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15" >  <Image Source="/Images/Perfil.png" VerticalAlignment="Center" Height="15" Margin="0,0,5,0"></Image>
                                Ver perfil</TextBlock>
                     </Button>

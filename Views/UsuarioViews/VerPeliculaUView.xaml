@@ -10,7 +10,7 @@
 
         <StackPanel>
             <!--Boton para regresar al inicio-->
-            <Button  Padding="0" HorizontalAlignment="Right">
+            <Button Command="{Binding RegresarCommand}" Padding="0" HorizontalAlignment="Right">
                 <Image Height="25" Source="/Images/Cruz.png"></Image>
             </Button>
             <Border CornerRadius="5" Height="220" Margin="0,0,20,20">
