@@ -12,6 +12,7 @@ using System.ComponentModel;
 using WatchMe.Views;
 using Microsoft.AspNetCore.Authorization;
 using System.Threading;
+using System.Windows;
 
 namespace WatchMe.ViewModels
 {
@@ -20,6 +21,7 @@ namespace WatchMe.ViewModels
         UsuariosCatalogo uscatalogo = new UsuariosCatalogo();
 
         public Usuarios? Usuario { get; set; }
+        PeliculasViewModel peliculasvm { get; set; }
 
         public UserControl Vista { get; set; }
 
@@ -66,6 +68,7 @@ namespace WatchMe.ViewModels
                     Usuario = usconectado;
                     if (Thread.CurrentPrincipal != null)
                     {
+                        Application.Current.Properties["UsuarioActual"] = Usuario;
                         if (Thread.CurrentPrincipal.IsInRole("Administrador"))
                         {
                             AccionesUsuarioAdministrador();

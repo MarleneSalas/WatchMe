@@ -109,6 +109,10 @@
                         <DataTrigger Binding="{Binding Vista}" Value="VerPeliculaU">
                             <Setter Property="Content" Value="{StaticResource VerPeliculaU}"></Setter>
                         </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="VerHacerReseña">
+                            <Setter Property="Content" Value="{StaticResource VerHacerReseña}"></Setter>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>

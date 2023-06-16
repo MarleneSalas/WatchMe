@@ -9,6 +9,7 @@ using System.Runtime.Versioning;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WatchMe.Catalogos;
@@ -54,6 +55,7 @@ namespace WatchMe.ViewModels
 
         //No sé si va en otro VM, pero lo haré mientras aquí
         public Usuarios? Usuario { get; set; }
+        public PrincipalViewModel pvm { get; set; }
 
         /*
         public ICommand VerRegistrarUsuarioCommand { get; set; }
@@ -139,12 +141,13 @@ namespace WatchMe.ViewModels
 
 
 
-        public IEnumerable<Reseñas> GetReseñasXPelicula(int id) 
+        public IEnumerable<Reseñas> GetReseñasXPelicula
         {
-            return listareseñas.Where(x=>x.IdProduccion == id);
+            get { return listareseñas.Where(x => x.IdProduccion == pelicula.IdPelicula); }
         }
         public PeliculasViewModel()
         {
+            
             VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
             RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
             //VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
@@ -179,14 +182,21 @@ namespace WatchMe.ViewModels
 
             RegresarCommand = new RelayCommand(Regresar);
             RegresarReseñasCommand = new RelayCommand(RegresarReseñas);
+
+            if (Application.Current.Properties.Contains("UsuarioActual"))
+            {
+                Usuario = Application.Current.Properties["UsuarioActual"] as Usuarios;
+            }
             ActualizarReseñas();
             Actualizar();
+            
         }
 
         private void VerPelicula(Peliculas p)
         {
             if (Thread.CurrentPrincipal != null)
             {
+                pelicula = p;
                 if (Thread.CurrentPrincipal.IsInRole("Administrador"))
                 {
                     Vista = "VerPelicula";
@@ -195,7 +205,6 @@ namespace WatchMe.ViewModels
                 {
                     Vista = "VerPeliculaU";
                 }
-                pelicula = p;
             }
             Actualizar();
         }
@@ -363,6 +372,8 @@ namespace WatchMe.ViewModels
         {
             if (reseña != null)
             {
+                reseña.IdUsuario = Usuario.IdUsuario;
+                reseña.IdProduccion = pelicula.IdPelicula;
                 if (catalogoReseñas.Validar(reseña, out List<string> Errores))
                 {
                     catalogoReseñas.Agregar(reseña);
