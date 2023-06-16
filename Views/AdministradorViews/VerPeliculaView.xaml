@@ -76,7 +76,7 @@
             <!--Lista de las reseñas-->
             <ListBox
                 Margin="0,0,20,0"
-                ItemContainerStyle="{StaticResource ListStackPanel}">
+                ItemContainerStyle="{StaticResource ListStackPanel}" ItemsSource="{Binding GetReseñasXPelicula}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Height="275"/>
@@ -100,14 +100,14 @@
                                 <Image Grid.Column="0" Grid.Row="0" Height="30" Source="/Images/IconoUU.png"></Image>
                                 <TextBlock FontSize="15" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
                                 <!--Aquí el nombre del usuario-->
-                                  <Run Text="" FontWeight="Bold" ></Run> comentó:</TextBlock>
+                                  <Run Text="{Binding IdUsuarioNavigation.NombreUsuario}" FontWeight="Bold" ></Run> comentó:</TextBlock>
                                 <TextBlock FontSize="15" Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
                             Valoración: <Image Source="/Images/Estrella.png" Width="15"></Image>
                         <!--Aquí ira la valoracion-->
-                            <Run Text=""></Run>
+                            <Run Text="{Binding Valoracion}"></Run>
                                 </TextBlock>
                                 <!--Aquí ira la reseña-->
-                                <TextBlock Text=""
+                                <TextBlock Text="{Binding Reseña}"
                             Grid.Column="1" Grid.Row="2"   Foreground="White" FontSize="17" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,0,20,20"></TextBlock>
                             </Grid>
                         </Border>

@@ -316,7 +316,17 @@ namespace WatchMe.ViewModels
 
         private void VerReseñas()
         {
-            Vista = "VerReseñasU";
+            if (Thread.CurrentPrincipal != null)
+            {
+                if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                {
+                    Vista = "VerReseñas";
+                }
+                if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                {
+                    Vista = "VerReseñasU";
+                }
+            }
             Actualizar();
         }
 
