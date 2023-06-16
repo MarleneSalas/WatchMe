@@ -51,11 +51,11 @@
                                
                                 <WrapPanel Grid.ColumnSpan="2" Grid.Row="3" >
                                     <!--Ver editar reseña-->
-                                    <Button Width="25" Height="25" Margin="0,0,15,0" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}">
+                                    <Button Width="25" Height="25" Margin="0,0,15,0" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}" Command="{Binding VerEditarReseñaCommand}">
                                         <Image Source="/Images/Editar.png"/>
                                     </Button> 
                                     <!--Comando para ver eliminar reseña-->
-                                    <Button Width="25" Height="25" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}">
+                                    <Button Width="25" Height="25" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}" Command="{Binding VerEliminarReseñaCommand}">
                                     <Image Source="/Images/Remove.png"/>
                                 </Button>
                                 </WrapPanel>

@@ -102,6 +102,7 @@ namespace WatchMe.ViewModels
 
         public ICommand ConfirmarReseñaCommand { get; set; }
         public ICommand RegresarReseñasCommand { get; set; }
+        public ICommand RegresarAReseñasXUsuarioCommand { get; set; }
 
         public ObservableCollection<Peliculas> ListaPeliculas { get; set; } = new();
 
@@ -175,6 +176,7 @@ namespace WatchMe.ViewModels
             VerEditarReseñaCommand = new RelayCommand<int>(VerEditarReseña);
             EditarReseñaCommand = new RelayCommand(EditarReseña);
             ConfirmarReseñaCommand = new RelayCommand(ConfirmarReseña);
+            RegresarAReseñasXUsuarioCommand = new RelayCommand(RegresarAReseñasXUsuario);
 
             RegresarCommand = new RelayCommand(Regresar);
             RegresarReseñasCommand = new RelayCommand(RegresarReseñas);
@@ -186,6 +188,12 @@ namespace WatchMe.ViewModels
             ActualizarReseñas();
             Actualizar();
             
+        }
+
+        private void RegresarAReseñasXUsuario()
+        {
+            Vista = "VerReseñasU";
+            Actualizar();
         }
 
         private void VerPelicula(Peliculas p)

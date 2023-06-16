@@ -11,12 +11,12 @@
             <TextBlock DockPanel.Dock="Top" FontFamily="/Fonts/# Bebas Neue"  FontSize="30" >Eliminar reseña</TextBlock>
             <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,15,0,0" >
                 <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Style="{StaticResource ButtonsRegistro}" Width="100" Command="{Binding EliminarReseñaCommand}" >
                         <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
                 <Border Background="#292f33"  CornerRadius="15">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  Command="{Binding RegresarAReseñasXUsuarioCommand}">
                         <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
@@ -25,7 +25,7 @@
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar la reseña 
                     en la película: " 
                     <!--Nombre de la pelicula-->
-                    <Run Text="" Foreground="#e50914" ></Run>"?</TextBlock>
+                    <Run Text="{Binding IdProduccionNavigation.Nombre}" Foreground="#e50914" ></Run>"?</TextBlock>
                 <TextBlock HorizontalAlignment="Center" Foreground="#e50914">La eliminación será permantente.</TextBlock>
             </StackPanel>
         </DockPanel>
