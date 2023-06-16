@@ -322,6 +322,7 @@ namespace WatchMe.ViewModels
         {
             if (pelicula != null)
             {
+                
                 if (catalogop.Validar(pelicula, out List<string> Errores))
                 {
                     catalogop.Agregar(pelicula);

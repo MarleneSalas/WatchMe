@@ -47,9 +47,9 @@ namespace WatchMe.Catalogos
             {
                 Errores.Add("Debe dejar alguna opinión para la película.");
             }
-            if(r.Valoracion < 0 || r.Valoracion > 100)
+            if(r.Valoracion < 0 || r.Valoracion > 100 || r.Valoracion == null)
             {
-                Errores.Add("Debe dejar su valoración entre un rango de 0 - 100");
+                Errores.Add("Debe dejar una valoración entre un rango de 0 - 100");
             }
 
             if(r.Reseña != null)
