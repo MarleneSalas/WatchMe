@@ -44,6 +44,7 @@ public partial class WatchMeContext : DbContext
             entity.Property(e => e.Nombre).HasMaxLength(100);
             entity.Property(e => e.Plataformas).HasColumnType("text");
             entity.Property(e => e.Puntuacion).HasDefaultValueSql("'0'");
+            entity.Property(e => e.Sinopsis).HasMaxLength(350);
             entity.Property(e => e.Urlposter)
                 .HasColumnType("text")
                 .HasColumnName("URLPoster");
