@@ -67,7 +67,7 @@
             <WrapPanel>
                 <TextBox x:Name="txtBuscar" Width="200">
                 </TextBox>
-                <ComboBox  Margin="10,0,0,0" Width="200" Background="Transparent" BorderThickness="2,0,0,0" Loaded="ComboBox_Loaded" x:Name="ComboGenero">
+                <ComboBox FontSize="10" Margin="10,0,0,0" Width="200" Background="Transparent" BorderThickness="2,0,0,0" Loaded="ComboBox_Loaded" x:Name="ComboGenero">
                     <ComboBoxItem Content="Animación"/>
                     <ComboBoxItem Content="Musical"/>
                     <ComboBoxItem Content="Drama"/>
