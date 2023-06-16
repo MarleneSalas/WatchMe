@@ -59,14 +59,17 @@ namespace WatchMe.Catalogos
                 Errores.Add("Debe seleccionar el género de la película.");
 
             if (string.IsNullOrWhiteSpace(p.Plataformas))
-                Errores.Add("Debe ingresar las plataformas en las que se encuentra disponible dicha película");
+                Errores.Add("Debe ingresar las plataformas en las que se encuentra disponible dicha película.");
 
             if (string.IsNullOrWhiteSpace(p.Urlposter))
-                Errores.Add("Debe ingresar el póster de la película");
+                Errores.Add("Debe ingresar el póster de la película.");
+
+            if (string.IsNullOrWhiteSpace(p.Sinopsis))
+                Errores.Add("Debe añadir una sinópsis para la película.");
 
             if (!Uri.TryCreate(p.Urlposter, UriKind.Absolute, out var uri))
             {
-                Errores.Add("Escriba una URL válida para la imagen");
+                Errores.Add("Escriba una URL válida para la imagen.");
             }
 
 

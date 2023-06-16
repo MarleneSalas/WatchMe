@@ -15,7 +15,7 @@
 
             <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40">Reseñas</TextBlock>
 
-            <ListBox Grid.Row="1" ItemContainerStyle="{StaticResource ListStackPanel}">
+            <ListBox Grid.Row="1" ItemContainerStyle="{StaticResource ListStackPanel}" ItemsSource="{Binding ReseñasXUsuario}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel/>

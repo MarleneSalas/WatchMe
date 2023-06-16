@@ -25,6 +25,8 @@ namespace WatchMe.ViewModels
             get { return listareseñas.Where(x => x.IdUsuario == reseña.IdUsuario); }
         }
 
+
+
         
 
 
