@@ -321,6 +321,7 @@ namespace WatchMe.ViewModels
                 if (Thread.CurrentPrincipal.IsInRole("Administrador"))
                 {
                     Vista = "VerReseñas";
+                    ActualizarReseñas();
                 }
                 if (Thread.CurrentPrincipal.IsInRole("Usuario"))
                 {

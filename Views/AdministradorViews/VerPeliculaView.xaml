@@ -10,7 +10,7 @@
 
         <StackPanel>
             <!--Boton para regresar al inicio-->
-            <Button  Padding="0" HorizontalAlignment="Right">
+            <Button Command="{Binding RegresarCommand}" Padding="0" HorizontalAlignment="Right">
                 <Image Height="25" Source="/Images/Cruz.png"></Image>
             </Button>
             <Border CornerRadius="5" Height="220" Margin="0,0,20,20">
@@ -74,15 +74,15 @@
             </Border>
             <TextBlock FontSize="25" FontFamily="/Fonts/# Bebas Neue" Foreground="#e50914" Margin="0,0,20,10">Reseñas</TextBlock>
             <!--Lista de las reseñas-->
-            <ListBox
+            <ItemsControl
                 Margin="0,0,20,0"
                 ItemContainerStyle="{StaticResource ListStackPanel}" ItemsSource="{Binding GetReseñasXPelicula}">
-                <ListBox.ItemsPanel>
+                <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Height="275"/>
                     </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         
                         <!--Plantilla-->
@@ -112,8 +112,8 @@
                             </Grid>
                         </Border>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
     </Border>
 </UserControl>

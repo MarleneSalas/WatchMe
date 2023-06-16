@@ -11,12 +11,12 @@
             <TextBlock DockPanel.Dock="Top" FontFamily="/Fonts/# Bebas Neue"  FontSize="30" >Eliminar reseña</TextBlock>
             <WrapPanel DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="0,15,0,0" >
                 <Border Background="#292f33"  CornerRadius="15" Margin="0,0,10,0">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Command="{Binding EliminarReseñaCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                         <TextBlock Foreground="White" Text="Aceptar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
                 <Border Background="#292f33"  CornerRadius="15">
-                    <Button Style="{StaticResource ButtonsRegistro}" Width="100"  >
+                    <Button Command="{Binding RegresarAReseñasXUsuarioCommand}" Style="{StaticResource ButtonsRegistro}" Width="100"  >
                         <TextBlock Foreground="White" Text="Cancelar" HorizontalAlignment="Center" />
                     </Button>
                 </Border>
@@ -24,10 +24,10 @@
             <StackPanel  Margin="0,20,10,0">
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,10">¿Está seguro de eliminar la reseña de
                     <!--Nombre del usuario-->
-                    <Run Text="" Foreground="#e50914"></Run> 
+                    <Run Text="{Binding reseña.IdUsuarioNavigation.NombreUsuario}" Foreground="#e50914"></Run> 
                     en la película: " 
                     <!--Nombre de la pelicula-->
-                    <Run Text="" Foreground="#e50914" ></Run>"?</TextBlock>
+                    <Run Text="{Binding reseña.IdProduccionNavigation.Nombre}" Foreground="#e50914" ></Run>"?</TextBlock>
                 <TextBlock HorizontalAlignment="Center" Foreground="#e50914">La eliminación será permantente.</TextBlock>
             </StackPanel>
         </DockPanel>

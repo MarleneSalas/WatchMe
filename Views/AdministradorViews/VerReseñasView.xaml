@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WatchMe.Views.AdministradorViews"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="verReseña">
     <Border Padding="20" Background="White" CornerRadius="0,5,5,0">
         <Grid>
             <Grid.RowDefinitions>
@@ -15,13 +16,9 @@
 
             <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40">Reseñas</TextBlock>
 
-            <ListBox Grid.Row="1" ItemContainerStyle="{StaticResource ListStackPanel}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
+            <ItemsControl Grid.Row="1" ItemsSource="{Binding listareseñas}">
+
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Padding="10" CornerRadius="20" Background="#667580">
                             <Grid>
@@ -37,28 +34,37 @@
                                 </Grid.RowDefinitions>
                                 <Image Grid.Column="0" Grid.Row="0" Height="50" Source="/Images/IconoUU.png"></Image>
                                 <TextBlock VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="White">
-                            <!--Nombre del usuario-->
-                            <Run Text="" FontWeight="Bold"></Run> comentó en 
+                            Comentaste en 
                             <!--Nombre la película-->
-                            <Run Text="" FontWeight="Bold"></Run>:</TextBlock>
+                            <Run Text="{Binding IdProduccionNavigation.Nombre}" FontWeight="Bold"></Run>:</TextBlock>
                                 <TextBlock Foreground="White" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center">
                             Valoración: <Image Source="/Images/Estrella.png" Width="20"></Image>
                             <!--Valoracion-->
-                            <Run>9,0</Run>
+                            <Run Text="{Binding Valoracion}"></Run>
                                 </TextBlock>
                                 <!--Reseña-->
-                                <TextBlock  Grid.Column="1" Grid.Row="2" Foreground="White" FontSize="17" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,0,20,5">
+                                <TextBlock Text="{Binding Reseña}" Grid.Column="1" Grid.Row="2" Foreground="White" FontSize="17" TextWrapping="Wrap" TextAlignment="Justify" Margin="0,0,20,5">
                                 </TextBlock>
-                                <!--Comando para vereliminarreseña-->
-                                <Button Grid.ColumnSpan="2" Grid.Row="3" Width="25" Height="25" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}">
-                                    <Image Source="/Images/Remove.png"/>
-                                </Button>
+
+                                <WrapPanel Grid.ColumnSpan="2" Grid.Row="3" >
+                                    <!--Ver editar reseña-->
+                                    <Button Width="25" Height="25" Margin="0,0,15,0" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}" Command="{Binding Source={x:Reference verReseña},Path=DataContext.VerEditarReseñaCommand}" CommandParameter="{Binding IdReseña}" >
+                                        <Image Source="/Images/Editar.png"/>
+                                    </Button>
+                                    <!--Comando para ver eliminar reseña-->
+                                    <Button Width="25" Height="25" VerticalAlignment="Center" Style="{StaticResource ButtonsEditarEliminar}" Command="{Binding Source={x:Reference verReseña}, 
+                                    Path=DataContext.VerEliminarReseñaCommand}" 
+                                           CommandParameter="{Binding IdReseña}">
+                                        <Image Source="/Images/Remove.png"/>
+                                    </Button>
+                                </WrapPanel>
+
                             </Grid>
                         </Border>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
+                </ItemsControl.ItemTemplate>
 
-            </ListBox>
+            </ItemsControl>
         </Grid>
     </Border>
 </UserControl>
