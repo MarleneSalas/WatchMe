@@ -14,7 +14,7 @@ namespace WatchMe.Catalogos
 
         public IEnumerable<Reseñas> GetAllReseñas()
         {
-            return contenedor.Reseñas.Include(x=>x.IdUsuarioNavigation);
+            return contenedor.Reseñas.Include(x=>x.IdUsuarioNavigation).Include(x=>x.IdProduccionNavigation);
         }
 
         public Reseñas GetReseñaXID(int id)

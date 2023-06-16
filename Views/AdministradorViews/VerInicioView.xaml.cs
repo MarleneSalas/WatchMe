@@ -46,6 +46,11 @@ namespace WatchMe.Views.AdministradorViews
 
         private void ListBoxItem_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            
+        }
+
+        private void ListBoxItem_PreviewMouseDown_1(object sender, MouseButtonEventArgs e)
+        {
             ListBoxItem listBoxItem = sender as ListBoxItem;
             var item = listBoxItem.DataContext;
             var peliculaSeleccionada = listBoxItem.DataContext as Peliculas;

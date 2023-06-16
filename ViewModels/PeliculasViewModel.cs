@@ -34,7 +34,7 @@ namespace WatchMe.ViewModels
 
         public IEnumerable<Reseñas> ReseñasXUsuario
         {
-            get { return listareseñas.Where(x => x.IdUsuario == reseña.IdUsuario); }
+            get { return listareseñas.Where(x => x.IdUsuario == Usuario.IdUsuario); }
         }
 
 
@@ -312,7 +312,7 @@ namespace WatchMe.ViewModels
 
         private void VerReseñas()
         {
-            Vista = "VerReseñas";
+            Vista = "VerReseñasU";
             Actualizar();
         }
 
