@@ -139,7 +139,7 @@ namespace WatchMe.ViewModels
 
         //No sé si va en otro VM, pero lo haré mientras aquí
         public ObservableCollection<Usuarios> ListaUsuarios { get; set; } = new();
-        private ObservableCollection<Reseñas> listareseñas { get; set; } = new();
+        public ObservableCollection<Reseñas> listareseñas { get; set; } = new();
 
         public IEnumerable<Reseñas> GetReseñasXPelicula
         {
