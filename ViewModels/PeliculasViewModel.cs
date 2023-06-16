@@ -123,6 +123,7 @@ namespace WatchMe.ViewModels
         public ICommand VerReseñasCommand { get; set; }
         public ICommand VerPerfilUsuarioCommand { get; set; }
         public ICommand RegresarCommand { get; set; }
+        public ICommand FiltroBuscadorPeliculasCommand { get; set; }
 
         //Usuarios
         public ICommand VerEliminarUsuarioCommand { get; set; }

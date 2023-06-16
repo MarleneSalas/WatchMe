@@ -43,7 +43,7 @@ namespace WatchMe.Catalogos
         public bool Validar(Peliculas p, out List<string> Errores)
         {
             Errores = new();
-            if (string.IsNullOrWhiteSpace(p.Nombre))
+            if (string.IsNullOrWhiteSpace(p.Nombre) || p.Nombre == "")
                 Errores.Add("Debe ingresar el titulo de la película.");
 
             if (p.FechaLanzamiento.Year < 1988)
@@ -55,20 +55,30 @@ namespace WatchMe.Catalogos
             if (p.DuracionMinutos < 0)
                 Errores.Add("La duración de la película debe ser mayor a 0.");
 
-            if (string.IsNullOrWhiteSpace(p.Genero))
+            if (string.IsNullOrWhiteSpace(p.Genero) || p.Genero == "")
                 Errores.Add("Debe seleccionar el género de la película.");
 
-            if (string.IsNullOrWhiteSpace(p.Plataformas))
+
+            if (string.IsNullOrWhiteSpace(p.Plataformas) || p.Plataformas == "")
                 Errores.Add("Debe ingresar las plataformas en las que se encuentra disponible dicha película.");
 
-            if (string.IsNullOrWhiteSpace(p.Urlposter))
+            if (string.IsNullOrWhiteSpace(p.Urlposter) || p.Urlposter == "")
                 Errores.Add("Debe ingresar el póster de la película.");
 
-            if (string.IsNullOrWhiteSpace(p.Sinopsis))
+            if (string.IsNullOrWhiteSpace(p.Sinopsis) || p.Sinopsis == "")
+            {
                 Errores.Add("Debe añadir una sinópsis para la película.");
+                
+            }
 
-            if (p.Sinopsis.Length > 500)
-                Errores.Add("La sinopsis debe ser menor a 500 caracteres.");
+            if(p.Sinopsis is not null)
+            {
+                if (p.Sinopsis.Length > 500)
+                    Errores.Add("La sinopsis debe ser menor a 500 caracteres.");
+            }
+                
+
+            
 
             if (!Uri.TryCreate(p.Urlposter, UriKind.Absolute, out var uri))
             {
