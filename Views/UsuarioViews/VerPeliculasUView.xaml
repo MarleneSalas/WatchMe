@@ -15,7 +15,7 @@
             <TextBlock Grid.Row="0" FontFamily="/Fonts/# Bebas Neue"  FontSize="40" >Películas wasaaa</TextBlock>
 
             <!--Lista de todas las peliculas-->
-            <ListBox 
+            <ListBox ItemsSource="{Binding ListaPeliculas}"
                 ItemContainerStyle="{StaticResource ListStackPanel}"
                 Grid.Row="1">
                 <ListBox.ItemsPanel>
