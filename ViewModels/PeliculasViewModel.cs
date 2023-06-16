@@ -365,7 +365,9 @@ namespace WatchMe.ViewModels
                     IdProduccion = reseña.IdProduccion,
                     IdUsuario = reseña.IdUsuario,
                     Reseña = reseña.Reseña,
-                    Valoracion = reseña.Valoracion
+                    Valoracion = reseña.Valoracion,
+                    IdProduccionNavigation = reseña.IdProduccionNavigation,
+                    IdUsuarioNavigation = reseña.IdUsuarioNavigation
                 };
                 reseña = clon;
                 Actualizar();
@@ -381,6 +383,7 @@ namespace WatchMe.ViewModels
                 if (catalogoReseñas.Validar(reseña, out List<string> Errores))
                 {
                     catalogoReseñas.Agregar(reseña);
+                    Vista = "VerPeliculaU";
                     ActualizarReseñas();
                     Actualizar();
 
@@ -409,7 +412,7 @@ namespace WatchMe.ViewModels
                     reseñaexistente.Reseña = reseña.Reseña;
                     reseñaexistente.Valoracion = reseña.Valoracion;
                     catalogoReseñas.Editar(reseñaexistente);
-                    RegresarReseñas();
+                    RegresarAReseñasXUsuario();
                 }
                 else
                 {

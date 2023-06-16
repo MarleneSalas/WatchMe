@@ -106,6 +106,14 @@
                             <Setter Property="Content" Value="{StaticResource VerMasTarde}"></Setter>
                         </DataTrigger>
 
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEliminarReseñaU">
+                            <Setter Property="Content" Value="{StaticResource VerEliminarReseñaU}"></Setter>
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="VerEditarReseña">
+                            <Setter Property="Content" Value="{StaticResource VerEditarReseña}"></Setter>
+                        </DataTrigger>
+
                         <DataTrigger Binding="{Binding Vista}" Value="VerPeliculaU">
                             <Setter Property="Content" Value="{StaticResource VerPeliculaU}"></Setter>
                         </DataTrigger>
