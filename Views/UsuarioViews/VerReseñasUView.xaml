@@ -21,7 +21,7 @@
              
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border Padding="10" CornerRadius="20" Background="#667580">
+                        <Border Padding="10" CornerRadius="20" Margin="0,0,0,10" Background="#667580">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width=".10*"></ColumnDefinition>
