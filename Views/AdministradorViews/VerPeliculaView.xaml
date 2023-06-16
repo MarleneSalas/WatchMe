@@ -76,7 +76,7 @@
             <!--Lista de las reseñas-->
             <ItemsControl
                 Margin="0,0,20,0"
-                ItemContainerStyle="{StaticResource ListStackPanel}" ItemsSource="{Binding GetReseñasXPelicula}">
+                ItemsSource="{Binding GetReseñasXPelicula}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Height="275"/>
