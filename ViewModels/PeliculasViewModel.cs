@@ -43,17 +43,6 @@ namespace WatchMe.ViewModels
         public ICommand EditarUsuarioCommand { get; set; }
         */
 
-        public ICommand VerRegistrarPeliculaCommand { get; set; }
-        public ICommand RegistrarPeliculaCommand { get; set; }
-
-        public ICommand VerEliminarPeliculaCommand { get; set; }
-        public ICommand EliminarPeliculaCommand { get; set; }
-
-        public ICommand VerEditarPeliculaCommand { get; set; }
-        public ICommand EditarPeliculaCommand { get; set; }
-
-
-
         public ICommand VerInicioCommand { get; set; }
         public ICommand VerUsuariosCommand { get; set; }
         public ICommand VerPeliculasCommand { get; set; }
@@ -66,6 +55,16 @@ namespace WatchMe.ViewModels
 
         public ICommand VerEliminarUsuarioCommand { get; set; }
         public ICommand EliminarUsuarioCommand { get; set; }
+
+
+        public ICommand VerRegistrarPeliculaCommand { get; set; }
+        public ICommand RegistrarPeliculaCommand { get; set; }
+
+        public ICommand VerEliminarPeliculaCommand { get; set; }
+        public ICommand EliminarPeliculaCommand { get; set; }
+
+        public ICommand VerEditarPeliculaCommand { get; set; }
+        public ICommand EditarPeliculaCommand { get; set; }
 
         public ICommand RegresarCommand { get; set; }
 
@@ -105,8 +104,8 @@ namespace WatchMe.ViewModels
 
         public PeliculasViewModel()
         {
-            //VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
-            //RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
+            VerRegistrarPeliculaCommand = new RelayCommand(VerRegistrarPelicula);
+            RegistrarPeliculaCommand = new RelayCommand(RegistrarPelicula);
             //VerEliminarPeliculaCommand = new RelayCommand(VerEliminarPelicula);
             //EliminarPeliculaCommand = new RelayCommand(EliminarPelicula);
             //VerEditarPeliculaCommand = new RelayCommand(VerEditarPelicula);
@@ -130,6 +129,34 @@ namespace WatchMe.ViewModels
             RegresarCommand = new RelayCommand(Regresar);
 
             Actualizar();
+        }
+
+        private void VerRegistrarPelicula()
+        {
+            Error = "";
+            Vista = "VerAgregarPelicula";
+            Actualizar();
+        }
+
+        private void RegistrarPelicula()
+        {
+            if (pelicula != null)
+            {
+                if (catalogop.Validar(pelicula,out List<string> Errores))
+                {
+                    catalogop.Agregar(pelicula);
+                    ActualizarBD();
+                    Regresar();
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error} {item} {Environment.NewLine}";
+                    }
+                    Actualizar();
+                }
+            }
         }
 
         private void VerEliminarUsuario(int obj)

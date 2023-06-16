@@ -67,11 +67,11 @@
                 <Border Grid.Row="2" BorderBrush="#292f33" BorderThickness="0,.7,0,0" Width="175"></Border>
                 <StackPanel Margin="20,10,0,0" Grid.Row="2">
                     <TextBlock FontSize="15" Margin="0,0,0,10" Foreground="Gray" >Crear nuevo</TextBlock>
-                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnCrearUsuario">
+                    <Button Command="{Binding RegistrarUsuarioCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnCrearUsuario">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Margin="0,0,5,0" Source="/Images/User.png"></Image>
                             Usuario</TextBlock>
                     </Button>
-                    <Button Style="{StaticResource NavigationButtons}" x:Name="btnCrearPelicula">
+                    <Button Command="{Binding RegistrarPeliculaCommand}" Style="{StaticResource NavigationButtons}" x:Name="btnCrearPelicula">
                         <TextBlock FontFamily="/Fonts/# Netflix Sans" FontSize="15"><Image VerticalAlignment="Center" Height="15" Source="/Images/Movie.png" Margin="0,0,5,0"></Image>
                                     Película</TextBlock>
                     </Button>
