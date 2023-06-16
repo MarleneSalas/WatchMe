@@ -105,6 +105,10 @@
                         <DataTrigger Binding="{Binding Vista}" Value="VerMasTardeU">
                             <Setter Property="Content" Value="{StaticResource VerMasTarde}"></Setter>
                         </DataTrigger>
+
+                        <DataTrigger Binding="{Binding Vista}" Value="VerPeliculaU">
+                            <Setter Property="Content" Value="{StaticResource VerPeliculaU}"></Setter>
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>

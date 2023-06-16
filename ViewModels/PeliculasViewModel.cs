@@ -67,13 +67,15 @@ namespace WatchMe.ViewModels
         public ICommand VerPeliculasCommand { get; set; }
         public ICommand VerReseñasCommand { get; set; }
 
-        public ICommand VerRegistrarUsuarioCommand { get; set; }
-        public ICommand RegistrarUsuarioCommand { get; set; }
+        public ICommand VerPeliculaCommand { get; set; }
 
-        //Editar
+        //public ICommand VerRegistrarUsuarioCommand { get; set; }
+        //public ICommand RegistrarUsuarioCommand { get; set; }
 
-        public ICommand VerEliminarUsuarioCommand { get; set; }
-        public ICommand EliminarUsuarioCommand { get; set; }
+        ////Editar
+
+        //public ICommand VerEliminarUsuarioCommand { get; set; }
+        //public ICommand EliminarUsuarioCommand { get; set; }
 
 
         public ICommand VerRegistrarPeliculaCommand { get; set; }
@@ -149,14 +151,16 @@ namespace WatchMe.ViewModels
             VerPeliculasCommand = new RelayCommand(VerPeliculas);
             VerReseñasCommand = new RelayCommand(VerReseñas);
 
+            VerPeliculaCommand = new RelayCommand(VerPelicula);
+
             //No sé si va en otro VM, pero lo haré mientras aquí
-            VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
-            RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
+            //VerRegistrarUsuarioCommand = new RelayCommand(VerRegistrarUsuario);
+            //RegistrarUsuarioCommand = new RelayCommand(RegistrarUsuario);
 
             //Editar
 
-            VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
-            EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
+            //VerEliminarUsuarioCommand = new RelayCommand<int>(VerEliminarUsuario);
+            //EliminarUsuarioCommand = new RelayCommand(EliminarUsuario);
 
 
             RegistrarReseñaCommand = new RelayCommand(RegistrarReseña);
@@ -169,6 +173,22 @@ namespace WatchMe.ViewModels
             RegresarCommand = new RelayCommand(Regresar);
             RegresarReseñasCommand = new RelayCommand(RegresarReseñas);
 
+            Actualizar();
+        }
+
+        private void VerPelicula()
+        {
+            if (Thread.CurrentPrincipal != null)
+            {
+                if (Thread.CurrentPrincipal.IsInRole("Administrador"))
+                {
+                    Vista = "VerPelicula";
+                }
+                if (Thread.CurrentPrincipal.IsInRole("Usuario"))
+                {
+                    Vista = "VerPeliculaU";
+                }
+            }
             Actualizar();
         }
 
